@@ -19,7 +19,7 @@ $(document).ready(function() {
       url: url,
       data: data,
       success: function() {
-        $('#comment_add_msg').text("Your " + postWhat + " comment will be published after approval")
+        $('#comment_add_msg').text("Your " + postWhat + " will be published after approval")
                              .slideDown(250).delay(2500).slideUp(250);
         // Empty the form's fields
         $fields.val('');
