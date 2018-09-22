@@ -6,6 +6,7 @@ $(document).ready(function() {
     $(this).delay(2500).slideUp(200);
   });
 
+  // AJAX (comment) form
   $(".ajax-form").on('submit', function(evt) {
     evt.preventDefault();
     var form = $(this),
@@ -16,7 +17,7 @@ $(document).ready(function() {
       url: url,
       data: data,
       success: function() {
-        $('#comment_add_msg').text("Your post will be published after approval")
+        $('#comment_add_msg').text("Your comment will be published after approval")
                              .slideDown(250).delay(2500).slideUp(250);
       },
       error: function() {
