@@ -25,7 +25,7 @@
 
   <p id="comment_add_msg" class="alert alert-hidden alert-success mb-4"></p>
 
-  <?php echo form_open (base_url('comments/create/') . $post->id, array('class' => 'comment-form ajax-form')); ?>
+  <?php echo form_open (base_url('comments/create/') . $post->id, array('class' => 'comment-form ajax-form', 'data-post'  => 'comment')); ?>
     <input type="hidden" name="postid" value="<?php echo $post->id; ?>">
 
     <div class="form-group <?php if(form_error('name')) echo 'has-error';?>">
