@@ -10,7 +10,7 @@ $(document).ready(function() {
   $(".ajax-form").on('submit', function(evt) {
     evt.preventDefault();
     var form = $(this),
-    fields = form.find('input[type="text"],input[type="email"],textarea');
+    $fields = form.find('input[type="text"],input[type="email"],textarea');
     url = form.attr('action'),
     postWhat = form.data('post'),
     data = form.serialize();
@@ -22,7 +22,7 @@ $(document).ready(function() {
         $('#comment_add_msg').text("Your " + postWhat + " comment will be published after approval")
                              .slideDown(250).delay(2500).slideUp(250);
         // Empty the form's fields
-        (fields).val('');
+        $fields.val('');
 
       },
       error: function() {
