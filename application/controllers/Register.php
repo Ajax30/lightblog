@@ -20,7 +20,7 @@ class Register extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
 		$this->form_validation->set_rules('cpassword', 'Confirm password', 'required|matches[password]');
-		$this->form_validation->set_rules('terms', 'Terms and Conditions', 'required', ['required' => 'You have to accept out Terms and Conditions']);
+		$this->form_validation->set_rules('terms', 'Terms and Conditions', 'required', ['required' => 'You have to accept the Terms and Conditions']);
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
 		// If validation fails
