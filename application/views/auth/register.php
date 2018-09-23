@@ -31,6 +31,11 @@
               <?php if(form_error('cpassword')) echo form_error('cpassword'); ?> 
             </div>
 
+            <div class="form-group <?php if(form_error('terms')) echo 'has-error';?>">
+              <input type="checkbox" name="terms" value="yes" id="terms">
+              <?php if(form_error('terms')) echo form_error('terms'); ?> <span class="text-muted text-error">I accept the <a href="<?php echo base_url('pages/terms') ?>" class="text-error">Terms and Conditions</a></span>
+            </div>
+
             <div class="form-group">
               <input type="submit" value="Register" class="btn btn-block btn-md btn-success">
             </div>            
