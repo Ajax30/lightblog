@@ -27,7 +27,7 @@ class Posts_model extends CI_Model {
 											->or_like('description', $expression)
 											->or_like('content', $expression);
 		$this->db->order_by('posts.id', 'DESC');
-		$query = $this->db->get('posts');
+		$query = $this->db->get('posts', $limit, $offset);
 		return $query->result();
 	}
 

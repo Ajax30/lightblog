@@ -6,18 +6,13 @@ class Posts extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Static_model');
-		$this->load->model('Posts_model');
-		$this->load->model('Categories_model');
-		$this->load->model('Comments_model');
 	}
 
-	private function _initPagination($path, $totalRows) {
+	private function _initPagination($path, $totalRows, $query_string_segment = 'page') {
     //load and configure pagination 
 		$this->load->library('pagination');
 		$config['base_url'] = base_url($path);
-		$config['query_string_segment'] = 'page';
-    //pass $totalRows param to pagination config
+		$config['query_string_segment'] = $query_string_segment; 
 		$config['total_rows'] = $totalRows;
 		$config['per_page'] = 12;
 		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1) {
@@ -46,27 +41,30 @@ class Posts extends CI_Controller {
 	}
 
 	public function search() {
-		$this->form_validation->set_rules('search', 'Search term', 'required|trim|min_length[3]');
-		$this->form_validation->set_error_delimiters('<p class = "error search-error"> ', ' </p>
-			');
-      // If search fails
-		if ($this->form_validation->run() === FALSE) {
-			return $this->index();
-		} else {
-			$expression = $this->input->post('search');
-      //call initialization method
-			$config = $this->_initPagination("/search", $this->Posts_model->search_count($expression));
-			$data = $this->Static_model->get_static_data();
-			$data['categories'] = $this->Categories_model->get_categories();
-
-        //use limit and offset returned by _initPaginator method
-			$data['posts'] = $this->Posts_model->search($expression, $config['limit'], $config['offset']);
-			$data['expression'] = $expression;
-			$this->load->view('partials/header', $data);
-			$this->load->view('search');
-			$this->load->view('partials/footer');
-		}
-	}
+   // Force validation since the form's method is GET
+   $this->form_validation->set_data($this->input->get());
+   $this->form_validation->set_rules('search', 'Search term', 'required|trim|min_length[3]');
+   $this->form_validation->set_error_delimiters('<p class = "error search-error"> ', ' </p>
+       ');
+ // If search fails
+   if ($this->form_validation->run() === FALSE) {
+       return $this->index();
+   } else {
+       $expression = $this->input->get('search');
+       $posts_count = $this->Posts_model->search_count($expression);
+       $query_string_segment = 'search=' . $expression . '&page';
+       $config = $this->_initPagination("/posts/search", $posts_count, $query_string_segment);
+       $data = $this->Static_model->get_static_data();
+       $data['categories'] = $this->Categories_model->get_categories();
+       //use limit and offset returned by _initPaginator method
+       $data['posts'] = $this->Posts_model->search($expression, $config['limit'], $config['offset']);
+       $data['expression'] = $expression;
+       $data['posts_count'] = $posts_count;
+       $this->load->view('partials/header', $data);
+       $this->load->view('search');
+       $this->load->view('partials/footer');
+   }
+} 
 
 	public function post($id) {
 		$data = $this->Static_model->get_static_data();
@@ -205,7 +203,6 @@ class Posts extends CI_Controller {
 	}
 
 	public function delete($id) {
-
 		// Only logged in users can delete posts
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');

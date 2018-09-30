@@ -1,7 +1,6 @@
 <div class="container">
 	<div class="col-xs-12">
 		<?php
-			$posts_count = count($posts);
 			if ($posts_count == 1) {
 			 	$results = "post";
 			} else {

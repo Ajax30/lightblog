@@ -6,10 +6,6 @@ class Comments extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Static_model');
-		$this->load->model('Posts_model');
-		$this->load->model('Categories_model');
-		$this->load->model('Comments_model');
 	}
 
 	public function index() {
@@ -25,7 +21,7 @@ class Comments extends CI_Controller {
 		$config['total_rows'] =	$this->Comments_model->get_num_rows();
 		$config['per_page'] = 10;
 		
-		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1) {
+		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1{
 			$_GET[$config['query_string_segment']] = 1;
 		}
 		$limit = $config['per_page'];

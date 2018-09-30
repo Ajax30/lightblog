@@ -6,9 +6,6 @@ class Categories extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Static_model');
-		$this->load->model('Categories_model');
-		$this->load->model('Posts_model');
 	}
 
 	public function posts($category_id) {

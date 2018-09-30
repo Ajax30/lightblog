@@ -6,10 +6,6 @@ class Comments extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Static_model');
-		$this->load->model('Posts_model');
-		$this->load->model('Categories_model');
-		$this->load->model('Comments_model');
 	}
 
 	public function create($post_id){

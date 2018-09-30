@@ -19,7 +19,7 @@
 			<button class="navbar-toggler d-md-none mt-1 mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<?php echo form_open(base_url('posts/search'), ['id' => 'search_form', 'class' => 'w-100 py-1 px-2 px-md-3 px-lg-5']); ?>
+			<form method="get" action="<?php echo base_url('posts/search') ?>" id="search_form" class="w-100 py-1 px-2 px-md-3 px-lg-5" accept-charset="utf-8">
 			<div class="input-group <?php if(form_error('search')) echo 'has-error';?>">
 				<input class="form-control form-control-dark" type="text" name="search" placeholder="Search posts..." aria-label="Search">
 				<?php if(form_error('search')) echo form_error('search'); ?> 
@@ -27,7 +27,7 @@
 					<button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
 				</div>
 			</div>
-			<?php echo form_close(); ?>
+			</form>
 			<div class="navbar-nav navbar-expand-md">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto px-2 pl-md-1 pr-md-2 text-nowrap">

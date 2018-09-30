@@ -6,14 +6,11 @@ class Login extends CI_Controller {
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('Static_model');
-    $this->load->model('Categories_model');
-    $this->load->model('Usermodel');
   }
 
   public function index() {
     $data = $this->Static_model->get_static_data();
-    $data['tagline'] = 'Want to write for ' . $data['site_title'] . '? Create an account.';
+    $data['tagline'] = 'Sign in to your ' . $data['site_title'] . ' account.';
     $data['categories'] = $this->Categories_model->get_categories();
 
     $this->load->view('partials/header', $data);
