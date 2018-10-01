@@ -13,7 +13,6 @@ class Posts extends CI_Controller {
 		$this->load->library('pagination');
 		$config['base_url'] = base_url($path);
 		$config['query_string_segment'] = $query_string_segment; 
-		$config['permitted_uri_chars'] = 'a-z 0-9~%.:_()@&=\-!';
 		$config['enable_query_strings'] =TRUE;
 		$config['reuse_query_string'] =TRUE;
 		$config['total_rows'] = $totalRows;
