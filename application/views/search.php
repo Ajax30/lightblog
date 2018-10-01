@@ -1,12 +1,8 @@
 <div class="container">
 	<div class="col-xs-12">
-		<?php
-			if ($posts_count == 1) {
-			 	$results = "post";
-			} else {
-			 	$results = "posts";
-			}			  
-		?>
+		
+		<?php $posts_count == 1 ? $results = "post" : $results = "posts";?>
+
 		<h1 class="display-4 search-results">We found <?php echo $posts_count . ' ' . $results; ?> containing <span class="quote-inline"><?php echo $expression; ?></span></h1>
 	</div>	
 	<?php if ($posts): ?>
