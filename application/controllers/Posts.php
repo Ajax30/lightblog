@@ -44,29 +44,29 @@ class Posts extends CI_Controller {
 
 	public function search() {
    // Force validation since the form's method is GET
-   $this->form_validation->set_data($this->input->get());
-   $this->form_validation->set_rules('search', 'Search term', 'required|trim|min_length[3]');
-   $this->form_validation->set_error_delimiters('<p class = "error search-error"> ', ' </p>
-       ');
- // If search fails
-   if ($this->form_validation->run() === FALSE) {
-       return $this->index();
-   } else {
-       $expression = $this->input->get('search');
-       $posts_count = $this->Posts_model->search_count($expression);
-       $query_string_segment = 'page';
-       $config = $this->_initPagination("/posts/search", $posts_count, $query_string_segment);
-       $data = $this->Static_model->get_static_data();
-       $data['categories'] = $this->Categories_model->get_categories();
+		$this->form_validation->set_data($this->input->get());
+		$this->form_validation->set_rules('search', 'Search term', 'required|trim|min_length[3]');
+		$this->form_validation->set_error_delimiters('<p class = "error search-error"> ', ' </p>
+			');
+ 		// If search fails
+		if ($this->form_validation->run() === FALSE) {
+			return $this->index();
+		} else {
+			$expression = $this->input->get('search');
+			$posts_count = $this->Posts_model->search_count($expression);
+			$query_string_segment = 'page';
+			$config = $this->_initPagination("/posts/search", $posts_count, $query_string_segment);
+			$data = $this->Static_model->get_static_data();
+			$data['categories'] = $this->Categories_model->get_categories();
        //use limit and offset returned by _initPaginator method
-       $data['posts'] = $this->Posts_model->search($expression, $config['limit'], $config['offset']);
-       $data['expression'] = $expression;
-       $data['posts_count'] = $posts_count;
-       $this->load->view('partials/header', $data);
-       $this->load->view('search');
-       $this->load->view('partials/footer');
-   }
-} 
+			$data['posts'] = $this->Posts_model->search($expression, $config['limit'], $config['offset']);
+			$data['expression'] = $expression;
+			$data['posts_count'] = $posts_count;
+			$this->load->view('partials/header', $data);
+			$this->load->view('search');
+			$this->load->view('partials/footer');
+		}
+	} 
 
 	public function post($id) {
 		$data = $this->Static_model->get_static_data();
