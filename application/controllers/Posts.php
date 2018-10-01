@@ -13,6 +13,9 @@ class Posts extends CI_Controller {
 		$this->load->library('pagination');
 		$config['base_url'] = base_url($path);
 		$config['query_string_segment'] = $query_string_segment; 
+		$config['permitted_uri_chars'] = 'a-z 0-9~%.:_()@&=\-!';
+		$config['enable_query_strings'] =TRUE;
+		$config['reuse_query_string'] =TRUE;
 		$config['total_rows'] = $totalRows;
 		$config['per_page'] = 12;
 		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1) {
@@ -52,7 +55,7 @@ class Posts extends CI_Controller {
    } else {
        $expression = $this->input->get('search');
        $posts_count = $this->Posts_model->search_count($expression);
-       $query_string_segment = 'search=' . $expression . '&page';
+       $query_string_segment = 'page';
        $config = $this->_initPagination("/posts/search", $posts_count, $query_string_segment);
        $data = $this->Static_model->get_static_data();
        $data['categories'] = $this->Categories_model->get_categories();
