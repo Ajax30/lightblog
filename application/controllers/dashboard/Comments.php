@@ -21,7 +21,7 @@ class Comments extends CI_Controller {
 		$config['total_rows'] =	$this->Comments_model->get_num_rows();
 		$config['per_page'] = 10;
 		
-		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1{
+		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1){
 			$_GET[$config['query_string_segment']] = 1;
 		}
 		$limit = $config['per_page'];
@@ -29,7 +29,9 @@ class Comments extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
+		$data['number_of_pages'] = $this->Pages_model->count_pages();
 		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
 		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
 		$data['comments'] = $this->Comments_model->get_all_comments($limit, $offset);

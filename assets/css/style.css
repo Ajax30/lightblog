@@ -264,10 +264,15 @@ table a {
 }
 
 /* Single Post */
-.post-title {
+.post-title,
+.page-title {
   font-size: 2.5rem;
   margin-bottom: .75rem;
   color: #343434;
+}
+
+.page-title {
+    border-bottom: 1px solid #d5d5d5;
 }
 
 .post-thumbnail {

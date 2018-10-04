@@ -61,6 +61,24 @@ $(document).ready(function() {
     }
   });
 
+  //Delete Category
+  $('.delete-category').on('click', function(evt){
+    evt.preventDefault();
+    var deleteUrl = $(this).attr('href');
+    if(confirm('Delete this category?')) {
+      window.location.href = deleteUrl;
+    }
+   });
+
+  //Delete Page
+  $('.delete-page').on('click', function(evt){
+    evt.preventDefault();
+    var deleteUrl = $(this).attr('href');
+    if(confirm('Delete this page?')) {
+      window.location.href = deleteUrl;
+    }
+   });
+
   //Delete Comments
   $('.delete-comment').on('click', function(evt){
     evt.preventDefault();

@@ -41,7 +41,7 @@
             </div>
             
             <div class="form-group">
-              <input type="submit" value="Save" class="btn btn-block btn-md btn-success">
+              <input type="submit" value="Update" class="btn btn-block btn-md btn-success">
             </div>
           <?php echo form_close(); ?>
         </div>

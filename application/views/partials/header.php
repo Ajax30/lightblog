@@ -48,7 +48,8 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
 										<a class="dropdown-item" href="<?php echo base_url('posts/create') ?>">Add post</a>
-										<a class="dropdown-item" href="<?php echo base_url('categories/create') ?>">Add category</a>
+										<a class="dropdown-item" href="<?php echo base_url('dashboard/pages/create') ?>">Add page</a>
+										<a class="dropdown-item" href="<?php echo base_url('dashboard/categories/create') ?>">Add category</a>
 									</div>
 								</li>
 								<li class="nav-item my-1">
@@ -85,6 +86,14 @@
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('post_deleted') . '</p>'; ?>
 					<?php endif; ?>
 
+					<?php if($this->session->flashdata('page_created')): ?>
+						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('page_created') . '</p>'; ?>
+					<?php endif; ?>
+
+					<?php if($this->session->flashdata('page_deleted')): ?>
+						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('page_deleted') . '</p>'; ?>
+					<?php endif; ?>
+
 					<?php if($this->session->flashdata('comment_added')): ?>
 						<?php echo '<p class="alert alert-success">'. $this->session->flashdata('comment_added') . '</p>'; ?>
 					<?php endif; ?>
@@ -95,6 +104,10 @@
 
 					<?php if($this->session->flashdata('category_updated')): ?>
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('category_updated') . '</p>'; ?>
+					<?php endif; ?>
+
+					<?php if($this->session->flashdata('category_deleted')): ?>
+						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('category_deleted') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('login_failure_incorrect')): ?>

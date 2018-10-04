@@ -7,6 +7,10 @@
           <span class="text-muted">Posts</span>
           <span id="posts_count" class="badge badge-secondary badge-pill"><?php echo $number_of_posts; ?></span>
         </a>
+        <a href="<?php echo base_url('dashboard/pages'); ?>" class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="text-muted">Pages</span>
+          <span class="badge badge-secondary badge-pill"><?php echo $number_of_pages; ?></span>
+        </a>
         <a href="<?php echo base_url('dashboard/categories'); ?>" class="list-group-item d-flex justify-content-between align-items-center">
           <span class="text-muted">Categories</span>
           <span class="badge badge-secondary badge-pill"><?php echo $number_of_categories; ?></span>

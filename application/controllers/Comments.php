@@ -11,7 +11,6 @@ class Comments extends CI_Controller {
 	public function create($post_id){
 		$post_id = $this->input->post('postid');
 		$data = $this->Static_model->get_static_data();
-		$data['categories'] = $this->Categories_model->get_categories();
 		$data['post'] = $this->Posts_model->get_post($post_id);
 		$data['tagline'] = 'Comment on "' . $data['post']->title . '"';
 
@@ -26,7 +25,7 @@ class Comments extends CI_Controller {
 			$this->load->view('partials/footer');
 		} else {
 			$this->Comments_model->create_comment($post_id);
-			$this->session->set_flashdata('comment_added', 'Your post will be published after aproval');
+			$this->session->set_flashdata('comment_added', 'Your comment will be published after aproval');
 			redirect('posts/post/' . $post_id);
 		}
 		

@@ -33,6 +33,7 @@ class Posts extends CI_Controller {
 		$config = $this->_initPagination("/posts", $this->Posts_model->get_num_rows());
 
 		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
 
     //use limit and offset returned by _initPaginator method
@@ -57,8 +58,9 @@ class Posts extends CI_Controller {
 			$query_string_segment = 'page';
 			$config = $this->_initPagination("/posts/search", $posts_count, $query_string_segment);
 			$data = $this->Static_model->get_static_data();
+			$data['pages'] = $this->Pages_model->get_pages();
 			$data['categories'] = $this->Categories_model->get_categories();
-       //use limit and offset returned by _initPaginator method
+      //use limit and offset returned by _initPaginator method
 			$data['posts'] = $this->Posts_model->search($expression, $config['limit'], $config['offset']);
 			$data['expression'] = $expression;
 			$data['posts_count'] = $posts_count;
@@ -70,6 +72,7 @@ class Posts extends CI_Controller {
 
 	public function post($id) {
 		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=5);
 		$data['post'] = $this->Posts_model->get_post($id);
@@ -106,6 +109,7 @@ class Posts extends CI_Controller {
 		}
 
 		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
 		$data['tagline'] = "Add New Post";
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=5);
@@ -123,7 +127,7 @@ class Posts extends CI_Controller {
 
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('partials/header', $data);
-			$this->load->view('create');
+			$this->load->view('create-post');
 			$this->load->view('partials/footer');
 		} else {
 			// Upload image
@@ -155,13 +159,14 @@ class Posts extends CI_Controller {
 		}
 
 		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=5);
 		$data['post'] = $this->Posts_model->get_post($id);
 		if ($this->session->userdata('user_id') == $data['post']->author_id) {
 			$data['tagline'] = 'Edit the post "' . $data['post']->title . '"';
 			$this->load->view('partials/header', $data);
-			$this->load->view('edit');
+			$this->load->view('edit-post');
 			$this->load->view('partials/footer');
 		} else {
 			/* If the current user is not the author

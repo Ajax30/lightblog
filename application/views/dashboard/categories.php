@@ -23,7 +23,7 @@
                       <td class="text-center">
                         <div class="btn-group btn-group-sm" role="group">
                           <a href="<?php echo base_url('dashboard/categories/edit/') . $category->id; ?>" class="btn btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                          <a href="#" class="delete-category btn btn-success"><i class="fa fa-trash"></i> Delete</a>
+                          <a href="<?php echo base_url('dashboard/categories/delete/') . $category->id; ?>" class="delete-category btn btn-success"><i class="fa fa-trash"></i> Delete</a>
                         </div>
                       </td>
                     </tr>

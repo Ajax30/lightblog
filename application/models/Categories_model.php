@@ -21,6 +21,16 @@ class Categories_model extends CI_Model {
 		}
 	}
 
+	public function create_category() {
+		$data = [
+			'name' => $this->input->post('category_name'),
+			'author_id' => $this->session->userdata('user_id'),
+			'created_at' => date('Y-m-d H:i:s')
+		];
+		return $this->db->insert('categories', $data);
+	}
+
+
 	public function update_category($category_id) {
 		$data = [
 			'name' => $this->input->post('category_name'),
@@ -30,13 +40,11 @@ class Categories_model extends CI_Model {
 		return $this->db->update('categories', $data);
 	}
 
-	public function create_category() {
-		$data = [
-			'name' => $this->input->post('category_name'),
-			'author_id' => $this->session->userdata('user_id'),
-			'created_at' => date('Y-m-d H:i:s')
-		];
-		return $this->db->insert('categories', $data);
+	public function delete_category($category_id) {
+		$this->db->where('id', $category_id);
+		$this->db->delete('categories');
+		return true;
 	}
+
 
 }

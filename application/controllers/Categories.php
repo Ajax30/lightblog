@@ -24,6 +24,7 @@ class Categories extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['category_name'] = $this->Categories_model->get_category($category_id)->name;
 		$data['posts'] = $this->Posts_model->get_posts_by_category($category_id, $limit, $offset);
@@ -31,39 +32,6 @@ class Categories extends CI_Controller {
 		$this->load->view('partials/header', $data);
 		$this->load->view('categories/posts');
 		$this->load->view('partials/footer');
-	}
-
-	public function create() {
-
-		// Only logged in users can create categories
-		if (!$this->session->userdata('is_logged_in')) {
-			redirect('login');
-		}
-
-		$data = $this->Static_model->get_static_data();
-		$data['categories'] = $this->Categories_model->get_categories();
-		$data['tagline'] = "Add New Category";
-		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=5);
-
-		if ($data['categories']) {
-        foreach ($data['categories'] as &$category) {
-         	$category->posts_count = $this->Posts_model->count_posts_in_category($category->id);
-        }
-    }
-
-		$this->form_validation->set_rules('category_name', 'Category name', 'required');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
-
-		if($this->form_validation->run() === FALSE){
-			$this->load->view('partials/header', $data);
-			$this->load->view('categories/add');
-			$this->load->view('partials/footer');
-		} else {
-			$this->Categories_model->create_category();
-			$this->session->set_flashdata('category_created', 'Your category has been created');
-			redirect('posts');
-		}
-		
 	}
 
 }

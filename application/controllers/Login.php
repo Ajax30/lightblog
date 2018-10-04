@@ -10,6 +10,7 @@ class Login extends CI_Controller {
 
   public function index() {
     $data = $this->Static_model->get_static_data();
+    $data['pages'] = $this->Pages_model->get_pages();
     $data['tagline'] = 'Sign in to your ' . $data['site_title'] . ' account.';
     $data['categories'] = $this->Categories_model->get_categories();
 
