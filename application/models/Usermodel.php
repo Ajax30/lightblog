@@ -16,6 +16,7 @@ class Usermodel extends CI_Model {
 			'email' => $this->input->post('email'),
 			'password' => $enc_password,
 			'register_date' => date('Y-m-d H:i:s'),
+			'is_admin' => 0,
 			'active' => 0
 		];
 		return $this->db->insert('authors', $data);
