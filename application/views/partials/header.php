@@ -48,8 +48,10 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
 										<a class="dropdown-item" href="<?php echo base_url('posts/create') ?>">Add post</a>
-										<a class="dropdown-item" href="<?php echo base_url('dashboard/pages/create') ?>">Add page</a>
 										<a class="dropdown-item" href="<?php echo base_url('dashboard/categories/create') ?>">Add category</a>
+										<?php if($this->session->userdata('user_is_admin')) : ?>
+											<a class="dropdown-item" href="<?php echo base_url('dashboard/pages/create') ?>">Add page</a>
+										<?php endif; ?>
 									</div>
 								</li>
 								<li class="nav-item my-1">
@@ -84,6 +86,10 @@
 
 					<?php if($this->session->flashdata('post_deleted')): ?>
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('post_deleted') . '</p>'; ?>
+					<?php endif; ?>
+
+					<?php if($this->session->flashdata('admin_only_pages')): ?>
+						<?php echo '<p class="alert alert-danger">' . $this->session->flashdata('admin_only_pages') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('page_created')): ?>

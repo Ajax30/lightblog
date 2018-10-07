@@ -38,6 +38,7 @@ class Login extends CI_Controller {
             'user_id' => $current_user->id,
             'user_email' => $current_user->email,
             'user_first_name' => $current_user->first_name,
+            'user_is_admin' => $current_user->is_admin,
             'user_active' => $current_user->active,
             'is_logged_in' => TRUE
             )

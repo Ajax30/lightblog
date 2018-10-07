@@ -29,6 +29,11 @@ class Pages extends CI_Controller {
 			redirect('login');
 		}
 
+		if (!$this->session->userdata('user_is_admin')) {
+			$this->session->set_flashdata('admin_only_pages', 'Only admin can add pages');
+			redirect('dashboard/pages');
+		}
+
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
