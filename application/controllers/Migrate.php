@@ -17,7 +17,8 @@ class Migrate extends CI_Controller
       show_error($this->migration->error_string());
     }
     else {
-      echo 'Migration executed';
+      $this->session->set_flashdata('tables_created', "All the required database tables have been created. You can now register.");
+      redirect('/');
     }
   }
 }

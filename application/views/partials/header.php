@@ -72,6 +72,10 @@
 
 				<div id="flash_messages" class="container text-center mt-3">
 
+					<?php if($this->session->flashdata('tables_created')): ?>
+						<?php echo '<p class="alert alert-success">'. $this->session->flashdata('tables_created') . '</p>'; ?>
+					<?php endif; ?>
+
 					<?php if($this->session->flashdata('user_registered')): ?>
 						<?php echo '<p class="alert alert-success">'. $this->session->flashdata('user_registered') . '</p>'; ?>
 					<?php endif; ?>

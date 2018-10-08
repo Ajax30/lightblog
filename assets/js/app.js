@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   // Hide alerts
   $('.alert').each(function(){
-    $(this).delay(2500).slideUp(200);
+    $(this).delay(3000).slideUp(200);
   });
 
   // AJAX form

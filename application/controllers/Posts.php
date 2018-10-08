@@ -29,6 +29,13 @@ class Posts extends CI_Controller {
 	}
 
 	public function index() {
+
+		// Create all the database tables if there are none
+		// by redirecting to the Migrations controller
+		if (count($this->db->list_tables()) == 0) {
+		    redirect('migrate');
+		}
+
     //call initialization method
 		$config = $this->_initPagination("/posts", $this->Posts_model->get_num_rows());
 
