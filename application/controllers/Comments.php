@@ -27,8 +27,7 @@ class Comments extends CI_Controller {
 			$this->Comments_model->create_comment($post_id);
 			$this->session->set_flashdata('comment_added', 'Your comment will be published after aproval');
 			redirect('posts/post/' . $post_id);
-		}
-		
+		}		
 	}
 
 }
