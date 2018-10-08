@@ -32,6 +32,13 @@ class Migration_Create_Categories extends CI_Migration
     ));
     $this->dbforge->add_key('id', TRUE);
     $this->dbforge->create_table('categories');
+    $data = array(
+            'author_id'    => 1,
+            'name'         => 'Uncategorized',
+            'created_at' => date('Y-m-d H:i:s') 
+    );
+
+$this->db->insert('categories', $data);
   }
 
   public function down()
