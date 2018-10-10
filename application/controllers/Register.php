@@ -32,8 +32,24 @@ class Register extends CI_Controller {
 			if (!$this->Usermodel->email_exists()) {
 				// Encrypt the password
 				$enc_password = md5($this->input->post('password'));
-				$this->Usermodel->register_user($enc_password);
-				$this->session->set_flashdata('user_registered', 'You are now registered. You can sign in an post.');
+
+				// Give the first author admin privileges
+				if ($this->Usermodel->get_num_rows() < 1) {
+					$active = 1;
+					$is_admin = 1;
+				} else {
+					$active = 0;
+					$is_admin = 0;
+				}
+				
+				// Register user
+				$this->Usermodel->register_user($enc_password, $active, $is_admin);
+
+				if ($this->Usermodel->get_num_rows() == 1) {
+					$this->session->set_flashdata('user_registered', "You are now registered as an admin. You can sign in");
+				} else {
+					$this->session->set_flashdata('user_registered', "You are now registered. Your account needs the admin's aproval before you can sign in.");
+				}
 				redirect('login');
 			} else {
 				// The user is already registered

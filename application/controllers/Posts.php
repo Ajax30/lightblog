@@ -41,7 +41,7 @@ class Posts extends CI_Controller {
 
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
-		$data['categories'] = $this->Categories_model->get_categories();
+		$data['categories'] = $this->Categories_model->get_categories();  
 
     //use limit and offset returned by _initPaginator method
 		$data['posts'] = $this->Posts_model->get_posts($config['limit'], $config['offset']);

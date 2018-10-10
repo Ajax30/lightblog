@@ -74,7 +74,8 @@ class Posts_model extends CI_Model {
 			'description' => $this->input->post('desc'),
 			'content' => $this->input->post('body'),
 			'post_image' => $post_image,
-			'cat_id' => $this->input->post('category')
+			'cat_id' => $this->input->post('category'),
+			'updated_at' => date('Y-m-d H:i:s')
 		];
 
 		$this->db->where('id', $id);
