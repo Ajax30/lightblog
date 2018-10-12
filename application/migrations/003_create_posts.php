@@ -31,6 +31,11 @@ class Migration_Create_Posts extends CI_Migration
         'constraint' => 255,
       ),
 
+      'slug'=>array(
+        'type'=>'VARCHAR',
+        'constraint' => 128,
+      ),
+
       'description'=>array(
         'type'=>'VARCHAR',
         'constraint' => 255,

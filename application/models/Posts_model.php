@@ -55,9 +55,10 @@ class Posts_model extends CI_Model {
 		}
 	}
 
-	public function create_post($post_image) {
+	public function create_post($post_image, $slug) {
 		$data = [
 			'title' => $this->input->post('title'),
+			'slug' => $slug,
 			'description' => $this->input->post('desc'),
 			'content' => $this->input->post('body'),
 			'post_image' => $post_image,

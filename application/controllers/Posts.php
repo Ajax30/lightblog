@@ -137,6 +137,9 @@ class Posts extends CI_Controller {
 			$this->load->view('create-post');
 			$this->load->view('partials/footer');
 		} else {
+			// Create slug (from title)
+			$slug = url_title($this->input->post('title'), 'dash', TRUE);
+
 			// Upload image
 			$config['upload_path'] = './assets/img/posts';
 			$config['allowed_types'] = 'jpg|png';
@@ -152,7 +155,7 @@ class Posts extends CI_Controller {
 				$post_image = $_FILES['userfile']['name'];
 			}
 
-			$this->Posts_model->create_post($post_image);
+			$this->Posts_model->create_post($post_image, $slug);
 			$this->session->set_flashdata('post_created', 'Your post has been created');
 			redirect('posts');
 		}
