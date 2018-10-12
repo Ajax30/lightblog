@@ -69,9 +69,10 @@ class Posts_model extends CI_Model {
 		return $this->db->insert('posts', $data);
 	}
 
-	public function update_post($id, $post_image) {
+	public function update_post($id, $post_image, $slug) {
 		$data = [
 			'title' => $this->input->post('title'),
+			'slug' => $slug,
 			'description' => $this->input->post('desc'),
 			'content' => $this->input->post('body'),
 			'post_image' => $post_image,

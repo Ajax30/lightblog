@@ -195,6 +195,9 @@ class Posts extends CI_Controller {
 
 		$id = $this->input->post('id');
 
+		// Update slug (from title)
+		$slug = url_title($this->input->post('title'), 'dash', TRUE);
+
     // Upload image
 		$config['upload_path'] = './assets/img/posts';
 		$config['allowed_types'] = 'jpg|png';
@@ -211,7 +214,7 @@ class Posts extends CI_Controller {
 		}
 
 		if ($this->form_validation->run()) {
-			$this->Posts_model->update_post($id, $post_image);
+			$this->Posts_model->update_post($id, $post_image, $slug);
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 			redirect('posts/post/' . $id);
 		} else {
