@@ -34,6 +34,7 @@ class Migration_Create_Posts extends CI_Migration
       'slug'=>array(
         'type'=>'VARCHAR',
         'constraint' => 128,
+        'unique' => TRUE,
       ),
 
       'description'=>array(

@@ -53,6 +53,7 @@ class Register extends CI_Controller {
 				redirect('login');
 			} else {
 				// The user is already registered
+				$this->session->set_flashdata('already_registered', "The email you provided already exists in our database. Please login.");
 				redirect('login');
 			}
 		}
