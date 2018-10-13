@@ -55,6 +55,14 @@ class Posts_model extends CI_Model {
 		}
 	}
 
+	public function slug_count($slug){
+		$this->db->select('count(*) as slugcount');
+		$this->db->from('posts');
+		$this->db->where('slug', $slug);
+		$query = $this->db->get();
+		return $query->row(0)->slugcount;
+	}
+
 	public function create_post($post_image, $slug) {
 		$data = [
 			'title' => $this->input->post('title'),

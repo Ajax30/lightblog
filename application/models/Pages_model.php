@@ -25,6 +25,7 @@ class Pages_model extends CI_Model {
 		$data = [
 			'title' => $this->input->post('title'),
 			'content' => $this->input->post('content'),
+			'author_id' => $this->session->userdata('user_id'),
 			'created_at' => date('Y-m-d H:i:s')
 		];
 		return $this->db->insert('pages', $data);
