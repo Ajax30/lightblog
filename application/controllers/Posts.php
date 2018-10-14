@@ -54,7 +54,7 @@ class Posts extends CI_Controller {
    // Force validation since the form's method is GET
 		$this->form_validation->set_data($this->input->get());
 		$this->form_validation->set_rules('search', 'Search term', 'required|trim|min_length[3]');
-		$this->form_validation->set_error_delimiters('<p class = "error search-error"> ', ' </p>
+		$this->form_validation->set_error_delimiters('<p class = "error search-error">', '</p>
 			');
  		// If search fails
 		if ($this->form_validation->run() === FALSE) {
@@ -77,12 +77,12 @@ class Posts extends CI_Controller {
 		}
 	} 
 
-	public function post($id) {
+	public function post($slug) {
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=5);
-		$data['post'] = $this->Posts_model->get_post($id);
+		$data['post'] = $this->Posts_model->get_post($slug);
 
 		if ($data['categories']) {
 			foreach ($data['categories'] as &$category) {
@@ -166,7 +166,6 @@ class Posts extends CI_Controller {
 	}
 
 	public function edit($id) {
-
 		// Only logged in users can edit posts
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
@@ -187,7 +186,6 @@ class Posts extends CI_Controller {
 			of the post do not alow edit */
 			redirect('posts/post/' . $id);
 		}
-		
 	}
 
 	public function update() {
@@ -201,10 +199,10 @@ class Posts extends CI_Controller {
 
 		// Update slug (from title)
 		$slug = url_title($this->input->post('title'), 'dash', TRUE);
-			$slugcount = $this->Posts_model->slug_count($slug);
-			if ($slugcount > 0) {
-				$slug = $slug."-".$slugcount;
-			}
+		$slugcount = $this->Posts_model->slug_count($slug);
+		if ($slugcount > 0) {
+			$slug = $slug."-".$slugcount;
+		}
 
     // Upload image
 		$config['upload_path'] = './assets/img/posts';
@@ -224,27 +222,27 @@ class Posts extends CI_Controller {
 		if ($this->form_validation->run()) {
 			$this->Posts_model->update_post($id, $post_image, $slug);
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
-			redirect('posts/post/' . $id);
+			redirect('posts/post/' . $slug);
 		} else {
-			$this->edit($id);
+			$this->edit($slug);
 		}
 	}
 
-	public function delete($id) {
+	public function delete($slug) {
 		// Only logged in users can delete posts
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
 		}
 
-		$data['post'] = $this->Posts_model->get_post($id);
+		$data['post'] = $this->Posts_model->get_post($slug);
 		if ($this->session->userdata('user_id') == $data['post']->author_id) {
-			$this->Posts_model->delete_post($id);
+			$this->Posts_model->delete_post($slug);
 			$this->session->set_flashdata('post_deleted', 'The post has been deleted');
 			redirect('posts');
 		} else {
 			/* If the current user is not the author
 			of the post do not alow delete */
-			redirect('posts/post/' . $id);
+			redirect('posts/post/' . $slug);
 		}
 	}
 

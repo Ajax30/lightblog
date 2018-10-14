@@ -38,18 +38,19 @@ $(document).ready(function() {
     evt.preventDefault();
     var baseUrl = window.location.protocol + '//' + window.location.hostname + '/' + window.location.pathname.split('/')[1] + '/';
     var deleteUrl = $(this).attr('href');
-    var id = $(this).data('id');
+    var slug = $(this).data('slug');
     var postsCount = Number($("#posts_count").text());
 
     if(confirm('Delete this post?')) {
       if ($(this).hasClass("ajax-btn")) {
         $.ajax({
-          url: baseUrl + 'posts/delete/' + id,
+          url: baseUrl + 'posts/delete/' + slug,
           method: 'GET',
           dataType: 'html',
           success: function(deleteMsg){
             postsCount = postsCount - 1;
-            $('tr#' + id).fadeOut('250');
+            console.log(baseUrl + 'posts/delete/' + slug);
+            $('tr[data-slug="' + slug +'"]').fadeOut('250');
             $("#posts_count").text(postsCount);
             $('#post_delete_msg').text("The post has been deleted");
             $('#post_delete_msg').slideDown(250).delay(2500).slideUp(250);

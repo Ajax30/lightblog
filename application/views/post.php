@@ -22,8 +22,8 @@
         <div id="actions" class="text-center">
           <hr>
           <div class="btn-group" role="group">
-            <a href="<?php echo base_url('posts/delete/') . $post->id; ?>" title="Delete post" class="delete-post btn btn-sm btn-success"><i class="fa fa-trash"></i> Delete</a>
-            <a href="<?php echo base_url('posts/edit/') . $post->id; ?>" title="Edit post" class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
+            <a href="<?php echo base_url('posts/delete/') . $post->slug; ?>" title="Delete post" class="delete-post btn btn-sm btn-success"><i class="fa fa-trash"></i> Delete</a>
+            <a href="<?php echo base_url('posts/edit/') . $post->slug; ?>" title="Edit post" class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
           </div>
         </div>
       <?php endif; ?>

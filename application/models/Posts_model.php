@@ -37,8 +37,8 @@ class Posts_model extends CI_Model {
 		return $query->result();
 	}
 
-	public function get_post($id) {
-		$query = $this->db->get_where('posts', array('id' => $id));
+	public function get_post($slug) {
+		$query = $this->db->get_where('posts', array('slug' => $slug));
 		if ($query->num_rows() > 0) {
 			$data = $query->row();
       // run separate query for author name
@@ -92,8 +92,8 @@ class Posts_model extends CI_Model {
 		return $this->db->update('posts', $data);
 	}
 
-	public function delete_post($id) {
-		$this->db->where('id', $id);
+	public function delete_post($slug) {
+		$this->db->where('slug', $slug);
 		$this->db->delete('posts');
 		return true;
 	}
