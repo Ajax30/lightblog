@@ -201,6 +201,10 @@ class Posts extends CI_Controller {
 
 		// Update slug (from title)
 		$slug = url_title($this->input->post('title'), 'dash', TRUE);
+			$slugcount = $this->Posts_model->slug_count($slug);
+			if ($slugcount > 0) {
+				$slug = $slug."-".$slugcount;
+			}
 
     // Upload image
 		$config['upload_path'] = './assets/img/posts';

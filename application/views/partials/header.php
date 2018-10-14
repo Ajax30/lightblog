@@ -47,10 +47,10 @@
 									<i class="fa fa-user-circle-o" aria-hidden="true"></i> Welcome, <?php echo $this->session->userdata('user_first_name'); ?></a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
-										<a class="dropdown-item" href="<?php echo base_url('posts/create') ?>">Add post</a>
-										<a class="dropdown-item" href="<?php echo base_url('dashboard/categories/create') ?>">Add category</a>
+										<a class="dropdown-item" href="<?php echo base_url('create-post') ?>">Add post</a>
+										<a class="dropdown-item" href="<?php echo base_url('create-category') ?>">Add category</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>
-											<a class="dropdown-item" href="<?php echo base_url('dashboard/pages/create') ?>">Add page</a>
+											<a class="dropdown-item" href="<?php echo base_url('create-page') ?>">Add page</a>
 										<?php endif; ?>
 									</div>
 								</li>
