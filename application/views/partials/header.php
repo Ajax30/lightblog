@@ -47,6 +47,9 @@
 									<i class="fa fa-user-circle-o" aria-hidden="true"></i> Welcome, <?php echo $this->session->userdata('user_first_name'); ?></a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
+										<?php if($this->session->userdata('user_is_admin')) : ?>
+											<a class="dropdown-item" href="<?php echo base_url('manage-authors') ?>">Manage authors</a>
+										<?php endif; ?>
 										<a class="dropdown-item" href="<?php echo base_url('create-post') ?>">Add post</a>
 										<a class="dropdown-item" href="<?php echo base_url('create-category') ?>">Add category</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>

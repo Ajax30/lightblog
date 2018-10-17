@@ -13,6 +13,36 @@ class Usermodel extends CI_Model {
 		return $query->num_rows(); 
 	}
 
+	public function getAuthors(){
+		//$this->db->limit($limit, $offset);
+		$query = $this->db->get('authors');
+	    return $query->result();
+	}
+
+	/*public function deleteUser($id) {
+		return $this->db->delete('authors', ['id' => $id]);
+	}
+
+	public function activateAuthor($id) {
+	    $author = null;
+	    $updateQuery = $this->db->where('id', $id)->update('authors', ['active' => 1]);
+	    if ($updateQuery !== false) {
+        $authorQuery = $this->db->get_where('authors', ['id' => $id]);
+        $author = $userQuery->row();
+	    }
+	    return $author;
+	}*/
+
+	public function deactivateAuthor($id) {
+	    $author = null;
+	    $updateQuery = $this->db->where('id', $id)->update('authors', ['active' => 0]);
+	    if ($updateQuery !== false) {
+	        $authorQuery = $this->db->get_where('authors', ['id' => $id]);
+	        $author = $userQuery->row();
+	    }
+	    return $author;
+	}
+
 	public function register_user($enc_password, $active, $is_admin) {
 		// User data
 		$data = [
