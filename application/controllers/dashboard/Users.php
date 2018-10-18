@@ -9,8 +9,14 @@ class Users extends CI_Controller {
 	}
 
 	public function index() {
+
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
+		} else {
+			// Admin ONLY area!
+			if (!$this->session->userdata('user_is_admin')) {
+				redirect($this->agent->referrer());
+			}
 		}
 
 		$data = $this->Static_model->get_static_data();
@@ -21,6 +27,7 @@ class Users extends CI_Controller {
 		$this->load->view('partials/header', $data);
 		$this->load->view('dashboard/authors');
 		$this->load->view('partials/footer');
+		
 	}
 
 	public function delete($id) {
