@@ -37,7 +37,7 @@ class Posts extends CI_Controller {
 		}
 
     //call initialization method
-		$config = $this->_initPagination("/posts", $this->Posts_model->get_num_rows());
+		$config = $this->_initPagination("/", $this->Posts_model->get_num_rows());
 
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
@@ -161,7 +161,7 @@ class Posts extends CI_Controller {
 
 			$this->Posts_model->create_post($post_image, $slug);
 			$this->session->set_flashdata('post_created', 'Your post has been created');
-			redirect('posts');
+			redirect('/');
 		}
 	}
 
@@ -238,7 +238,7 @@ class Posts extends CI_Controller {
 		if ($this->session->userdata('user_id') == $data['post']->author_id) {
 			$this->Posts_model->delete_post($slug);
 			$this->session->set_flashdata('post_deleted', 'The post has been deleted');
-			redirect('posts');
+			redirect('/');
 		} else {
 			/* If the current user is not the author
 			of the post do not alow delete */
