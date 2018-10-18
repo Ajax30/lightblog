@@ -36,12 +36,14 @@
                       <td class="w-10 text-center"><?php echo $author->is_admin; ?></td>
                       <td class="text-center activate-column d-inline-block w-10">
                         <div class="btn-group">
-                          <?php if ($author->active == 1) { ?>
-                            <a href="<?php echo base_url('users/deactivate/'. $author->id); ?>" title="Deactivate" class="btn btn-dark btn-sm state-change" data-role="deactivate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ban-circle"></span> Disable</a>
+                          <?php if ($author->is_admin == 0) {
+                            if ($author->active == 1) { ?>
+                            <a href="<?php echo base_url('dashboard/users/deactivate/'. $author->id); ?>" title="Deactivate" class="btn btn-dark btn-sm state-change" data-role="deactivate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ban-circle"></span> Disable</a>
                           <?php } else { ?>
-                            <a href="<?php echo base_url('users/activate/' . $author->id); ?>" title="Activate" class="btn btn-dark btn-sm state-change" data-role="activate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ok"></span> Enable</a>
-                          <?php } ?>
-                          <a href="<?php echo base_url('users/delete/' . $author->id); ?>" title="Delete" class="btn btn-dark btn-sm delete-user" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-trash"></span> Edit</a>
+                            <a href="<?php echo base_url('dashboard/users/activate/' . $author->id); ?>" title="Activate" class="btn btn-dark btn-sm state-change" data-role="activate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ok"></span> Enable</a>
+                          <?php }
+                          } ?>
+                          <a href="<?php echo base_url('dashboard/users/edit/' . $author->id); ?>" title="Delete" class="btn btn-dark btn-sm edit-user" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-trash"></span> Edit</a>
                         </div>
                       </td>
                     </tr>

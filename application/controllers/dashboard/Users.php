@@ -9,7 +9,6 @@ class Users extends CI_Controller {
 	}
 
 	public function index() {
-
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
 		}
@@ -17,13 +16,33 @@ class Users extends CI_Controller {
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
-
 		$data['authors'] = $this->Usermodel->getAuthors();
 
 		$this->load->view('partials/header', $data);
 		$this->load->view('dashboard/authors');
 		$this->load->view('partials/footer');
+	}
 
+	public function delete($id) {
+		$this->load->model('Usermodel');
+		if ($this->Usermodel->deleteAuthor($id)) {
+			$this->session->set_flashdata('user_delete', "User deleted");
+		} else {
+			$this->session->set_flashdata('user_delete',"Failed to delete user");
+		}
+		redirect('users');
+	}
+
+	public function activate($id) {
+		$this->load->model('Usermodel');
+		$author = $this->Usermodel->activateAuthor($id);
+		redirect($this->agent->referrer());
+	}
+
+	public function deactivate($id) {
+		$this->load->model('Usermodel');
+		$author = $this->Usermodel->deactivateAuthor($id);
+		redirect($this->agent->referrer());
 	}
 
 }

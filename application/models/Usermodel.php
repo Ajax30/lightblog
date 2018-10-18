@@ -19,26 +19,26 @@ class Usermodel extends CI_Model {
 	    return $query->result();
 	}
 
-	/*public function deleteUser($id) {
-		return $this->db->delete('authors', ['id' => $id]);
+	public function deleteAuthor($id) {
+		return $this->db->delete('authors', array('id' => $id));
 	}
 
 	public function activateAuthor($id) {
 	    $author = null;
-	    $updateQuery = $this->db->where('id', $id)->update('authors', ['active' => 1]);
+	    $updateQuery = $this->db->where(['id' => $id, 'is_admin' => 0])->update('authors', array('active' => 1));
 	    if ($updateQuery !== false) {
-        $authorQuery = $this->db->get_where('authors', ['id' => $id]);
-        $author = $userQuery->row();
+        $authorQuery = $this->db->get_where('authors', array('id' => $id));
+        $author = $authorQuery->row();
 	    }
 	    return $author;
-	}*/
+	}
 
 	public function deactivateAuthor($id) {
 	    $author = null;
-	    $updateQuery = $this->db->where('id', $id)->update('authors', ['active' => 0]);
+	    $updateQuery = $this->db->where(['id' => $id, 'is_admin' => 0])->update('authors', array('active' => 0));
 	    if ($updateQuery !== false) {
-	        $authorQuery = $this->db->get_where('authors', ['id' => $id]);
-	        $author = $userQuery->row();
+	        $authorQuery = $this->db->get_where('authors', array('id' => $id));
+	        $author = $authorQuery->row();
 	    }
 	    return $author;
 	}
