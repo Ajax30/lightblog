@@ -143,6 +143,10 @@
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_signout') . '</p>'; ?>
 					<?php endif; ?>
 
+					<?php if($this->session->flashdata('author_delete')): ?>
+						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('author_delete') . '</p>'; ?>
+					<?php endif; ?>
+
 					<!-- Ajax delete messages -->
 
 					<p id="post_delete_msg" class="alert alert-hidden alert-success"></p>

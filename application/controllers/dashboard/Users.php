@@ -33,11 +33,11 @@ class Users extends CI_Controller {
 	public function delete($id) {
 		$this->load->model('Usermodel');
 		if ($this->Usermodel->deleteAuthor($id)) {
-			$this->session->set_flashdata('user_delete', "User deleted");
+			$this->session->set_flashdata('author_delete', "The author was deleted");
 		} else {
-			$this->session->set_flashdata('user_delete',"Failed to delete user");
+			$this->session->set_flashdata('author_delete', "Failed to delete author");
 		}
-		redirect('users');
+		redirect('dashboard/users');
 	}
 
 	public function activate($id) {
