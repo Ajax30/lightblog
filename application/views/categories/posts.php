@@ -29,11 +29,10 @@
 		</div>
 	<?php else: ?>
 		<div class="col-xs-12">
-			<p class="text-muted" id="no_posts">There are no posts in the <?php echo $category_name; ?> category yet.</p>
+			<p class="text-muted" id="no_posts">There are no posts in the <span class="quote-inline"><?php echo $category_name; ?></span> category yet.</p>
 		</div>
 	<?php endif; ?>
 	
-
 	<?php $this->load->view("partials/pagination");?>
 
 </div>
