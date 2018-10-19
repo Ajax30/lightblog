@@ -17,7 +17,7 @@ class Migrate extends CI_Controller
     }
     else {
       $this->session->set_flashdata('tables_created', "All the required database tables have been created. You can now register.");
-      redirect('/');
+        redirect('register');
     }
   }
 }
