@@ -27,7 +27,7 @@
                       <td class="w-20"><?php echo nice_date($author->register_date, 'M d, Y') . ' at '.  nice_date($author->register_date, 'H:i:s'); ?></td>
                       <td class="w-10 status-column">
                         <?php if ($author->active == 1) {
-                          echo '<span class="text-dark">' . 'Enabled' . '</span>';
+                          echo '<span class="text-success">' . 'Enabled' . '</span>';
                         } else {
                           echo '<span class="text-danger">' . 'Disabled' . '</span>';
                         }
@@ -35,30 +35,32 @@
                       </td>
                       <td class="w-10 text-center"><?php echo $author->is_admin; ?></td>
                       <td class="text-center activate-column d-inline-block w-10">
-                        <div class="btn-group">
-                          <?php if ($author->is_admin == 0) {
-                            if ($author->active == 1) { ?>
-                            <a href="<?php echo base_url('dashboard/users/deactivate/'. $author->id); ?>" title="Deactivate" class="btn btn-dark btn-sm state-change" data-role="deactivate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ban-circle"></span> Disable</a>
-                          <?php } else { ?>
-                            <a href="<?php echo base_url('dashboard/users/activate/' . $author->id); ?>" title="Activate" class="btn btn-dark btn-sm state-change" data-role="activate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ok"></span> Enable</a>
-                          <?php }
-                          } ?>
-                          <a href="<?php echo base_url('dashboard/users/edit/' . $author->id); ?>" title="Delete" class="btn btn-dark btn-sm edit-user" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-trash"></span> Edit</a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php endforeach ?>
-                </tbody>
-              </table>
-              <div class="pagination-container text-center">
-                <?php //echo $this->pagination->create_links(); ?>
+                        <?php if ($author->is_admin == 0): ?>
+                          <div class="btn-group">                 
+                            <?php if ($author->active == 1): ?>
+                              <a href="<?php echo base_url('dashboard/users/deactivate/'. $author->id); ?>" title="Deactivate" class="btn btn-sm btn-success state-change" data-role="deactivate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ban-circle"></span> Disable</a>
+                              <?php else: ?>
+                                <a href="<?php echo base_url('dashboard/users/activate/' . $author->id); ?>" title="Activate" class="btn btn-sm btn-success state-change" data-role="activate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ok"></span> Enable</a>
+                              <?php endif; ?>
+                              <a href="<?php echo base_url('dashboard/users/delete/' . $author->id); ?>" title="Delete" class="btn btn-sm btn-success edit-user" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                            </div>
+                          <?php else: ?>
+                            <a href="#" class="btn btn-sm btn-block btn-success disabled">No actions</a>
+                          <?php endif; ?>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
+                  </tbody>
+                </table>
+                <div class="pagination-container text-center">
+                  <?php //echo $this->pagination->create_links(); ?>
+                </div>
+                <?php else: ?>
+                  <p class="text-center">No records to display</p>
+                <?php endif ?>
               </div>
-              <?php else: ?>
-                <p class="text-center">No records to display</p>
-              <?php endif ?>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
-  </div>
