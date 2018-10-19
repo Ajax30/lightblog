@@ -1,6 +1,6 @@
 <div class="container fluid-fixed">
   <div class="content-wrapper">
-    <main class="dashboard-content">
+    <main class="dashboard-content wide-content">
       <div class="row">
         <div class="card bg-light w-100">
           <h6 class="card-header text-dark">Manage authors</h6>
@@ -42,7 +42,7 @@
                               <?php else: ?>
                                 <a href="<?php echo base_url('dashboard/users/activate/' . $author->id); ?>" title="Activate" class="btn btn-sm btn-success state-change" data-role="activate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ok"></span> Enable</a>
                               <?php endif; ?>
-                              <a href="<?php echo base_url('dashboard/users/delete/' . $author->id); ?>" title="Delete" class="btn btn-sm btn-success edit-user" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                              <a href="<?php echo base_url('dashboard/users/delete/' . $author->id); ?>" title="Delete" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                             </div>
                           <?php else: ?>
                             <a href="#" class="btn btn-sm btn-block btn-success disabled">No actions</a>
