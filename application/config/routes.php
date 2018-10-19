@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'posts';
+$route['migrate'] = 'migrate';
 $route['register'] = 'register';
 $route['login'] = 'login';
 $route['dashboard'] = 'dashboard';

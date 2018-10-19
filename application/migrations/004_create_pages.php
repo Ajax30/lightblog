@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Create_Pages extends CI_Migration
-{
+class Migration_Create_Pages extends CI_Migration {
 
   public function up()
   {
@@ -44,6 +43,7 @@ class Migration_Create_Pages extends CI_Migration
       ),
 
     ));
+    
     $this->dbforge->add_key('id', TRUE);
     $this->dbforge->create_table('pages');
   }
