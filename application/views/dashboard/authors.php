@@ -42,25 +42,25 @@
                               <?php else: ?>
                                 <a href="<?php echo base_url('dashboard/users/activate/' . $author->id); ?>" title="Activate" class="btn btn-sm btn-success state-change" data-role="activate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ok"></span> Enable</a>
                               <?php endif; ?>
-                              <a href="<?php echo base_url('dashboard/users/delete/' . $author->id); ?>" title="Delete" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                              <a href="<?php echo base_url('dashboard/users/delete/' . $author->id); ?>" title="Delete" class="delete-user btn btn-sm btn-success"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                             </div>
-                          <?php else: ?>
-                            <a href="#" class="btn btn-sm btn-block btn-success disabled">No actions</a>
-                          <?php endif; ?>
-                        </td>
-                      </tr>
-                    <?php endforeach ?>
-                  </tbody>
-                </table>
-                <div class="pagination-container text-center">
-                  <?php //echo $this->pagination->create_links(); ?>
+                            <?php else: ?>
+                              <a href="#" class="btn btn-sm btn-block btn-success disabled">No actions</a>
+                            <?php endif; ?>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
+                    </tbody>
+                  </table>
+                  <div class="pagination-container text-center">
+                    <?php //echo $this->pagination->create_links(); ?>
+                  </div>
+                  <?php else: ?>
+                    <p class="text-center">No records to display</p>
+                  <?php endif ?>
                 </div>
-                <?php else: ?>
-                  <p class="text-center">No records to display</p>
-                <?php endif ?>
               </div>
             </div>
-          </div>
-        </main>
+          </main>
+        </div>
       </div>
-    </div>

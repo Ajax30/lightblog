@@ -80,6 +80,15 @@ $(document).ready(function() {
     }
    });
 
+  //Delete User
+  $('.delete-user').on('click', function(evt){
+    evt.preventDefault();
+    var deleteUrl = $(this).attr('href');
+    if(confirm('Delete this page?')) {
+      window.location.href = deleteUrl;
+    }
+   });
+
   //Delete Comments
   $('.delete-comment').on('click', function(evt){
     evt.preventDefault();

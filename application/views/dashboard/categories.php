@@ -22,18 +22,23 @@
                       <td><?php echo $category->name; ?></td>
                       <td class="text-center">
                         <div class="btn-group btn-group-sm" role="group">
-                          <a href="<?php echo base_url('dashboard/categories/edit/') . $category->id; ?>" class="btn btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                          <a href="<?php echo base_url('dashboard/categories/delete/') . $category->id; ?>" class="delete-category btn btn-success"><i class="fa fa-trash"></i> Delete</a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php endforeach ?>
-                </tbody>
-              </table>            
+                          <?php if($this->session->userdata('user_is_admin')) : ?>
+                            <a href="<?php echo base_url('dashboard/categories/edit/') . $category->id; ?>" class="btn btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                            <a href="<?php echo base_url('dashboard/categories/delete/') . $category->id; ?>" class="delete-category btn btn-success"><i class="fa fa-trash"></i> Delete</a>
+                            <?php else: ?>
+                              <a href="#" class="btn btn-success disabled">Edit</a>
+                              <a href="#" class="btn btn-success disabled">Delete</a>
+                            <?php endif; ?>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
+                  </tbody>
+                </table>            
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
-</div>
