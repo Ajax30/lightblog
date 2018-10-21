@@ -22,7 +22,7 @@
             </div>
             <div class="text">
               <h3><?php echo $post->title; ?></h3>
-              <p><?php echo word_limiter($post->description, 10); ?></p>
+              <p><?php echo word_limiter($post->description, 7); ?></p>
             </div>
           </li>
         <?php endforeach ?>        

@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css')?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css')?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
-	<script src="<?php echo base_url('assets/lib/ckeditor/ckeditor.js')?>"></script>
-	<title><?php echo $site_title . " | " . $tagline; ?></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css')?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css')?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
+  <script src="<?php echo base_url('assets/lib/ckeditor/ckeditor.js')?>"></script>
+  <title><?php echo $site_title . " | " . $tagline; ?></title>
+  <?php if (isset($post->title)): ?>
+  <meta property="og:title" content="<?php echo $post->title; ?>">
+  <?php else: ?>
+  <meta property="og:title" content="<?php echo $site_title; ?>">
+  <?php endif; ?>
+  <?php if (isset($post->description)): ?>
+  <meta property="og:description" content="<?php echo $post->description; ?>">
+  <?php else: ?>
+  <meta property="og:description" content="<?php echo $tagline; ?>">
+  <?php endif; ?>
+  <meta property="og:url" content="<?php echo base_url(); ?>">
+  <?php if (isset($post->post_image)): ?>
+  <meta property="og:image" content="<?php echo base_url('assets/img/posts/' . $post->post_image); ?>">
+  <?php endif; ?>
 </head>
 <body>
 	<div class="site-wrapper">
@@ -148,7 +162,6 @@
 					<?php endif; ?>
 
 					<!-- Ajax delete messages -->
-
 					<p id="post_delete_msg" class="alert alert-hidden alert-success"></p>
 
 					<p id="comment_delete_msg" class="alert alert-hidden alert-success"></p>
