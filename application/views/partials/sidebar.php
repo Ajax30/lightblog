@@ -18,7 +18,7 @@
         <?php foreach ($posts as $post) :?>
           <li>
             <div class="thumbnail">
-              <img src="<?php echo base_url('assets/img/posts/') . $post->post_image; ?>" alt="Random image" class="img-thumbnail">
+              <a href="<?php echo base_url('/') . $post->slug; ?>"><img src="<?php echo base_url('assets/img/posts/') . $post->post_image; ?>" alt="<?php echo $post->title; ?>" class="img-thumbnail"></a>
             </div>
             <div class="text">
               <h3><?php echo $post->title; ?></h3>
