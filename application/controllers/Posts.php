@@ -119,7 +119,7 @@ class Posts extends CI_Controller {
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['tagline'] = "Add New Post";
 		$data['categories'] = $this->Categories_model->get_categories();
-		$data['posts'] = $this->Posts_model->sidebar_posts($limit, $offset);
+		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=0);
 
 		if ($data['categories']) {
 			foreach ($data['categories'] as &$category) {
@@ -174,7 +174,7 @@ class Posts extends CI_Controller {
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
-		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=5);
+		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=0);
 		$data['post'] = $this->Posts_model->get_post($id);
 		if ($this->session->userdata('user_id') == $data['post']->author_id) {
 			$data['tagline'] = 'Edit the post "' . $data['post']->title . '"';

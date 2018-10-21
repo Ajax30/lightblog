@@ -12,7 +12,7 @@ class Pages extends CI_Controller {
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
-		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=5);
+		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=0);
 		$data['page'] = $this->Pages_model->get_page($page_id);
 
 		if ($data['categories']) {
