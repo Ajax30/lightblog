@@ -485,6 +485,7 @@ form a {
 
 .news-list li {
   display: table-row;
+  cursor: pointer;
 }
 
 .news-list li > div {
