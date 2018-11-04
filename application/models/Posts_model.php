@@ -9,9 +9,11 @@ class Posts_model extends CI_Model {
 	}
 
 	public function get_posts($limit, $offset) {
-		$this->db->order_by('id', 'DESC');
-		$query = $this->db->get('posts', $limit, $offset);
-		return $query->result();
+    $this->db->select('posts.*,categories.name as post_category');
+    $this->db->order_by('posts.id', 'DESC');
+    $this->db->join('categories', 'posts.cat_id = categories.id', 'inner');
+    $query = $this->db->get('posts', $limit, $offset);
+    return $query->result();
 	}
 
 	public function search_count($expression) {
