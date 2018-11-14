@@ -48,9 +48,4 @@ class Migration_Create_Pages extends CI_Migration {
     $this->dbforge->create_table('pages');
   }
 
-  public function down()
-  {
-    $this->dbforge->drop_table('pages');
-  }
-
 }

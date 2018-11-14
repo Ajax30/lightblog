@@ -25,7 +25,7 @@ class Migration_Create_Categories extends CI_Migration
         'constraint' => 255,
       ),
 
-     'created_at'=>array(
+      'created_at'=>array(
         'type'=>'TIMESTAMP',
       )
 
@@ -33,17 +33,12 @@ class Migration_Create_Categories extends CI_Migration
     $this->dbforge->add_key('id', TRUE);
     $this->dbforge->create_table('categories');
     $data = array(
-            'author_id'    => 1,
-            'name'         => 'Uncategorized',
-            'created_at' => date('Y-m-d H:i:s') 
+      'author_id'    => 1,
+      'name'         => 'Uncategorized',
+      'created_at' => date('Y-m-d H:i:s') 
     );
 
-$this->db->insert('categories', $data);
-  }
-
-  public function down()
-  {
-    $this->dbforge->drop_table('categories');
+    $this->db->insert('categories', $data);
   }
 
 }

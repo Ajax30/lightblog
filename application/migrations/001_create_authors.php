@@ -19,43 +19,39 @@ class Migration_Create_Authors extends CI_Migration
         'constraint' => 50,
       ),
 
-     'last_name'=>array(
+      'last_name'=>array(
         'type'=>'VARCHAR',
         'constraint' => 50,
       ),
 
-     'email'=>array(
+      'email'=>array(
         'type'=>'VARCHAR',
         'constraint' => 100,
       ),
 
-     'password'=>array(
+      'password'=>array(
         'type'=>'VARCHAR',
         'constraint' => 255,
       ),
 
-     'active'=>array(
+      'active'=>array(
         'type'=>'TINYINT',
         'constraint' => 1,
       ),
 
-     'is_admin'=>array(
+      'is_admin'=>array(
         'type'=>'TINYINT',
         'constraint' => 1,
       ),
 
-     'register_date'=>array(
+      'register_date'=>array(
         'type'=>'TIMESTAMP',
       )
 
     ));
+    
     $this->dbforge->add_key('id', TRUE);
     $this->dbforge->create_table('authors');
-  }
-
-  public function down()
-  {
-    $this->dbforge->drop_table('authors');
   }
 
 }

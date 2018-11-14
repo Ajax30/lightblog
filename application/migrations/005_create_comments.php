@@ -48,9 +48,4 @@ class Migration_Create_Comments extends CI_Migration
     $this->dbforge->create_table('comments');
   }
 
-  public function down()
-  {
-    $this->dbforge->drop_table('comments');
-  }
-
 }

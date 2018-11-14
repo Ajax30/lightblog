@@ -65,9 +65,4 @@ class Migration_Create_Posts extends CI_Migration
     $this->dbforge->create_table('posts');
   }
 
-  public function down()
-  {
-    $this->dbforge->drop_table('posts');
-  }
-
 }
