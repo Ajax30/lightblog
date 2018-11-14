@@ -38,7 +38,7 @@
 				<input class="form-control form-control-dark" type="text" name="search" placeholder="Search posts..." aria-label="Search">
 				<?php if(form_error('search')) echo form_error('search'); ?> 
 				<div class="input-group-append">
-					<button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+					<button class="btn btn-danger" type="submit"><i class="fa fa-search"></i></button>
 				</div>
 			</div>
 			</form>
@@ -51,7 +51,7 @@
 							</a>
 							<div class="dropdown-menu">
 								<?php foreach ($categories as $category): ?>
-									<a class="dropdown-item" href="<?php echo base_url('/categories/posts/'.$category->id); ?>"><?php echo $category->name; ?></a>
+									<a class="dropdown-item" href="<?php echo base_url('/categories/posts/' . $category->id); ?>"><?php echo $category->name; ?></a>
 								<?php endforeach; ?>
 							</div>
 						</li>
