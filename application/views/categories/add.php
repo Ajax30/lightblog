@@ -8,7 +8,7 @@
             <h6 class="card-header text-dark">New category</h6>
             <div class="card-body bg-white">
               <?php echo form_open(base_url('dashboard/categories/create')); ?>
-              <div class="form-group <?php if(form_error('title')) echo 'has-error';?>">
+              <div class="form-group <?php if(form_error('category_name')) echo 'has-error';?>">
                 <input type="text" name="category_name" id="category_name" class="form-control" placeholder="Category name">
                 <?php if(form_error('category_name')) echo form_error('category_name'); ?> 
               </div>
