@@ -45,7 +45,7 @@ class Categories extends CI_Controller {
 		$data['tagline'] = "Add New Category";
 
 		$this->form_validation->set_rules('category_name', 'Category name', 'required');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('partials/header', $data);
@@ -84,7 +84,7 @@ class Categories extends CI_Controller {
 	public function update() {
 
 		$this->form_validation->set_rules('category_name', 'Category name', 'required');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		$category_id = $this->input->post('category_id');
 

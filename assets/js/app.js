@@ -7,31 +7,38 @@ $(document).ready(function() {
   });
 
   // AJAX form
-  $(".ajax-form").on('submit', function(evt) {
-    evt.preventDefault();
-    var form = $(this),
-    $fields = form.find('input[type="text"],input[type="email"],textarea');
-    url = form.attr('action'),
-    postWhat = form.data('post'),
-    data = form.serialize();
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: data,
-      success: function() {
-        $('#comment_add_msg').text("Your " + postWhat + " will be published after approval")
-                             .slideDown(250).delay(2500).slideUp(250);
-        // Empty the form's fields
-        $fields.val('');
-
-      },
-      error: function() {
-        $('#comment_add_msg').removeClass('alert-success').addClass('alert-danger')
-                            .text("Sorry, we could not add your " + postWhat + " comment")
-                            .slideDown(250).delay(2500).slideUp(250);
+  $("#commentForm").validate({
+    rules: {
+      email: {
+        email: true
       }
-    });
+    },
+
+    submitHandler: function(form) {
+      $fields = form.find('input[type="text"],input[type="email"],textarea');
+      url = form.attr('action'),
+      postWhat = form.data('post'),
+      data = form.serialize();
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: data,
+          success: function() {
+            $('#comment_add_msg').text("Your " + postWhat + " will be published after approval")
+            .slideDown(250).delay(2500).slideUp(250);
+          // Empty the form's fields
+          $fields.val('');
+        },
+        error: function() {
+          $('#comment_add_msg').removeClass('alert-success').addClass('alert-danger')
+          .text("Sorry, we could not add your " + postWhat + " comment")
+          .slideDown(250).delay(2500).slideUp(250);
+        }
+      });
+    }
   });
+
+  
 
   //Delete Posts
   $('.delete-post').on('click', function(evt){
@@ -69,7 +76,7 @@ $(document).ready(function() {
     if(confirm('Delete this category?')) {
       window.location.href = deleteUrl;
     }
-   });
+  });
 
   //Delete Page
   $('.delete-page').on('click', function(evt){
@@ -78,7 +85,7 @@ $(document).ready(function() {
     if(confirm('Delete this page?')) {
       window.location.href = deleteUrl;
     }
-   });
+  });
 
   //Delete User
   $('.delete-user').on('click', function(evt){
@@ -87,7 +94,7 @@ $(document).ready(function() {
     if(confirm('Delete this page?')) {
       window.location.href = deleteUrl;
     }
-   });
+  });
 
   //Delete Comments
   $('.delete-comment').on('click', function(evt){
@@ -120,11 +127,10 @@ $(document).ready(function() {
     }, 1000);
   });
 
-
   // Make the latest posts clickable
   $('.news-list li').on('click', function(){
     var postUrl = $(this).find('a').attr('href');
-     window.location.href = postUrl;
+    window.location.href = postUrl;
   });
 
 });

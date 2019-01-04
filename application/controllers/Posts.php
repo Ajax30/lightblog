@@ -130,7 +130,7 @@ class Posts extends CI_Controller {
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('desc', 'Short description', 'required');
 		$this->form_validation->set_rules('body', 'Body', 'required');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('partials/header', $data);
@@ -193,7 +193,7 @@ class Posts extends CI_Controller {
 		$this->form_validation->set_rules('title', 'Title', 'required',  array('required' => 'The %s field can not be empty'));
 		$this->form_validation->set_rules('desc', 'Short description', 'required',  array('required' => 'The %s field can not be empty'));
 		$this->form_validation->set_rules('body', 'Body', 'required',  array('required' => 'The %s field can not be empty'));
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		$id = $this->input->post('id');
 

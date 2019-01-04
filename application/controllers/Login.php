@@ -22,7 +22,7 @@ class Login extends CI_Controller {
   public function login() {  
     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
     $this->form_validation->set_rules('password', 'Password', 'required|trim');
-    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+    $this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
     if ($this->form_validation->run())
     {
       $email = $this->input->post('email');

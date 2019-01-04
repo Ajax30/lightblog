@@ -45,7 +45,7 @@ class Pages extends CI_Controller {
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('content', 'Content', 'required');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('partials/header', $data);
@@ -88,7 +88,7 @@ class Pages extends CI_Controller {
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('content', 'Content', 'required');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		$page_id = $this->input->post('pid');
 

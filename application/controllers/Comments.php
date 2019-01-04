@@ -22,7 +22,7 @@ class Comments extends CI_Controller {
 		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('message', 'Comment', 'required');
-		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		if($this->form_validation->run() === FALSE) {
 			$this->load->view('partials/header', $data);
