@@ -27,6 +27,7 @@
 
   <?php echo form_open (base_url('comments/create/') . $post->id, array('class' => 'comment-form ajax-form', 'data-post'  => 'comment')); ?>
     <input type="hidden" name="postid" value="<?php echo $post->id; ?>">
+    <input type="hidden" name="slug" value="<?php echo $post->slug; ?>">
 
     <div class="form-group <?php if(form_error('name')) echo 'has-error';?>">
       <input type="text" name="name" id="name" class="form-control" placeholder="Name">
