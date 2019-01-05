@@ -111,6 +111,10 @@ table a {
   box-shadow: 0 3px 7px 0 rgba(21, 30, 38, 0.3);
 }
 
+.navbar-toggler {
+  outline: none !important;
+}
+
 .navbar .btn:focus,
 .navbar .btn:active {
   box-shadow: none !important;
@@ -146,7 +150,7 @@ table a {
 }
 
 #search_form {
-  max-width: 720px;
+  max-width: 767px;
 }
 
 #search_form button {
@@ -330,7 +334,7 @@ table a {
 }
 
 .page-title {
-    border-bottom: 1px solid #d5d5d5;
+  border-bottom: 1px solid #d5d5d5;
 }
 
 .post-thumbnail {
@@ -565,28 +569,6 @@ form a {
   margin-top: auto;
 }
 
-.site-footer {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
-  padding: 20px 0;
-}
-
-.site-footer h3 {
-  font-size: 1.25rem;
-  color: #ddd;
-  margin-bottom: 6px;
-}
-
-.site-footer .list-unstyled {
-  margin-bottom: 0;
-}
-
-.site-footer a {
-  color: #fff;
-  text-decoration: none;
-}
-
 .footer-copyright {
   padding: 15px 0;
   background: #121212;
@@ -601,6 +583,7 @@ form a {
 
 /* Min widths */
 @media (min-width: 768px) {
+
   .navbar-dark .navbar-nav .dropdown-menu:after,
   .navbar-dark .navbar-nav .dropdown-menu:before {
     z-index: 1021;
@@ -624,6 +607,10 @@ form a {
     left: 7px;
     border-width: 0 8px 10px;
     border-color: transparent transparent #fff;
+  }
+
+  .navbar-nav .nav-item:last-child {
+    margin-left: .25rem!important;
   }
 }
 

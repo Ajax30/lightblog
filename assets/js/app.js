@@ -38,8 +38,6 @@ $(document).ready(function() {
     }
   });
 
-  
-
   //Delete Posts
   $('.delete-post').on('click', function(evt){
     evt.preventDefault();

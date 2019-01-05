@@ -78,7 +78,7 @@
 									<li class="nav-item my-1">
 										<a href="<?php echo base_url('login'); ?>" class="nav-link btn btn-outline-success"><i class="fa fa-sign-in"></i> Login</a>
 									</li>
-									<li class="nav-item my-1 ml-1">
+									<li class="nav-item my-1">
 										<a href="<?php echo base_url('register'); ?>" class="nav-link btn btn-outline-success"><i class="fa fa-user-plus"></i> Register</a>
 									</li>
 								<?php endif; ?>
