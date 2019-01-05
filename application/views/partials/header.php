@@ -19,7 +19,11 @@
   <?php else: ?>
   <meta property="og:description" content="<?php echo $tagline; ?>">
   <?php endif; ?>
+  <?php if (isset($post->post_image)): ?>
+  <meta property="og:url" content="<?php echo base_url('/') . $post->slug; ?>">
+  <?php else: ?>
   <meta property="og:url" content="<?php echo base_url(); ?>">
+  <?php endif; ?>
   <?php if (isset($post->post_image)): ?>
   <meta property="og:image" content="<?php echo base_url('assets/img/posts/' . $post->post_image); ?>">
   <?php endif; ?>
