@@ -25,6 +25,14 @@
   <?php endif; ?>
 </head>
 <body>
+	 <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 	<div class="site-wrapper">
 		<nav class="navbar sticky-top navbar-dark bg-dark flex-wrap2 flex-md-nowrap p-0 py-md-1">
 			<a class="navbar-brand col-auto mr-0 px-2 pl-md-1" href="<?php echo base_url(); ?>">
