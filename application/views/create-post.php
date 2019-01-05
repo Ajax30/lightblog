@@ -17,7 +17,9 @@
             </div>
 
             <div class="form-group <?php if(form_error('body')) echo 'has-error';?>">
-              <textarea name="body" id="body" cols="30" rows="5" class="form-control" placeholder="Add post body"></textarea>
+              <textarea name="body" id="body" cols="30" rows="5" class="form-control" placeholder="Add post body">
+                <?php echo set_value('body')?>
+              </textarea>
               <?php if(form_error('body')) echo form_error('body'); ?> 
             </div>
 

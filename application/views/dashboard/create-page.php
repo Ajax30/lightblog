@@ -13,8 +13,10 @@
                   <?php if(form_error('title')) echo form_error('title'); ?> 
                 </div>
                 <div class="form-group <?php if(form_error('content')) echo 'has-error';?>">
-                  <textarea name="content" id="content" cols="30" rows="5" class="form-control" placeholder="Add page content"></textarea>
-                  <?php if(form_error('content')) echo form_error('body'); ?> 
+                  <textarea name="content" id="body" cols="30" rows="5" class="form-control" placeholder="Add page content">
+                    <?php echo set_value('content')?>
+                  </textarea>
+                  <?php if(form_error('content')) echo form_error('content'); ?> 
                 </div>
                 <div class="form-group">
                   <input type="submit" value="Save" class="btn btn-block btn-md btn-success">

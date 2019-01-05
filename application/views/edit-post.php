@@ -6,6 +6,7 @@
         <div class="card-body">
           <?php echo form_open_multipart(base_url('posts/update')); ?>
             <input type="hidden" name="id" id="pid" value="<?php echo $post->id; ?>">
+            <input type="hidden" name="slug" id="slug" value="<?php echo $post->slug; ?>">
             
             <div class="form-group <?php if(form_error('title')) echo 'has-error';?>">
               <input type="text" name="title" id="title" class="form-control" placeholder="Title" value="<?php echo $post->title; ?>">

@@ -33,7 +33,7 @@ class Posts extends CI_Controller {
 		// Create all the database tables if there are none
 		// by redirecting to the Migrations controller
 		if (count($this->db->list_tables()) == 0) {
-		    redirect('migrate');
+			redirect('migrate');
 		}
 
     //call initialization method
@@ -184,7 +184,7 @@ class Posts extends CI_Controller {
 		} else {
 			/* If the current user is not the author
 			of the post do not alow edit */
-			redirect('posts/post/' . $id);
+			redirect('/' . $id);
 		}
 	}
 
@@ -198,12 +198,16 @@ class Posts extends CI_Controller {
 		$id = $this->input->post('id');
 
 		// Update slug (from title)
-		$slug = url_title($this->input->post('title'), 'dash', TRUE);
-		$slugcount = $this->Posts_model->slug_count($slug);
-		if ($slugcount > 0) {
-			$slug = $slug."-".$slugcount;
+		if (!empty($this->input->post('title'))) {
+			$slug = url_title($this->input->post('title'), 'dash', TRUE);
+			$slugcount = $this->Posts_model->slug_count($slug);
+			if ($slugcount > 0) {
+				$slug = $slug."-".$slugcount;
+			}
+		} else {
+			$slug = $this->input->post('slug');
 		}
-
+		
     // Upload image
 		$config['upload_path'] = './assets/img/posts';
 		$config['allowed_types'] = 'jpg|png';
@@ -222,9 +226,9 @@ class Posts extends CI_Controller {
 		if ($this->form_validation->run()) {
 			$this->Posts_model->update_post($id, $post_image, $slug);
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
-			redirect('posts/post/' . $slug);
+			redirect('/' . $slug);
 		} else {
-			$this->edit($slug);
+			redirect('/posts/edit/' . $slug);
 		}
 	}
 
@@ -242,7 +246,7 @@ class Posts extends CI_Controller {
 		} else {
 			/* If the current user is not the author
 			of the post do not alow delete */
-			redirect('posts/post/' . $slug);
+			redirect('/' . $slug);
 		}
 	}
 
