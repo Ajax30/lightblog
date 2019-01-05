@@ -22,7 +22,6 @@ class Pages extends CI_Controller {
 		$this->load->view('partials/footer');
 	}
 
-
 	public function create() {
 		// Only logged in users can create pages
 		if (!$this->session->userdata('is_logged_in')) {

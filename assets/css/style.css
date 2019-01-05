@@ -149,6 +149,10 @@ table a {
   max-width: 720px;
 }
 
+#search_form button {
+  padding: .375rem 1rem;
+}
+
 /* Content */
 .container {
   max-width: 1200px;
@@ -366,7 +370,6 @@ main .img-thumbnail.float-left {
 }
 
 /* Forms */
-
 #terms {
   position: relative;
   top: 1px;
