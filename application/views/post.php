@@ -27,8 +27,8 @@
       </div>
     </div>
   <?php else: ?>
-   <div class="text-center">
-     <div class="fb-share-button" data-href="<?php echo base_url('/') . $post->slug; ?>" data-layout="button_count"></div>
+   <div class="text-center pt-2">
+     <div class="fb-share-button" data-href="<?php echo base_url('/') . $post->slug; ?>" data-layout="button_count" data-size="large"></div>
    </div>
   <?php endif; ?>
 
