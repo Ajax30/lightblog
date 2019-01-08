@@ -228,6 +228,8 @@ class Posts extends CI_Controller {
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 			redirect('/' . $slug);
 		} else {
+			$this->form_validation->run();
+			$this->session->set_flashdata('errors', validation_errors());
 			redirect('/posts/edit/' . $slug);
 		}
 	}

@@ -72,6 +72,10 @@ body {
   margin: 0 15px;
 }
 
+.error-group .error-message {
+  margin: 0;
+}
+
 .alert-hidden {
   display: none;
 }

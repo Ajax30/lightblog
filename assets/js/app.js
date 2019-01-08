@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
   // Hide alerts
-  $('.alert').each(function(){
+  $('.alert:not(".alert-dismissible")').each(function(){
     $(this).delay(3000).slideUp(200);
   });
 
