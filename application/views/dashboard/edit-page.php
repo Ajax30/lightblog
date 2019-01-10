@@ -14,7 +14,7 @@
                 <?php if(form_error('title')) echo form_error('title'); ?> 
               </div>
               <div class="form-group <?php if(form_error('content')) echo 'has-error';?>">
-                <textarea name="content" id="content" cols="30" rows="5" class="form-control" placeholder="Edit page content"><?php echo $page->content; ?></textarea>
+                <textarea name="content" id="body" cols="30" rows="5" class="form-control" placeholder="Edit page content"><?php echo $page->content; ?></textarea>
                 <?php if(form_error('content')) echo form_error('body'); ?> 
               </div>
               <div class="form-group">
