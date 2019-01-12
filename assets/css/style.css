@@ -408,8 +408,12 @@ form a {
 }
 
 .input-group .search-error {
+  margin: 0;
+  position: absolute;
   bottom: 5px;
-  right: 50px;
+  right: 55px;
+  color: #a94442;
+  font-size: 11px;
 }
 
 .has-error .form-control,
