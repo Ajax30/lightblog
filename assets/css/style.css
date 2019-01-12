@@ -410,8 +410,8 @@ form a {
 .input-group .search-error {
   margin: 0;
   position: absolute;
-  bottom: 5px;
-  right: 55px;
+  bottom: 1px;
+  right: 52px;
   color: #a94442;
   font-size: 11px;
 }
