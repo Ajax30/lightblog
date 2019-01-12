@@ -1,7 +1,6 @@
 <div class="container">
   <main class="wide-content">
-    <div class="row">
-      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto my-4">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto my-4 px-1">
         <div class="card bg-light">
           <div class="card-header bg-light">Create an account</div>
           <div class="card-body">
@@ -43,6 +42,5 @@
           </div>
         </div>
       </div>
-    </div>
   </main>
 </div>
