@@ -36,14 +36,14 @@ class Posts extends CI_Controller {
 			redirect('migrate');
 		}
 
-    //call initialization method
+    	//call initialization method
 		$config = $this->_initPagination("/", $this->Posts_model->get_num_rows());
 
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();  
 
-    //use limit and offset returned by _initPaginator method
+    	//use limit and offset returned by _initPaginator method
 		$data['posts'] = $this->Posts_model->get_posts($config['limit'], $config['offset']);
 		$this->load->view('partials/header', $data);
 		$this->load->view('posts');

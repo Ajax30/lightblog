@@ -28,7 +28,9 @@ class Posts_model extends CI_Model {
 		$query = $this->db->like('title', $expression)
 											->or_like('description', $expression)
 											->or_like('content', $expression);
+		$this->db->select('posts.*,categories.name as post_category');
 		$this->db->order_by('posts.id', 'DESC');
+		$this->db->join('categories', 'posts.cat_id = categories.id', 'inner');
 		$query = $this->db->get('posts', $limit, $offset);
 		return $query->result();
 	}

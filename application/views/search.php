@@ -16,6 +16,11 @@
 							</a>
 						</div>
 						<div class="text">
+							<p class="post-category">
+								<a href="<?php echo base_url('/categories/posts/') . $post->cat_id;?>">
+									<?php echo $post->post_category; ?>									
+								</a>
+							</p>
 							<h2 class="card-title">
 								<a href="<?php echo base_url('/') . $post->slug; ?>">
 									<?php echo $post->title; ?>
