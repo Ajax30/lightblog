@@ -153,6 +153,10 @@
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('category_deleted') . '</p>'; ?>
 					<?php endif; ?>
 
+					<?php if($this->session->flashdata('category_delete_warning')): ?>
+						<?php echo '<p class="alert alert-warning alert-dismissible"> <button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('category_delete_warning') . '</p>'; ?>
+					<?php endif; ?>
+
 					<?php if($this->session->flashdata('login_failure_incorrect')): ?>
 						<?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failure_incorrect') . '</p>'; ?>
 					<?php endif; ?>

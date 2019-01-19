@@ -103,8 +103,13 @@ class Categories extends CI_Controller {
 			redirect('login');
 		}
 
-		$this->Categories_model->delete_category($category_id);
-		$this->session->set_flashdata('category_deleted', 'The category has been deleted');
+		$posts_count = $this->Posts_model->get_num_rows_by_category($category_id);
+		if ($posts_count == 0) {
+			$this->Categories_model->delete_category($category_id);
+			$this->session->set_flashdata('category_deleted', 'The category has been deleted');
+		} else {
+			$this->session->set_flashdata('category_delete_warning', 'This category has posts, therefore it should not be deleted. If you insist on deleteing it, you must move all the post in other categories first.');
+		}
 		redirect('dashboard/categories');
 	}
 
