@@ -3,7 +3,7 @@
 		
 		<?php $posts_count == 1 ? $results = "post" : $results = "posts";?>
 
-		<h1 class="display-4 results-found">We found <?php echo $posts_count . ' ' . $results; ?> by <?php echo $posts_author[0]->first_name . ' ' . $posts_author[0]->last_name; ?></h1>
+		<h1 class="display-4 results-found">We found <?php echo $posts_count . ' ' . $results; ?> by <?php echo $posts_author->first_name . ' ' . $posts_author->last_name; ?></h1>
 	</div>	
 	<?php if ($posts): ?>
 		<div class="posts-grid">

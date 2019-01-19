@@ -77,7 +77,7 @@ class Posts_model extends CI_Model {
 	public function posts_author($authorid) {
 		$this->db->select('authors.first_name,last_name');
 		$query = $this->db->get_where('authors', array('id' => $authorid));
-		return $query->result();
+		return $query->row();
 	}
 
 	/* Single post */
