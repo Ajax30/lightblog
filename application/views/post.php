@@ -4,7 +4,7 @@
       <h2 class="post-title display-4"><?php echo $post->title; ?></h2>
       <div class="row post-meta">
         <div class="left-half col-sm-9">
-          <span class="author">By <a href="#"><?php echo $post->first_name . " " . $post->last_name; ?></a></span> | <span class="date"><?php echo nice_date($post->created_at, 'M d, Y'); ?></span>
+          <span class="author">By <a href="<?php echo base_url('posts/byauthor/') . $post->author_id; ?>"><?php echo $post->first_name . " " . $post->last_name; ?></a></span> | <span class="date"><?php echo nice_date($post->created_at, 'M d, Y'); ?></span>
         </div>
         <div class="right-half col-sm-3">
         <?php $comments_count = count($comments); $comments_status = $comments_count > 0 ? $comments_count . ' comments': "No comments"; ?>

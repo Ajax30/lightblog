@@ -77,6 +77,19 @@ class Posts extends CI_Controller {
 		}
 	} 
 
+	public function byauthor($authorid){
+		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
+		$data['categories'] = $this->Categories_model->get_categories(); 
+		$data['posts'] = $this->Posts_model->get_posts_by_author($authorid); 
+		$data['posts_count'] = $this->Posts_model->posts_by_author_count($authorid); 
+		$data['posts_author'] = $this->Posts_model->posts_author($authorid);
+
+		$this->load->view('partials/header', $data);
+		$this->load->view('posts_by_author');
+		$this->load->view('partials/footer');
+	}
+
 	public function post($slug) {
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();

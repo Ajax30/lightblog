@@ -41,6 +41,46 @@ class Posts_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function get_num_rows_by_category($category_id) { 
+		$query = $this->db->get_where('posts', array('cat_id' => $category_id));
+		return $query->num_rows(); 
+	}
+
+	public function get_posts_by_category($category_id, $limit, $offset) {
+		$this->db->select('posts.*');
+		$this->db->order_by('posts.id', 'DESC');
+		$this->db->limit($limit, $offset);
+		$this->db->join('categories', 'categories.id = posts.cat_id');
+		$query = $this->db->get_where('posts', array('cat_id' => $category_id));
+		return $query->result();
+	}
+
+	public function count_posts_in_category($category_id) {
+		return $this->db
+			->where('cat_id', $category_id)
+			->count_all_results('posts');
+	}
+
+	public function get_posts_by_author($authorid) {
+		$this->db->select('posts.*,categories.name as post_category');
+    $this->db->order_by('posts.id', 'DESC');
+    $this->db->join('categories', 'posts.cat_id = categories.id', 'inner');
+		$query = $this->db->get_where('posts', array('posts.author_id' => $authorid));
+		return $query->result();
+	}
+
+	public function posts_by_author_count($authorid) {
+		$query = $this->db->get_where('posts', array('posts.author_id' => $authorid));
+		return $query->num_rows();  
+	}
+
+	public function posts_author($authorid) {
+		$this->db->select('authors.first_name,last_name');
+		$query = $this->db->get_where('authors', array('id' => $authorid));
+		return $query->result();
+	}
+
+	/* Single post */
 	public function get_post($slug) {
 		$query = $this->db->get_where('posts', array('slug' => $slug));
 		if ($query->num_rows() > 0) {
@@ -100,26 +140,6 @@ class Posts_model extends CI_Model {
 		$this->db->where('slug', $slug);
 		$this->db->delete('posts');
 		return true;
-	}
-
-	public function get_num_rows_by_category($category_id) { 
-		$query = $this->db->get_where('posts', array('cat_id' => $category_id));
-		return $query->num_rows(); 
-	}
-
-	public function get_posts_by_category($category_id, $limit, $offset) {
-		$this->db->select('posts.*');
-		$this->db->order_by('posts.id', 'DESC');
-		$this->db->limit($limit, $offset);
-		$this->db->join('categories', 'categories.id = posts.cat_id');
-		$query = $this->db->get_where('posts', array('cat_id' => $category_id));
-		return $query->result();
-	}
-
-	public function count_posts_in_category($category_id) {
-		return $this->db
-		->where('cat_id', $category_id)
-		->count_all_results('posts');
 	}
 
 }

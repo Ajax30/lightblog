@@ -9,16 +9,16 @@ body {
 
 /* Typo */
 .category-name,
-.search-results {
-  font-size: 3rem !important;
+.results-found {
+  font-size: 2.5rem !important;
   padding: 0 15px;
   margin-bottom: 0;
 }
 
 @media (max-width: 575px) {
   .category-name,
-  .search-results {
-    font-size: 2.5rem !important;
+  .results-found {
+    font-size: 2rem !important;
   }
 }
 
