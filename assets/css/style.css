@@ -28,6 +28,12 @@ body {
   background: #1B192F !important;
 }
 
+.form-control:focus {
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
+
 .w-5 {
   width: 5% !important;
 }
@@ -126,7 +132,7 @@ table a {
 
 .navbar-dark .navbar-nav a {
   text-transform: uppercase;
-  font-size: 84%;
+  font-size: 83%;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -157,9 +163,21 @@ table a {
   max-width: 767px;
 }
 
-#search_form button {
-  padding: .375rem 1rem;
+#group-search input,
+#group-search button {
+  background: #343a40;
+  border: 1px solid rgba(255, 255, 255, .05);
+  color: #e2e2e2;
 }
+
+#group-search input {
+  border-right: none;
+}
+
+#group-search button {
+  padding: .375rem 1rem;
+  border-left: none;
+} 
 
 /* Content */
 .container {
@@ -411,8 +429,8 @@ form a {
   margin: 0;
   position: absolute;
   bottom: 1px;
-  right: 52px;
-  color: #a94442;
+  right: 48px;
+  color: #f6394b;
   font-size: 11px;
 }
 

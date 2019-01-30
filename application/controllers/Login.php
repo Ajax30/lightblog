@@ -23,8 +23,7 @@ class Login extends CI_Controller {
     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
     $this->form_validation->set_rules('password', 'Password', 'required|trim');
     $this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
-    if ($this->form_validation->run())
-    {
+    if ($this->form_validation->run()) {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
       $this->load->model('Usermodel');
@@ -58,9 +57,8 @@ class Login extends CI_Controller {
         redirect('login'); 
       }
     }
-    else
-    {
-     $this->load->view('login');
+    else {
+      $this->index();
     }
   }
 
