@@ -555,6 +555,7 @@ form a {
   margin: 0;
   display: table;
   border-collapse: collapse;
+  width: 100%;
 }
 
 .news-list li {
