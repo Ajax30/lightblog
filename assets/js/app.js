@@ -15,7 +15,8 @@ $(document).ready(function() {
     },
 
     submitHandler: function(form) {
-      $fields = form.find('input[type="text"],input[type="email"],textarea');
+      var form = $("#commentForm"),
+      $fields = form.find('input[type="text"],input[type="email"],textarea'),
       url = form.attr('action'),
       postWhat = form.data('post'),
       data = form.serialize();

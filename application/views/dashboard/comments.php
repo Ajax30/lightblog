@@ -24,7 +24,7 @@
                       <td><?php echo $comment->comment; ?></td>
                       <td><?php echo $comment->name; ?></td>
                       <td>
-                        <a href="<?php echo base_url('posts/post/') . $comment->post_id; ?>" title="View the post <?php echo $comment->post_title; ?>" class="text-dark">
+                        <a href="<?php echo base_url('/') . $comment->post_slug; ?>" title="View the post <?php echo $comment->post_title; ?>" class="text-dark">
                           <?php echo $comment->post_title; ?>
                         </a>
                       </td>
