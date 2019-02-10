@@ -1,5 +1,5 @@
 body {
-  background-color: #dae1e7;
+  background-color: #fafafa;
 }
 
 html,
@@ -143,7 +143,8 @@ table a {
   padding: 0;
   border-radius: 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.11);
-  top: 40px;
+  top: 45px;
+  background: #fafafa;
 }
 
 .navbar-dark .navbar-nav .dropdown-menu a {
@@ -630,10 +631,10 @@ form a {
   }
 
   .navbar-dark .navbar-nav .dropdown-menu:after {
-    top: -9px;
+    top: -8px;
     left: 7px;
-    border-width: 0 8px 10px;
-    border-color: transparent transparent #fff;
+    border-width: 0 10px 8px;
+    border-color: transparent transparent #fafafa;
   }
 
   .navbar-nav .nav-item:last-child {
