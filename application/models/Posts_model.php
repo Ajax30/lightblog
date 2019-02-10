@@ -107,6 +107,7 @@ class Posts_model extends CI_Model {
 		return $query->row(0)->slugcount;
 	}
 
+  // Create, post
 	public function create_post($post_image, $slug) {
 		$data = [
 			'title' => $this->input->post('title'),
@@ -121,6 +122,7 @@ class Posts_model extends CI_Model {
 		return $this->db->insert('posts', $data);
 	}
 
+	// Update post
 	public function update_post($id, $post_image, $slug) {
 		$data = [
 			'title' => $this->input->post('title'),
@@ -136,6 +138,7 @@ class Posts_model extends CI_Model {
 		return $this->db->update('posts', $data);
 	}
 
+	//Delete post
 	public function delete_post($slug) {
 		$this->db->where('slug', $slug);
 		$this->db->delete('posts');
