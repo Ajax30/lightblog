@@ -27,7 +27,7 @@ class Comments_model extends CI_Model {
 	}
 
 	public function get_all_comments($limit, $offset) {
-		$this->db->select('comments.*,posts.title as post_title');
+		$this->db->select('comments.*,posts.title as post_title, posts.slug as post_slug');
 		$this->db->order_by('comments.id', 'DESC');
 	  $this->db->limit($limit, $offset);
 		$this->db->join('posts', 'posts.id = comments.post_id');        
@@ -60,5 +60,4 @@ class Comments_model extends CI_Model {
 		$this->db->delete('comments');
 		return true;
 	}
-
 }
