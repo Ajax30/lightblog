@@ -20,13 +20,13 @@ $(document).ready(function() {
       url = form.attr('action'),
       postWhat = form.data('post'),
       data = form.serialize();
-        $.ajax({
-          type: "POST",
-          url: url,
-          data: data,
-          success: function() {
-            $('#comment_add_msg').text("Your " + postWhat + " will be published after approval")
-            .slideDown(250).delay(2500).slideUp(250);
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function() {
+          $('#comment_add_msg').text("Your " + postWhat + " will be published after approval")
+          .slideDown(250).delay(2500).slideUp(250);
           // Empty the form's fields
           $fields.val('');
         },
@@ -37,6 +37,11 @@ $(document).ready(function() {
         }
       });
     }
+  });
+
+  // Print post
+  $('#print_post').on('click', function(){
+    $('#post_content').printThis();
   });
 
   //Delete Posts

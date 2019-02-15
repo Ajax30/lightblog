@@ -14,7 +14,6 @@ class Usermodel extends CI_Model {
 	}
 
 	public function getAuthors(){
-		//$this->db->limit($limit, $offset);
 		$query = $this->db->get('authors');
 	    return $query->result();
 	}
