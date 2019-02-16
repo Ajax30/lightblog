@@ -11,7 +11,6 @@
 <?php if (isset($post->post_image)): ?>
 <script src="<?php echo base_url('assets/js/printThis.js')?>"></script>
 <?php endif; ?>
-<script src="<?php echo base_url('assets/js/printThis.js')?>"></script>
 <script src="<?php echo base_url('assets/js/app.js')?>"></script>
 <script>CKEDITOR.replace('body');</script>
 </body>
