@@ -724,6 +724,8 @@ form a {
   p {
     line-height: 1.6 !important; 
     font-size: 14pt !important; 
+    widows: 2;
+    orphans: 1;
   }
 
   .post-content a:after {
