@@ -14,13 +14,13 @@
     </div>
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane fade in active show" id="new">
-       <ul class="list-unstyled news-list">
+       <ul class="list-unstyled news-list d-table">
         <?php foreach ($posts as $post) :?>
-          <li>
-            <div class="thumbnail">
+          <li class="d-table-row">
+            <div class="thumbnail d-table-cell">
               <a href="<?php echo base_url('/') . $post->slug; ?>"><img src="<?php echo base_url('assets/img/posts/') . $post->post_image; ?>" alt="<?php echo $post->title; ?>" class="img-thumbnail"></a>
             </div>
-            <div class="text">
+            <div class="text d-table-cell">
               <h3><?php echo $post->title; ?></h3>
               <p><?php echo word_limiter($post->description, 7); ?></p>
             </div>

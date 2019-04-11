@@ -214,6 +214,11 @@ table a {
   box-shadow: 0px 1px 9px 0px rgba(0,0,0,0.22);
 }
 
+.posts-grid .thumbnail {
+  border-radius: 2px 2px 0 0;
+  overflow: hidden;
+}
+
 .posts-grid .post-category {
   margin: 0;
   line-height: 1.1;
@@ -554,18 +559,15 @@ form a {
 
 .news-list {
   margin: 0;
-  display: table;
   border-collapse: collapse;
   width: 100%;
 }
 
 .news-list li {
-  display: table-row;
   cursor: pointer;
 }
 
 .news-list li > div {
-  display: table-cell;
   vertical-align: top;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -686,8 +688,6 @@ form a {
     padding-right: 5px;
   }
 }
-
-
 
 @media print {
 
