@@ -188,8 +188,6 @@ table a {
 
 .posts-grid {
   margin-top: 25px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .posts-grid > [class*='col-'] {

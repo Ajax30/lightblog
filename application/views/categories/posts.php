@@ -3,7 +3,7 @@
 		<h1 class="display-4 category-name"><?php echo $category_name; ?></h1>
 	</div>	
 	<?php if ($posts): ?>
-		<div class="posts-grid">
+		<div class="row posts-grid">
 			<?php foreach ($posts as $post) :?>
 				<div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3">
 					<div class="post">

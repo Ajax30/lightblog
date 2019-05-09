@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="posts-grid">
+	<div class="row posts-grid">
 		<?php foreach ($posts as $post) :?>
 			<div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3">
 				<div class="post">
