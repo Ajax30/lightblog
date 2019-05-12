@@ -226,21 +226,15 @@ class Posts extends CI_Controller {
 		if ( isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != null ) 
 		{
 		    // Use name field in do_upload method
-		    if (!$this->upload->do_upload('userfile')) 
-		    {
-		        // If any problem in uploading
+		    if (!$this->upload->do_upload('userfile')) {
 		        $errors = array('error' => $this->upload->display_errors());
 
-		    } else 
-		    {
+		    } else {
 		        $data = $this->upload->data();
-		        // This is your new upload file name
 		        $post_image = $data[ 'raw_name'].$data[ 'file_ext'];
 		    }
 		}
-		else 
-		{
-		    // This is your old file name if user not uploading new file
+		else {
 		    $post_image = $this->input->post('postimage');
 		}
 
