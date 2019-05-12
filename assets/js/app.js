@@ -6,7 +6,7 @@ $(document).ready(function() {
     $(this).delay(4000).slideUp(200);
   });
 
-  // AJAX form
+  // Add comments via AJAX
   $("#commentForm").validate({
     rules: {
       email: {

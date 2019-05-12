@@ -222,13 +222,28 @@ class Posts extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		if(!$this->upload->do_upload()){
-			$errors = array('error' => $this->upload->display_errors());
-			$post_image = $this->input->post('postimage');
-		} else {
-			$data = array('upload_data' => $this->upload->data());
-			$post_image = $_FILES['userfile']['name'];
+		// This is the check for new file is upload or not
+		if ( isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != null ) 
+		{
+		    // Use name field in do_upload method
+		    if (!$this->upload->do_upload('userfile')) 
+		    {
+		        // If any problem in uploading
+		        $errors = array('error' => $this->upload->display_errors());
+
+		    } else 
+		    {
+		        $data = $this->upload->data();
+		        // This is your new upload file name
+		        $post_image = $data[ 'raw_name'].$data[ 'file_ext'];
+		    }
 		}
+		else 
+		{
+		    // This is your old file name if user not uploading new file
+		    $post_image = $this->input->post('postimage');
+		}
+
 
 		if ($this->form_validation->run()) {
 			$this->Posts_model->update_post($id, $post_image, $slug);
