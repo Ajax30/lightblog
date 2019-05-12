@@ -222,7 +222,6 @@ class Posts extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		// This is the check for new file is upload or not
 		if ( isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != null ) 
 		{
 		    // Use name field in do_upload method
