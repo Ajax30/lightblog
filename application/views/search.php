@@ -11,7 +11,7 @@
 					<div class="post">
 						<div class="thumbnail">
 							<a href="<?php echo base_url('/') . $post->slug; ?>">
-								<img src="<?php echo base_url('assets/img/posts/') . $post->post_image; ?>" />
+								<img src="<?php echo base_url('assets/img/posts/') . $post->post_image; ?>" alt="<?php echo $post->title; ?>" />
 							</a>
 						</div>
 						<div class="text">

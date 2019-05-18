@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="post-thumbnail">
-        <img src="<?php echo base_url('assets/img/posts/') . $post->post_image; ?>" />
+        <img src="<?php echo base_url('assets/img/posts/') . $post->post_image; ?>" alt="<?php echo $post->title; ?>" />
       </div>
       <div class="post-content">
         <?php echo $post->content; ?>
