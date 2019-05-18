@@ -1,10 +1,7 @@
-<div class="container">
-	<div class="col-xs-12">
-		
-		<?php $posts_count == 1 ? $results = "post" : $results = "posts";?>
+<?php $posts_count == 1 ? $results = "post" : $results = "posts";?>
 
-		<h1 class="display-4 results-found">We found <?php echo $posts_count . ' ' . $results; ?> by <?php echo $posts_author->first_name . ' ' . $posts_author->last_name; ?></h1>
-	</div>	
+<div class="container">
+		<h1 class="display-4 results-found">We found <?php echo $posts_count . ' ' . $results; ?> by <?php echo $posts_author->first_name . ' ' . $posts_author->last_name; ?></h1>	
 	<?php if ($posts): ?>
 		<div class="row posts-grid">
 			<?php foreach ($posts as $post) :?>

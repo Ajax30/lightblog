@@ -1,7 +1,5 @@
 <div class="container">
-	<div class="col-xs-12">
-		<h1 class="display-4 category-name"><?php echo $category_name; ?></h1>
-	</div>	
+	<h1 class="display-4 category-name"><?php echo $category_name; ?></h1>	
 	<?php if ($posts): ?>
 		<div class="row posts-grid">
 			<?php foreach ($posts as $post) :?>

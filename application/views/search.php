@@ -1,10 +1,9 @@
-<div class="container">
-	<div class="col-xs-12">
-		
-		<?php $posts_count == 1 ? $results = "post" : $results = "posts";?>
+<?php $posts_count == 1 ? $results = "post" : $results = "posts";?>
 
-		<h1 class="display-4 results-found">We found <?php echo $posts_count . ' ' . $results; ?> containing <span class="quote-inline"><?php echo $expression; ?></span></h1>
-	</div>	
+<div class="container">
+	
+	<h1 class="display-4 results-found">We found <?php echo $posts_count . ' ' . $results; ?> containing <span class="quote-inline"><?php echo $expression; ?></span></h1>
+
 	<?php if ($posts): ?>
 		<div class="row posts-grid">
 			<?php foreach ($posts as $post) :?>
