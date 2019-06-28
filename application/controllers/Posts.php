@@ -183,7 +183,7 @@ class Posts extends CI_Controller {
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=0);
 		$data['post'] = $this->Posts_model->get_post($id);
-		if ($this->session->userdata('user_id') == $data['post']->author_id) {
+		if (($this->session->userdata('user_id') == $data['post']->author_id) || $this->session->userdata('user_is_admin')) {
 			$data['tagline'] = 'Edit the post "' . $data['post']->title . '"';
 			$this->load->view('partials/header', $data);
 			$this->load->view('edit-post');
