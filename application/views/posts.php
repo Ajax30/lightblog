@@ -32,3 +32,6 @@
 	<?php $this->load->view("partials/pagination");?>
 
 </div>
+
+
+

@@ -25,7 +25,7 @@
                       <td class="text-center">
                         <div class="btn-group btn-group-sm" role="group">
                           <a href="<?php echo base_url('posts/post/') . $post->slug; ?>" class="btn btn-success"><i class="fa fa-eye"></i> View</a>
-                          <?php if($this->session->userdata('is_logged_in') && $this->session->userdata('user_id') == $post->author_id) : ?>
+                          <?php if(($this->session->userdata('is_logged_in') && $this->session->userdata('user_id') == $post->author_id) || $this->session->userdata('user_is_admin')) : ?>
                             <a href="<?php echo base_url('posts/edit/') . $post->slug; ?>" class="btn btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
                             <a href="#" data-slug="<?php echo $post->slug ?>" class="delete-post ajax-btn btn btn-success"><i class="fa fa-trash"></i> Delete</a>
                           <?php else: ?>
