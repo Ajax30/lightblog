@@ -256,7 +256,7 @@ class Posts extends CI_Controller {
 		}
 
 		$data['post'] = $this->Posts_model->get_post($slug);
-		if ($this->session->userdata('user_id') == $data['post']->author_id) {
+		if (($this->session->userdata('user_id') == $data['post']->author_id) || $this->session->userdata('user_is_admin')) {
 			$this->Posts_model->delete_post($slug);
 			$this->session->set_flashdata('post_deleted', 'The post has been deleted');
 			redirect('/');
