@@ -1,7 +1,7 @@
 <aside class="sidebar">
 
   <div class="banner-container">
-    <img src="https://ppc.news/wp-content/uploads/2017/08/Medium-Rectangle-300x250.jpg" alt="banner">
+    <img src="<?php echo base_url('assets/img')?>/Medium-Rectangle-300x250.jpg" alt="banner">
   </div>
 
   <div class="tabbed-sidebar">

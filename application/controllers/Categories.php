@@ -19,6 +19,7 @@ class Categories extends CI_Controller {
 		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1) {
 			$_GET[$config['query_string_segment']] = 1;
 		}
+		
 		$limit = $config['per_page'];
 		$offset = ($this->input->get($config['query_string_segment']) - 1) * $limit;
 		$this->pagination->initialize($config);
