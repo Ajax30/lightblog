@@ -126,6 +126,10 @@
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('post_deleted') . '</p>'; ?>
 					<?php endif; ?>
 
+					<?php if($this->session->flashdata('no_permission_to_delete_post')): ?>
+						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('no_permission_to_delete_post') . '</p>'; ?>
+					<?php endif; ?>
+
 					<?php if($this->session->flashdata('admin_only_pages')): ?>
 						<?php echo '<p class="alert alert-danger">' . $this->session->flashdata('admin_only_pages') . '</p>'; ?>
 					<?php endif; ?>

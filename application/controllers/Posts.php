@@ -263,6 +263,7 @@ class Posts extends CI_Controller {
 		} else {
 			/* If the current user is not the author
 			of the post do not alow delete */
+			$this->session->set_flashdata('no_permission_to_delete_post', 'You are not authorized to delete this post');
 			redirect('/' . $slug);
 		}
 	}
