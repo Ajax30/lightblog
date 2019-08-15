@@ -11,7 +11,7 @@
 
               <input type="hidden" name="category_id" id="category_id" value="<?php echo $category->id; ?>">
 
-              <div class="form-group <?php if(form_error('title')) echo 'has-error';?>">
+              <div class="form-group <?php if(form_error('category_name')) echo 'has-error';?>">
                 <input type="text" name="category_name" id="category_name" class="form-control" placeholder="Category name" value="<?php echo $category->name; ?>">
                 <?php if(form_error('category_name')) echo form_error('category_name'); ?> 
               </div>
