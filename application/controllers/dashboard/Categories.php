@@ -8,19 +8,26 @@ class Categories extends CI_Controller {
 		parent::__construct();
 	}
 
+	private function get_data()
+		{
+		    /* This code is in all three methods */
+		    $data = $this->Static_model->get_static_data();
+		    $data['pages'] = $this->Pages_model->get_pages();
+		    $data['categories'] = $this->Categories_model->get_categories();
+		    $data['number_of_pages'] = $this->Pages_model->count_pages();
+		    $data['number_of_posts'] = $this->Posts_model->get_num_rows();
+		    $data['number_of_categories'] = $this->Categories_model->get_num_rows();
+		    $data['number_of_comments'] = $this->Comments_model->get_num_rows();
+		    return $data;
+		}
+
 	public function index() {
 
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
 		}
 
-		$data = $this->Static_model->get_static_data();
-		$data['pages'] = $this->Pages_model->get_pages();
-		$data['categories'] = $this->Categories_model->get_categories();
-		$data['number_of_pages'] = $this->Pages_model->count_pages();
-		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
-		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
-		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
+		$data = $this->get_data();
 
 		$this->load->view('partials/header', $data);
 		$this->load->view('dashboard/categories');
@@ -35,13 +42,7 @@ class Categories extends CI_Controller {
 			redirect('login');
 		}
 
-		$data = $this->Static_model->get_static_data();
-		$data['pages'] = $this->Pages_model->get_pages();
-		$data['categories'] = $this->Categories_model->get_categories();
-		$data['number_of_pages'] = $this->Pages_model->count_pages();
-		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
-		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
-		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
+		$data = $this->get_data();
 		$data['tagline'] = "Add New Category";
 
 		$this->form_validation->set_rules('category_name', 'Category name', 'required');
@@ -66,19 +67,12 @@ class Categories extends CI_Controller {
 			redirect('login');
 		}
 
-		$data = $this->Static_model->get_static_data();
-		$data['pages'] = $this->Pages_model->get_pages();
-		$data['number_of_pages'] = $this->Pages_model->count_pages();
-		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
-		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
-		$data['categories'] = $this->Categories_model->get_categories();
-		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
+		$data = $this->get_data();
 		$data['category'] = $this->Categories_model->get_category($category_id);
 
 		$this->load->view('partials/header', $data);
 		$this->load->view('dashboard/editcategory');
-		$this->load->view('partials/footer');
-		
+		$this->load->view('partials/footer');	
 	}
 
 	public function update() {
