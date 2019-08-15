@@ -1,5 +1,5 @@
 <div class="container">
-	<h1 class="display-4 category-name"><?php echo $category_name; ?></h1>	
+	<h1 class="display-4 category-name">Posts in <span class="quote-inline"><?php echo $category_name; ?></span></h1>	
 	<?php if ($posts): ?>
 		<div class="row posts-grid">
 			<?php foreach ($posts as $post) :?>
