@@ -9,17 +9,16 @@ class Categories extends CI_Controller {
 	}
 
 	private function get_data()
-		{
-		    /* This code is in all three methods */
-		    $data = $this->Static_model->get_static_data();
-		    $data['pages'] = $this->Pages_model->get_pages();
-		    $data['categories'] = $this->Categories_model->get_categories();
-		    $data['number_of_pages'] = $this->Pages_model->count_pages();
-		    $data['number_of_posts'] = $this->Posts_model->get_num_rows();
-		    $data['number_of_categories'] = $this->Categories_model->get_num_rows();
-		    $data['number_of_comments'] = $this->Comments_model->get_num_rows();
-		    return $data;
-		}
+	{
+		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
+		$data['categories'] = $this->Categories_model->get_categories();
+		$data['number_of_pages'] = $this->Pages_model->count_pages();
+		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
+		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
+		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
+		return $data;
+	}
 
 	public function index() {
 
@@ -92,6 +91,7 @@ class Categories extends CI_Controller {
 	}
 
 	public function delete($category_id) {
+		
 		// Only logged in users can delete posts
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
