@@ -10,7 +10,7 @@
               <table class="table table-striped table-sm mb-0">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th class="text-right">#</th>
                     <th class="w-50">Title</th>
                     <th>Publication date</th>
                     <th class="text-center">Actions</th>

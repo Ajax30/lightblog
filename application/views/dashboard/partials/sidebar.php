@@ -4,19 +4,19 @@
     <div class="card-body p-0 bg-white">
       <ul class="list-group">
         <a href="<?php echo base_url('dashboard/posts'); ?>" class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="text-muted">Posts</span>
+          <span class="text-muted"><i class="fa fa-thumb-tack mr-1" aria-hidden="true"></i> Posts</span>
           <span id="posts_count" class="badge badge-secondary badge-pill"><?php echo $number_of_posts; ?></span>
         </a>
         <a href="<?php echo base_url('dashboard/pages'); ?>" class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="text-muted">Pages</span>
+          <span class="text-muted"><i class="fa fa-file-text mr-1" aria-hidden="true"></i> Pages</span>
           <span class="badge badge-secondary badge-pill"><?php echo $number_of_pages; ?></span>
         </a>
         <a href="<?php echo base_url('dashboard/categories'); ?>" class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="text-muted">Categories</span>
+          <span class="text-muted"><i class="fa fa-th-list mr-1" aria-hidden="true"></i> Categories</span>
           <span class="badge badge-secondary badge-pill"><?php echo $number_of_categories; ?></span>
         </a>
         <a href="<?php echo base_url('dashboard/comments'); ?>" class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="text-muted">Comments</span>
+          <span class="text-muted"><i class="fa fa-commenting mr-1" aria-hidden="true"></i> Comments</span>
           <span id="comments_count" class="badge badge-secondary badge-pill"><?php echo $number_of_comments; ?></span>
         </a>
       </ul>
