@@ -5,7 +5,9 @@
         <?php $this->load->view("dashboard/partials/sidebar");?>
         <div class="col-sm-7 col-md-9">
           <div class="card bg-light">
-            <h6 class="card-header text-dark">Comments</h6>
+            <div class="card-header d-flex px-2">
+              <h6 class="text-dark m-0">Comments</h6>
+            </div>
             <div class="card-body bg-white p-0">
               <div class="table-responsive">
                 <table class="table table-striped table-sm mb-0">
@@ -16,7 +18,7 @@
                       <th class="w-20">Post</th>
                       <th>Date added</th>
                       <th>Status</th>
-                      <th class="w-20 text-center">Actions</th>
+                      <th class="w-20 text-right pr-2">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -37,7 +39,7 @@
                             echo '<span class="text-danger">Hidden</span>';
                           }?>
                         </td>
-                        <td class="text-center">
+                        <td class="text-right">
                           <div class="btn-group btn-group-sm" role="group">
                             <?php if ($comment->aproved == 0): ?>
                               <a href="<?php echo base_url('dashboard/comments/aprove/') . $comment->id; ?>" class="btn btn-success"><i class="fa fa-check-circle-o"></i> Show</a>

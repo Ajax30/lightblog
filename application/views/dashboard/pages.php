@@ -5,7 +5,10 @@
         <?php $this->load->view("dashboard/partials/sidebar");?>
         <div class="col-sm-7 col-md-9">
           <div class="card bg-light">
-            <h6 class="card-header text-dark">Pages</h6>
+             <div class="card-header d-flex p-2">
+              <h6 class="text-dark m-0 align-self-center">Pages</h6>
+              <a class="btn btn-sm btn-success ml-auto" href="<?php echo base_url('dashboard/create-page') ?>"><i class="fa fa-plus-square mr-1" aria-hidden="true"></i> Add page</a>
+            </div>
             <div class="card-body bg-white p-0">
               <table class="table table-striped table-sm mb-0">
                 <thead>
@@ -13,7 +16,7 @@
                     <th class="text-right">#</th>
                     <th class="w-50">Title</th>
                     <th>Publication date</th>
-                    <th class="text-center">Actions</th>
+                    <th class="text-right pr-2">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -22,7 +25,7 @@
                       <td class="text-right"><?php $count = $index + 1; echo $count; ?></td>
                       <td><?php echo $page->title; ?></td>
                       <td><?php echo nice_date($page->created_at, 'D, M d, Y'); ?></td>
-                      <td class="text-center">
+                      <td class="text-right">
                         <div class="btn-group btn-group-sm" role="group">
                           <a href="<?php echo base_url('pages/page/') . $page->id; ?>" class="btn btn-success"><i class="fa fa-eye"></i> View</a>
                           <?php if($this->session->userdata('is_logged_in')) : ?>

@@ -32,8 +32,8 @@ class Comments extends CI_Controller {
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['number_of_pages'] = $this->Pages_model->count_pages();
-		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
 		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
+		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
 		$data['comments'] = $this->Comments_model->get_all_comments($limit, $offset);
 		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
 

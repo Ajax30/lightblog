@@ -9,15 +9,15 @@ class Categories extends CI_Controller {
 	}
 
 	private function get_data()
-	{
-		$data = $this->Static_model->get_static_data();
-		$data['pages'] = $this->Pages_model->get_pages();
-		$data['categories'] = $this->Categories_model->get_categories();
-		$data['number_of_pages'] = $this->Pages_model->count_pages();
-		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
-		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
-		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
-		return $data;
+		{
+	    $data = $this->Static_model->get_static_data();
+	    $data['pages'] = $this->Pages_model->get_pages();
+	    $data['categories'] = $this->Categories_model->get_categories();
+	    $data['number_of_pages'] = $this->Pages_model->count_pages();
+	    $data['number_of_posts'] = $this->Posts_model->get_num_rows();
+	    $data['number_of_categories'] = $this->Categories_model->get_num_rows();
+	    $data['number_of_comments'] = $this->Comments_model->get_num_rows();
+	    return $data;
 	}
 
 	public function index() {
@@ -49,7 +49,7 @@ class Categories extends CI_Controller {
 
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('partials/header', $data);
-			$this->load->view('categories/add');
+			$this->load->view('dashboard/categories/add');
 			$this->load->view('partials/footer');
 		} else {
 			$this->Categories_model->create_category();
@@ -70,7 +70,7 @@ class Categories extends CI_Controller {
 		$data['category'] = $this->Categories_model->get_category($category_id);
 
 		$this->load->view('partials/header', $data);
-		$this->load->view('dashboard/editcategory');
+		$this->load->view('dashboard/categories/edit');
 		$this->load->view('partials/footer');	
 	}
 
@@ -91,7 +91,6 @@ class Categories extends CI_Controller {
 	}
 
 	public function delete($category_id) {
-		
 		// Only logged in users can delete posts
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');

@@ -8,6 +8,18 @@ class Posts extends CI_Controller {
 		parent::__construct();
 	}
 
+	private function get_data()
+	{
+		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
+		$data['categories'] = $this->Categories_model->get_categories();
+		$data['number_of_pages'] = $this->Pages_model->count_pages();
+		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
+		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
+		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
+		return $data;
+	}
+
 	public function index() {
 
 		if (!$this->session->userdata('is_logged_in')) {
@@ -28,19 +40,160 @@ class Posts extends CI_Controller {
 		$offset = ($this->input->get($config['query_string_segment']) - 1) * $limit;
 		$this->pagination->initialize($config);
 
-		$data = $this->Static_model->get_static_data();
-		$data['pages'] = $this->Pages_model->get_pages();
-		$data['categories'] = $this->Categories_model->get_categories();
-		$data['number_of_pages'] = $this->Pages_model->count_pages();
-		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
-		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
+		$data = $this->get_data();
 		$data['posts'] = $this->Posts_model->get_posts($limit, $offset);
-		$data['number_of_posts'] = $this->Posts_model->get_num_rows();
 		$data['offset'] = $offset;
 
 		$this->load->view('partials/header', $data);
 		$this->load->view('dashboard/posts');
 		$this->load->view('partials/footer');
+	}
+
+	public function create() {
+
+		// Only logged in users can create posts
+		if (!$this->session->userdata('is_logged_in')) {
+			redirect('login');
+		}
+
+		$data = $this->get_data();
+		$data['tagline'] = "Add New Post";
+
+		if ($data['categories']) {
+			foreach ($data['categories'] as &$category) {
+				$category->posts_count = $this->Posts_model->count_posts_in_category($category->id);
+			}
+		}
+
+		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->form_validation->set_rules('desc', 'Short description', 'required');
+		$this->form_validation->set_rules('body', 'Body', 'required');
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
+
+		if($this->form_validation->run() === FALSE){
+			$this->load->view('partials/header', $data);
+			$this->load->view('dashboard/create-post');
+			$this->load->view('partials/footer');
+		} else {
+			// Create slug (from title)
+			$slug = url_title($this->input->post('title'), 'dash', TRUE);
+			$slugcount = $this->Posts_model->slug_count($slug);
+			if ($slugcount > 0) {
+				$slug = $slug."-".$slugcount;
+			}
+
+			// Upload image
+			$config['upload_path'] = './assets/img/posts';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size'] = '2048';
+
+			$this->load->library('upload', $config);
+
+			if(!$this->upload->do_upload()){
+				$errors = array('error' => $this->upload->display_errors());
+				$post_image = 'default.jpg';
+			} else {
+				$data = array('upload_data' => $this->upload->data());
+				$post_image = $_FILES['userfile']['name'];
+			}
+
+			$this->Posts_model->create_post($post_image, $slug);
+			$this->session->set_flashdata('post_created', 'Your post has been created');
+			redirect('/');
+		}
+	}
+
+	public function edit($id) {
+		// Only logged in users can edit posts
+		if (!$this->session->userdata('is_logged_in')) {
+			redirect('login');
+		}
+
+		$data = $this->get_data();
+		$data['post'] = $this->Posts_model->get_post($id);
+
+		if (($this->session->userdata('user_id') == $data['post']->author_id) || $this->session->userdata('user_is_admin')) {
+			$data['tagline'] = 'Edit the post "' . $data['post']->title . '"';
+			$this->load->view('partials/header', $data);
+			$this->load->view('dashboard/edit-post');
+			$this->load->view('partials/footer');
+		} else {
+			/* If the current user is not the author
+			of the post do not alow edit */
+			redirect('/' . $id);
+		}
+	}
+
+	public function update() {
+		// Form data validation rules
+		$this->form_validation->set_rules('title', 'Title', 'required',  array('required' => 'The %s field can not be empty'));
+		$this->form_validation->set_rules('desc', 'Short description', 'required',  array('required' => 'The %s field can not be empty'));
+		$this->form_validation->set_rules('body', 'Body', 'required',  array('required' => 'The %s field can not be empty'));
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
+
+		$id = $this->input->post('id');
+
+		// Update slug (from title)
+		if (!empty($this->input->post('title'))) {
+			$slug = url_title($this->input->post('title'), 'dash', TRUE);
+			$slugcount = $this->Posts_model->slug_count($slug);
+			if ($slugcount > 0) {
+				$slug = $slug."-".$slugcount;
+			}
+		} else {
+			$slug = $this->input->post('slug');
+		}
+		
+    // Upload image
+		$config['upload_path'] = './assets/img/posts';
+		$config['allowed_types'] = 'jpg|png';
+		$config['max_size'] = '2048';
+
+		$this->load->library('upload', $config);
+
+		if ( isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != null ) 
+		{
+		    // Use name field in do_upload method
+			if (!$this->upload->do_upload('userfile')) {
+				$errors = array('error' => $this->upload->display_errors());
+
+			} else {
+				$data = $this->upload->data();
+				$post_image = $data[ 'raw_name'].$data[ 'file_ext'];
+			}
+		}
+		else {
+			$post_image = $this->input->post('postimage');
+		}
+
+		if ($this->form_validation->run()) {
+			$this->Posts_model->update_post($id, $post_image, $slug);
+			$this->session->set_flashdata('post_updated', 'Your post has been updated');
+			redirect('/' . $slug);
+		} else {
+			$this->form_validation->run();
+			$this->session->set_flashdata('errors', validation_errors());
+			redirect('/dashboard/posts/edit/' . $slug);
+		}
+	}
+
+	public function delete($slug) {
+		// Only logged in users can delete posts
+		if (!$this->session->userdata('is_logged_in')) {
+			redirect('login');
+		}
+
+		$data['post'] = $this->Posts_model->get_post($slug);
+		if (($this->session->userdata('user_id') == $data['post']->author_id) || $this->session->userdata('user_is_admin')) {
+			$this->Posts_model->delete_post($slug);
+			$this->session->set_flashdata('post_deleted', 'The post has been deleted');
+			redirect('/');
+		} else {
+			/* If the current user is not the author
+			of the post do not alow delete */
+			$this->session->set_flashdata('no_permission_to_delete_post', 'You are not authorized to delete this post');
+			redirect('/' . $slug);
+		}
 	}
 
 }

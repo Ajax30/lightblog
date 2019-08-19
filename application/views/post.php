@@ -23,8 +23,8 @@
       <div id="actions" class="text-center">
         <hr>
         <div class="btn-group" role="group">
-          <a href="<?php echo base_url('posts/delete/') . $post->slug; ?>" title="Delete post" class="delete-post btn btn-sm btn-success"><i class="fa fa-trash"></i> Delete</a>
-          <a href="<?php echo base_url('posts/edit/') . $post->slug; ?>" title="Edit post" class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
+          <a href="<?php echo base_url('dashboard/posts/delete/') . $post->slug; ?>" title="Delete post" class="delete-post btn btn-sm btn-success"><i class="fa fa-trash"></i> Delete</a>
+          <a href="<?php echo base_url('dashboard/posts/edit/') . $post->slug; ?>" title="Edit post" class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o"></i> Edit</a>
         </div>
       </div>
       <?php else: ?>

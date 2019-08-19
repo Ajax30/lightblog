@@ -75,12 +75,12 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>
-											<a class="dropdown-item" href="<?php echo base_url('manage-authors') ?>">Manage authors</a>
+											<a class="dropdown-item" href="<?php echo base_url('dashboard/manage-authors') ?>">Manage authors</a>
 										<?php endif; ?>
-										<a class="dropdown-item" href="<?php echo base_url('create-post') ?>">Add post</a>
-										<a class="dropdown-item" href="<?php echo base_url('create-category') ?>">Add category</a>
+										<a class="dropdown-item" href="<?php echo base_url('dashboard/create-post') ?>">Add post</a>
+										<a class="dropdown-item" href="<?php echo base_url('dashboard/create-category') ?>">Add category</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>
-											<a class="dropdown-item" href="<?php echo base_url('create-page') ?>">Add page</a>
+											<a class="dropdown-item" href="<?php echo base_url('dashboard/create-page') ?>">Add page</a>
 										<?php endif; ?>
 									</div>
 								</li>
