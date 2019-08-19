@@ -339,6 +339,7 @@ table a {
   background-color: #449d44;
   border-color: #2b7c2b;
   color: #fff;
+  border-radius: 2px;
 }
 
 .pagination > .disabled > span,
