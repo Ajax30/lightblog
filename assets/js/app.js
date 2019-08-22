@@ -55,12 +55,11 @@ $(document).ready(function() {
     if(confirm('Delete this post?')) {
       if ($(this).hasClass("ajax-btn")) {
         $.ajax({
-          url: baseUrl + 'posts/delete/' + slug,
+          url: baseUrl + 'dashboard/posts/delete/' + slug,
           method: 'GET',
           dataType: 'html',
           success: function(deleteMsg){
             postsCount = postsCount - 1;
-            console.log(baseUrl + 'posts/delete/' + slug);
             $('tr[data-slug="' + slug +'"]').fadeOut('250');
             $("#posts_count").text(postsCount);
             $('#post_delete_msg').text("The post has been deleted");
