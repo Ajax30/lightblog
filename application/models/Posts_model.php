@@ -99,12 +99,16 @@ class Posts_model extends CI_Model {
 		}
 	}
 
-	public function slug_count($slug){
-		$this->db->select('count(*) as slugcount');
-		$this->db->from('posts');
-		$this->db->where('slug', $slug);
-		$query = $this->db->get();
-		return $query->row(0)->slugcount;
+	public function slug_count($slug, $id){
+    $this->db->select('count(*) as slugcount');
+    $this->db->from('posts');
+    $this->db->where('slug', $slug);
+    // if its an update
+    if ($id != null) {
+        $this->db->where('id !=', $id);
+    }
+    $query = $this->db->get();
+    return $query->row(0)->slugcount;
 	}
 
   // Create, post

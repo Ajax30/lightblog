@@ -77,7 +77,7 @@ class Posts extends CI_Controller {
 		} else {
 			// Create slug (from title)
 			$slug = url_title($this->input->post('title'), 'dash', TRUE);
-			$slugcount = $this->Posts_model->slug_count($slug);
+			$slugcount = $this->Posts_model->slug_count($slug, null);
 			if ($slugcount > 0) {
 				$slug = $slug."-".$slugcount;
 			}
@@ -136,7 +136,7 @@ class Posts extends CI_Controller {
 		// Update slug (from title)
 		if ($this->form_validation->run()) {
 			$slug = url_title($this->input->post('title'), 'dash', TRUE);
-			$slugcount = $this->Posts_model->slug_count($slug);
+			$slugcount = $this->Posts_model->slug_count($slug, $id);
 			if ($slugcount > 0) {
 				$slug = $slug."-".$slugcount;
 			}
@@ -151,8 +151,7 @@ class Posts extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		if ( isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != null ) 
-		{
+		if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != null) {
 		    // Use name field in do_upload method
 			if (!$this->upload->do_upload('userfile')) {
 				$errors = array('error' => $this->upload->display_errors());
