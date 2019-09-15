@@ -29,7 +29,7 @@ body {
 }
 
 .form-control:focus {
-  border-color: transparent;
+  border: 1px solid #b2b2b2 !important;
   outline: 0;
   box-shadow: none;
 }
