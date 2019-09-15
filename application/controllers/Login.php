@@ -26,6 +26,7 @@ class Login extends CI_Controller {
     if ($this->form_validation->run()) {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
+    
       $this->load->model('Usermodel');
       $current_user = $this->Usermodel->user_login($email, $password);
         // If we find a user
@@ -75,3 +76,5 @@ class Login extends CI_Controller {
     redirect('/'); 
   }
 }
+
+

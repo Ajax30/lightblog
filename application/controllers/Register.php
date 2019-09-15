@@ -31,7 +31,7 @@ class Register extends CI_Controller {
 			// exist in the authors table, register user
 			if (!$this->Usermodel->email_exists()) {
 				// Encrypt the password
-				$enc_password = md5($this->input->post('password'));
+				$enc_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
 				// Give the first author admin privileges
 				if ($this->Usermodel->get_num_rows() < 1) {
