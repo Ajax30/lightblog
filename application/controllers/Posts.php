@@ -72,10 +72,25 @@ class Posts extends CI_Controller {
 	} 
 
 	public function byauthor($authorid){
+		//load and configure pagination 
+		$this->load->library('pagination');
+		$config['base_url'] = base_url('/posts/byauthor/' . $authorid);
+		$config['query_string_segment'] = 'page';
+		$config['total_rows'] =	$this->Posts_model->posts_by_author_count($authorid);
+		$config['per_page'] = 12;
+		
+		if (!isset($_GET[$config['query_string_segment']]) || $_GET[$config['query_string_segment']] < 1) {
+			$_GET[$config['query_string_segment']] = 1;
+		}
+		
+		$limit = $config['per_page'];
+		$offset = ($this->input->get($config['query_string_segment']) - 1) * $limit;
+		$this->pagination->initialize($config);
+
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories(); 
-		$data['posts'] = $this->Posts_model->get_posts_by_author($authorid); 
+		$data['posts'] = $this->Posts_model->get_posts_by_author($authorid, $limit, $offset); 
 		$data['posts_count'] = $this->Posts_model->posts_by_author_count($authorid); 
 		$data['posts_author'] = $this->Posts_model->posts_author($authorid);
 

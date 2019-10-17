@@ -38,6 +38,6 @@
 		</div>
 	<?php endif; ?>
 	
-	<?php //$this->load->view("partials/pagination");?>
+	<?php $this->load->view("partials/pagination");?>
 
 </div>

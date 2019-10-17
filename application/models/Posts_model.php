@@ -61,9 +61,10 @@ class Posts_model extends CI_Model {
 			->count_all_results('posts');
 	}
 
-	public function get_posts_by_author($authorid) {
+	public function get_posts_by_author($authorid, $limit, $offset) {
 		$this->db->select('posts.*,categories.name as post_category');
     $this->db->order_by('posts.id', 'DESC');
+    $this->db->limit($limit, $offset);
     $this->db->join('categories', 'posts.cat_id = categories.id', 'inner');
 		$query = $this->db->get_where('posts', array('posts.author_id' => $authorid));
 		return $query->result();
