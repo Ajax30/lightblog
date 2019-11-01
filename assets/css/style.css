@@ -75,7 +75,7 @@ body {
 }
 
 #flash_messages .alert {
-  margin: 0 15px;
+  margin: 0;
 }
 
 .error-group .error-message {
