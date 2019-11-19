@@ -55,7 +55,7 @@ $(document).ready(function() {
     if(confirm('Delete this post?')) {
       if ($(this).hasClass("ajax-btn")) {
         $.ajax({
-          url: baseUrl + 'dashboard/posts/delete/' + slug,
+          url: baseUrl + 'posts/delete/' + slug,
           method: 'GET',
           dataType: 'html',
           success: function(deleteMsg){
