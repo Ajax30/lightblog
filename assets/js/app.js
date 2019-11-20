@@ -47,7 +47,7 @@ $(document).ready(function() {
   //Delete Posts
   $('.delete-post').on('click', function(evt){
     evt.preventDefault();
-    var baseUrl = window.location.protocol + '//' + window.location.hostname + '/' + window.location.pathname.split('/')[1] + '/';
+    //var baseUrl = window.location.origin;
     var deleteUrl = $(this).attr('href');
     var slug = $(this).data('slug');
     var postsCount = Number($("#posts_count").text());
@@ -55,7 +55,7 @@ $(document).ready(function() {
     if(confirm('Delete this post?')) {
       if ($(this).hasClass("ajax-btn")) {
         $.ajax({
-          url: baseUrl + 'posts/delete/' + slug,
+          url: baseUrl + '/dashboard/posts/delete/' + slug,
           method: 'GET',
           dataType: 'html',
           success: function(deleteMsg){
@@ -102,14 +102,14 @@ $(document).ready(function() {
   //Delete Comments
   $('.delete-comment').on('click', function(evt){
     evt.preventDefault();
-    var baseUrl = window.location.protocol + '//' + window.location.hostname + '/' + window.location.pathname.split('/')[1] + '/';
+    //var baseUrl = window.location.origin;
     var deleteUrl = $(this).attr('href');
     var id = $(this).data('id');
     var commentsCount = Number($("#comments_count").text());
 
     if(confirm('Delete this comment?')) {
       $.ajax({
-        url: baseUrl + 'dashboard/comments/delete/' + id,
+        url: baseUrl + '/dashboard/comments/delete/' + id,
         method: 'GET',
         dataType: 'html',
         success: function(deleteMsg){
