@@ -76,7 +76,7 @@ class Posts extends CI_Controller {
 			$this->load->view('partials/footer');
 		} else {
 			// Create slug (from title)
-			$slug = url_title($this->input->post('title'), 'dash', TRUE);
+			$slug = url_title(convert_accented_characters($this->input->post('title')), 'dash', TRUE);
 			$slugcount = $this->Posts_model->slug_count($slug, null);
 			if ($slugcount > 0) {
 				$slug = $slug."-".$slugcount;
@@ -135,7 +135,7 @@ class Posts extends CI_Controller {
 
 		// Update slug (from title)
 		if ($this->form_validation->run()) {
-			$slug = url_title($this->input->post('title'), 'dash', TRUE);
+			$slug = url_title(convert_accented_characters($this->input->post('title')), 'dash', TRUE);
 			$slugcount = $this->Posts_model->slug_count($slug, $id);
 			if ($slugcount > 0) {
 				$slug = $slug."-".$slugcount;
