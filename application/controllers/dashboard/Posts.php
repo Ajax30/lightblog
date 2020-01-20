@@ -146,7 +146,7 @@ class Posts extends CI_Controller {
 		
     // Upload image
 		$config['upload_path'] = './assets/img/posts';
-		$config['allowed_types'] = 'jpg|png';
+		$config['allowed_types'] = 'jpg|jpeg|png';
 		$config['max_size'] = '2048';
 
 		$this->load->library('upload', $config);
