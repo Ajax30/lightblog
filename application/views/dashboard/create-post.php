@@ -37,6 +37,13 @@
               <label for="postimage">Upload an image</label>
               <div class="form-group">
                 <input type="file" name="userfile" id="postimage" size="20">
+                 <div class="error-messages">
+                  <?php if(isset($upload_errors)){
+                    foreach ($upload_errors as $upload_error) {
+                      echo $upload_error;
+                    }
+                  }?>
+                </div>
               </div>
 
               <div class="form-group">

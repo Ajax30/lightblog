@@ -90,16 +90,35 @@ class Posts extends CI_Controller {
 			$this->load->library('upload', $config);
 
 			if(!$this->upload->do_upload()){
+
 				$errors = array('error' => $this->upload->display_errors());
-				$post_image = 'default.jpg';
+
+				// Dysplay upload validation errors 
+				// only if a file is uploaded and there are errors
+				if (empty($_FILES['userfile']['name'])) {
+					$errors = [];
+				}
+
+				if (empty($errors)) {
+					$post_image = 'default.jpg';
+				} else {
+					$data['upload_errors'] = $errors;
+				}
+				
 			} else {
 				$data = array('upload_data' => $this->upload->data());
 				$post_image = $_FILES['userfile']['name'];
 			}
 
-			$this->Posts_model->create_post($post_image, $slug);
-			$this->session->set_flashdata('post_created', 'Your post has been created');
-			redirect('/');
+			if (empty($errors)) {
+				$this->Posts_model->create_post($post_image, $slug);
+				$this->session->set_flashdata('post_created', 'Your post has been created');
+				redirect('/');
+			} else {
+				$this->load->view('partials/header', $data);
+				$this->load->view('dashboard/create-post');
+				$this->load->view('partials/footer');
+			}
 		}
 	}
 
@@ -154,7 +173,18 @@ class Posts extends CI_Controller {
 		if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != null) {
 		    // Use name field in do_upload method
 			if (!$this->upload->do_upload('userfile')) {
+
 				$errors = array('error' => $this->upload->display_errors());
+
+				// Display upload validation errors 
+				// only if a file is uploaded and there are errors
+				if (empty($_FILES['userfile']['name'])) {
+					$errors = [];
+				}
+
+				if (!empty($errors)) {
+					$data['upload_errors'] = $errors;
+				}
 
 			} else {
 				$data = $this->upload->data();
@@ -165,13 +195,14 @@ class Posts extends CI_Controller {
 			$post_image = $this->input->post('postimage');
 		}
 
-		if ($this->form_validation->run()) {
+		if ($this->form_validation->run() && empty($errors)) {
 			$this->Posts_model->update_post($id, $post_image, $slug);
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 			redirect('/' . $slug);
 		} else {
 			$this->form_validation->run();
 			$this->session->set_flashdata('errors', validation_errors());
+			$this->session->set_flashdata('upload_errors', $errors);
 			redirect('/dashboard/posts/edit/' . $slug);
 		}
 	}

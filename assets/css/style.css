@@ -421,6 +421,7 @@ form a {
 
 .form-group .error-message,
 .input-group .error-message,
+.error-messages p,
 .form-group label.error {
   margin: 0;
   position: absolute;

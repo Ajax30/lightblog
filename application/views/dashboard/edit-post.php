@@ -51,7 +51,19 @@
               <input type="hidden" name="postimage" id="postimage" value="<?php echo $post->post_image; ?>">
               <label for="postimage">Upload an image</label>
               <div class="form-group">
-                <input type="file" name="userfile" id="postimage" size="20">
+                <input type="file" name="userfile" id="postimage" size="20"> 
+                <?php
+                if ($upload_errors = $this->session->flashdata('upload_errors')) {
+                  if ($this->session->flashdata('upload_errors')) { ?>              
+                    <div class="error-messages">
+                      <?php if(isset($upload_errors)){
+                        foreach ($upload_errors as $upload_error) {
+                          echo $upload_error;
+                        }
+                      }?>
+                    </div>
+                  <?php }
+                } ?>
               </div>
 
               <div class="form-group">
