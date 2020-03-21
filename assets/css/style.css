@@ -420,7 +420,7 @@ main .img-thumbnail.float-left {
   top: 1px;
 }
 
-form a {
+form a:not(.btn) {
   color: #218838 !important;
 }
 
