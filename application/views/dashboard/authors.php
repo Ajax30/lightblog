@@ -12,10 +12,10 @@
                     <th class="w-5">ID</th>
                     <th class="w-20">Full name</th>
                     <th class="w-25">Email</th>
-                    <th class="w-20">Created</th>
+                    <th class="w-10">Created</th>
                     <th class="w-10">Status</th>
                     <th class="w-10 text-center">Admin</th>
-                    <th class="w-10">Actions</th>
+                    <th class="w-20">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -24,7 +24,7 @@
                     <td class="w-5"><?php echo $author->id ?></td>
                     <td class="w-20"><?php echo $author->first_name . " " . $author->last_name; ?></td>
                     <td class="w-25"><?php echo $author->email; ?></td>
-                    <td class="w-20"><?php echo nice_date($author->register_date, 'M d, Y') . ' at '.  nice_date($author->register_date, 'H:i:s'); ?></td>
+                    <td class="w-10"><?php echo nice_date($author->register_date, 'M d, Y'); ?></td>
                     <td class="w-10 status-column">
                       <?php if ($author->active == 1) {
                         echo '<span class="text-success">' . 'Enabled' . '</span>';
@@ -34,18 +34,19 @@
                         ?>
                     </td>
                     <td class="w-10 text-center"><?php echo $author->is_admin; ?></td>
-                    <td class="text-center activate-column d-inline-block w-10">
+                    <td class="text-center activate-column d-inline-block w-20">
                       <?php if ($author->is_admin == 0): ?>
                       <div class="btn-group">                 
                         <?php if ($author->active == 1): ?>
-                        <a href="<?php echo base_url('dashboard/users/deactivate/'. $author->id); ?>" title="Deactivate" class="btn btn-sm btn-success state-change" data-role="deactivate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ban-circle"></span> Disable</a>
+                        <a href="<?php echo base_url('dashboard/users/deactivate/'. $author->id); ?>" title="Deactivate" class="btn btn-sm btn-success state-change" data-role="deactivate" data-id="<?php echo $author->id ?>">Disable</a>
                         <?php else: ?>
-                        <a href="<?php echo base_url('dashboard/users/activate/' . $author->id); ?>" title="Activate" class="btn btn-sm btn-success state-change" data-role="activate" data-id="<?php echo $author->id ?>"><span class="glyphicon glyphicon-ok"></span> Enable</a>
+                        <a href="<?php echo base_url('dashboard/users/activate/' . $author->id); ?>" title="Activate" class="btn btn-sm btn-success state-change" data-role="activate" data-id="<?php echo $author->id ?>">Enable</a>
                         <?php endif; ?>
-                        <a href="<?php echo base_url('dashboard/users/delete/' . $author->id); ?>" title="Delete" class="delete-user btn btn-sm btn-success"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                        <a href="<?php echo base_url('dashboard/users/edit/' . $author->id); ?>" title="Edit" class="btn btn-sm btn-success">Edit</a>
+                        <a href="<?php echo base_url('dashboard/users/delete/' . $author->id); ?>" title="Delete" class="delete-user btn btn-sm btn-success">Delete</a>
                       </div>
                       <?php else: ?>
-                      <a href="#" class="btn btn-sm btn-block btn-success disabled">No actions</a>
+                      <a href="<?php echo base_url('dashboard/users/edit/' . $author->id); ?>" title="Edit" class="btn btn-sm btn-success">Edit</a>
                       <?php endif; ?>
                     </td>
                   </tr>

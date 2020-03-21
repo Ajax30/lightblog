@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group <?php if(form_error('cpassword')) echo 'has-error';?>">
-              <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder=" Confirm password">
+              <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Confirm password">
               <?php if(form_error('cpassword')) echo form_error('cpassword'); ?> 
             </div>
 

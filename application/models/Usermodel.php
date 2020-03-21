@@ -18,6 +18,19 @@ class Usermodel extends CI_Model {
 		return $query->result();
 	}
 
+	public function editAuthor($id) {
+		$query = $this->db
+            ->select('id, first_name, last_name, email, password')
+            ->from('authors')
+            ->where('id', $id)
+            ->get();
+            
+		if ($query->num_rows() > 0) {
+			$data = $query->row();
+			return $data;
+		}
+	}
+
 	public function deleteAuthor($id) {
 		return $this->db->delete('authors', array('id' => $id));
 	}

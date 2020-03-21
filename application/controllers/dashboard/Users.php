@@ -30,6 +30,23 @@ class Users extends CI_Controller {
 		
 	}
 
+	public function edit($id) {
+		// Only logged in users can edit user profiles
+		if (!$this->session->userdata('is_logged_in')) {
+			redirect('login');
+		}
+
+		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
+		$data['categories'] = $this->Categories_model->get_categories();
+		$data['author'] = $this->Usermodel->editAuthor($id);
+
+		$this->load->view('partials/header', $data);
+		$this->load->view('dashboard/edit-author');
+		$this->load->view('partials/footer');
+		
+	}
+
 	public function delete($id) {
 		$this->load->model('Usermodel');
 		if ($this->Usermodel->deleteAuthor($id)) {
