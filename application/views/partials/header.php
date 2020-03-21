@@ -71,7 +71,10 @@
 						<?php if($this->session->userdata('is_logged_in')) : ?>
 							<li class="nav-item dropdown my-1">
 								<a class="nav-link dropdown-toggle py-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="avatar-container mr-1"><img src="<?php echo base_url('assets/img/authors/') . $this->session->userdata('user_avatar'); ?>" class="avatar rounded" /></span> <span class="py-2">Welcome, <?php echo $this->session->userdata('user_first_name'); ?></span></a>
+									<span class="avatar-container mr-1">
+										<img src="<?php echo base_url('assets/img/authors/') . $this->session->userdata('user_avatar'); ?>" class="avatar" /></span> <span class="py-2">Welcome, <?php echo $this->session->userdata('user_first_name'); ?>											
+									</span>
+								</a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>

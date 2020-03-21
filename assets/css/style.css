@@ -190,6 +190,8 @@ table a {
   border: 1px solid rgba(255, 255, 255, .9);
   height: 32px;
   width: auto;
+  border-radius: 2px;
+  overflow: hidden;
 }
 
 /* Content */
