@@ -41,12 +41,43 @@ class Users extends CI_Controller {
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['author'] = $this->Usermodel->editAuthor($id);
 
-		/*echo '<pre>'; print_r($data['author']); echo '</pre>';*/
-
 		$this->load->view('partials/header', $data);
 		$this->load->view('dashboard/edit-author');
 		$this->load->view('partials/footer');
 		
+	}
+
+	public function update() {
+		// Only logged in users can edit user profiles
+		if (!$this->session->userdata('is_logged_in')) {
+			redirect('login');
+		}
+
+		$id = $this->input->post('id');
+
+		$data = $this->Static_model->get_static_data();
+		$data['pages'] = $this->Pages_model->get_pages();
+		$data['categories'] = $this->Categories_model->get_categories();
+		$data['author'] = $this->Usermodel->editAuthor($id);
+
+		$this->form_validation->set_rules('first_name', 'First name', 'required');
+		$this->form_validation->set_rules('last_name', 'Last name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+
+		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
+
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('partials/header', $data);
+			$this->load->view('dashboard/edit-author');
+			$this->load->view('partials/footer');
+
+		} else
+		{
+			$this->Usermodel->update_user($id);
+			$this->session->set_flashdata('user_updated', 'Your account details have been updated');
+			redirect(base_url('/dashboard/manage-authors'));
+		}
 	}
 
 	public function delete($id) {

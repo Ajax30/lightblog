@@ -20,7 +20,7 @@ class Usermodel extends CI_Model {
 
 	public function editAuthor($id) {
 		$query = $this->db
-            ->select('id, first_name, last_name, email, bio, avatar, password')
+            ->select('id, first_name, last_name, email, bio, avatar')
             ->from('authors')
             ->where('id', $id)
             ->get();
@@ -67,6 +67,18 @@ class Usermodel extends CI_Model {
 			'is_admin' => $is_admin
 		];
 		return $this->db->insert('authors', $data);
+	}
+
+	public function update_user($id) {
+		$data = [
+			'first_name' => $this->input->post('first_name'),
+			'last_name' => $this->input->post('last_name'),
+			'email' => $this->input->post('email'),
+			'bio' => $this->input->post('bio')
+		];
+
+		$this->db->where('id', $id);
+		return $this->db->update('authors', $data);
 	}
 
 	public function user_login($email, $password) {
