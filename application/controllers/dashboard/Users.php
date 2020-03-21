@@ -41,6 +41,8 @@ class Users extends CI_Controller {
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['author'] = $this->Usermodel->editAuthor($id);
 
+		/*echo '<pre>'; print_r($data['author']); echo '</pre>';*/
+
 		$this->load->view('partials/header', $data);
 		$this->load->view('dashboard/edit-author');
 		$this->load->view('partials/footer');

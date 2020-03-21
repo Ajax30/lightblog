@@ -20,7 +20,7 @@ class Usermodel extends CI_Model {
 
 	public function editAuthor($id) {
 		$query = $this->db
-            ->select('id, first_name, last_name, email, password')
+            ->select('id, first_name, last_name, email, bio, avatar, password')
             ->from('authors')
             ->where('id', $id)
             ->get();

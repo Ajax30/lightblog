@@ -2,7 +2,7 @@
   <main class="wide-content">
     <div class="col-sm-10 col-md-8 col-lg-6 mx-auto my-4 px-1">
         <div class="card bg-light">
-          <div class="card-header bg-light">Edit your information</div>
+          <div class="card-header bg-light">Edit your account information</div>
           <div class="card-body">
             <?php echo form_open(base_url()); ?>
             <div class="form-group <?php if(form_error('first_name')) echo 'has-error';?>">
@@ -20,6 +20,13 @@
               <?php if(form_error('email')) echo form_error('email'); ?> 
             </div>
 
+            <div class="form-group <?php if(form_error('bio')) echo 'has-error';?>">
+              <textarea name="bio" id="bio" cols="30" rows="5" class="form-control" placeholder="Add a short bio">
+                <?php echo $author->bio; ?>
+              </textarea>
+              <?php if(form_error('bio')) echo form_error('bio'); ?> 
+            </div>
+
             <div class="form-group <?php if(form_error('opassword')) echo 'has-error';?>">
               <input type="password" name="opassword" id="opassword" class="form-control" placeholder="Old Password">
               <?php if(form_error('opassword')) echo form_error('opassword'); ?> 
@@ -29,7 +36,6 @@
               <input type="password" name="npassword" id="npassword" class="form-control" placeholder="New Password">
               <?php if(form_error('npassword')) echo form_error('npassword'); ?> 
             </div>
-
 
             <div class="form-group <?php if(form_error('cpassword')) echo 'has-error';?>">
               <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Confirm password">

@@ -180,6 +180,18 @@ table a {
   border-left: none;
 } 
 
+.avatar-container {
+  display: inline-block;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.avatar {
+  border: 1px solid rgba(255, 255, 255, .9);
+  height: 32px;
+  width: auto;
+}
+
 /* Content */
 .container {
   max-width: 1200px;
