@@ -29,6 +29,15 @@ class Migration_Create_Authors extends CI_Migration
         'constraint' => 100,
       ),
 
+      'bio'=>array(
+        'type'=>'TEXT',
+      ),
+
+      'avatar'=>array(
+        'type'=>'VARCHAR',
+        'constraint' => 255,
+      ),
+
       'password'=>array(
         'type'=>'VARCHAR',
         'constraint' => 255,
