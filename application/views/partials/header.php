@@ -81,6 +81,7 @@
 									<span class="py-2">Welcome, <?php echo $this->session->userdata('user_first_name'); ?></span>
 								</a>
 									<div class="dropdown-menu">
+										<a class="dropdown-item" href="<?php echo base_url('dashboard/users/edit/' . $this->session->userdata('user_id')) ?>">Edit your profile</a>
 										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>
 											<a class="dropdown-item" href="<?php echo base_url('dashboard/manage-authors') ?>">Manage authors</a>
