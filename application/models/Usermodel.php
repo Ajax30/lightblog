@@ -69,12 +69,13 @@ class Usermodel extends CI_Model {
 		return $this->db->insert('authors', $data);
 	}
 
-	public function update_user($id) {
+	public function update_user($avatar, $id) {
 		$data = [
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('last_name'),
 			'email' => $this->input->post('email'),
-			'bio' => $this->input->post('bio')
+			'bio' => $this->input->post('bio'),
+			'avatar' => $avatar
 		];
 
 		$this->db->where('id', $id);

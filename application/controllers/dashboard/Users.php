@@ -48,7 +48,7 @@ class Users extends CI_Controller {
 	}
 
 	public function update() {
-		// Only logged in users can edit user profiles
+		// Only logged in users can update user profiles
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
 		}
@@ -66,15 +66,36 @@ class Users extends CI_Controller {
 
 		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
-		if($this->form_validation->run() === FALSE)
+		// Upload avatar
+		$config['upload_path'] = './assets/img/authors';
+		$config['allowed_types'] = 'jpg|jpeg|png';
+		$config['max_size'] = '1024';
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('userfile')) {
+			$uerrors = array('uerrors' => $this->upload->display_errors());
+
+			if (empty($_FILES['userfile']['name'])) {
+				$uerrors = [];
+			}
+
+			$data['uerrors'] = $uerrors;
+
+		} else {
+			$data = array('upload_data' => $this->upload->data());
+			$avatar = $_FILES['userfile']['name'];
+		}
+
+		if(!$this->form_validation->run() || !empty($uerrors))
 		{
+
 			$this->load->view('partials/header', $data);
 			$this->load->view('dashboard/edit-author');
 			$this->load->view('partials/footer');
-
 		} else
 		{
-			$this->Usermodel->update_user($id);
+			$this->Usermodel->update_user($avatar, $id);
 			$this->session->set_flashdata('user_updated', 'Your account details have been updated');
 			redirect(base_url('/dashboard/manage-authors'));
 		}

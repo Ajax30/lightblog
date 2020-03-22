@@ -4,7 +4,7 @@
         <div class="card bg-light">
           <div class="card-header bg-light">Edit your account information</div>
           <div class="card-body">
-            <?php echo form_open(base_url('dashboard/users/update')); ?>
+            <?php echo form_open_multipart(base_url('dashboard/users/update')); ?>
 
             <input type="hidden" name="id" id="uid" value="<?php echo $author->id; ?>">
 
@@ -27,6 +27,17 @@
               <textarea name="bio" id="bio" cols="30" rows="5" class="form-control" placeholder="Add a short bio"><?php echo set_value('bio', $author->bio); ?></textarea>
               <?php if(form_error('bio')) echo form_error('bio'); ?> 
             </div>
+
+            <input type="hidden" name="avatar" id="avatar" value="<?php echo $author->avatar; ?>">
+              <label for="avatar">Upload avatar</label>
+              <div class="form-group">
+                <input type="file" name="userfile" id="uavatar" size="20">
+                  <?php if(isset($uerrors)){
+                      foreach ($uerrors as $uerror) {
+                        echo '<div class="alert alert-danger alert-dismissible small mt-3"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $uerror . '</div>';
+                      }
+                    }?>
+              </div>
 
             <div class="form-group">
               <div class="w-50 pull-left pr-1">

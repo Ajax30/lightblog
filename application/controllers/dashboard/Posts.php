@@ -188,7 +188,7 @@ class Posts extends CI_Controller {
 
 			} else {
 				$data = $this->upload->data();
-				$post_image = $data[ 'raw_name'].$data[ 'file_ext'];
+				$post_image = $data['raw_name'].$data[ 'file_ext'];
 			}
 		}
 		else {
