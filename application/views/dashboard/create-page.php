@@ -18,8 +18,13 @@
                   </textarea>
                   <?php if(form_error('content')) echo form_error('content'); ?> 
                 </div>
-                <div class="form-group">
-                  <input type="submit" value="Save" class="btn btn-block btn-md btn-success">
+                <div class="form-group d-flex">
+                  <div class="w-50 pr-1">
+                    <input type="submit" value="Save" class="btn btn-block btn-md btn-success">
+                  </div>
+                  <div class="w-50 pl-1">
+                    <a href="<?php echo base_url('dashboard/pages'); ?>" class="btn btn-block btn-md btn-success">Cancel</a>
+                  </div>
                 </div>
               <?php echo form_close(); ?>
             </div>
