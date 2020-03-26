@@ -187,11 +187,51 @@ table a {
 }
 
 .avatar {
-  border: 1px solid rgba(255, 255, 255, .9);
+  border: 2px solid rgba(255, 255, 255, .9);
   height: 32px;
   width: auto;
-  border-radius: 2px;
+  border-radius: 50%;
   overflow: hidden;
+}
+
+.preview {
+  position: relative;
+}
+
+.avatar-preview {
+  width: 100%;
+  max-width: 90px;
+  float: right;
+  margin-top: -25px;
+}
+
+.preview > div .trash {
+  color: #efefef !important;
+  text-shadow: 1px 1px rgba(1, 1, 1, .2);
+  transition: all .5s ease;
+  position: absolute;
+  right: 0;
+  top: -25px;
+  bottom: 0;
+  width: 100%;
+  max-width: 90px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .2);
+  visibility: visible;
+  opacity: 0;
+  font-size: 150%;
+}
+
+.preview > div:hover .trash {
+  display: block;
+  opacity: 1;
+}
+
+.trash > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Content */

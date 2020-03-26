@@ -30,13 +30,27 @@
 
             <input type="hidden" name="avatar" id="avatar" value="<?php echo $author->avatar; ?>">
               <label for="avatar">Upload avatar</label>
-              <div class="form-group">
-                <input type="file" name="userfile" id="uavatar" size="20">
+              <div class="form-group d-flex mb-3">
+                <div class="w-75 pr-1">
+                  <input type="file" name="userfile" id="uavatar" size="20">
                   <?php if(isset($uerrors)){
                       foreach ($uerrors as $uerror) {
-                        echo '<div class="alert alert-danger alert-dismissible small mt-3"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $uerror . '</div>';
+                        echo '<div class="alert alert-danger alert-dismissible small mt-3 mb-0"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $uerror . '</div>';
                       }
                     }?>
+                </div>
+                  <div class="w-25 pl-1 preview">
+                    <div class="pull-right">
+                      <?php if ($this->session->userdata('user_avatar')): ?>
+                        <img src="<?php echo base_url('assets/img/authors/') . $this->session->userdata('user_avatar'); ?>" class="rounded-circle img-thumbnail avatar-preview" />
+                      <?php else: ?>  
+                        <img src="<?php echo base_url('assets/img/authors/') . 'default-avatar.png' ?>" class="rounded-circle img-thumbnail avatar-preview" />
+                      <?php endif ?>
+                      <a class="trash" href="#">
+                        <span class="button"><i class="fa fa-trash"></i></span>
+                      </a>
+                    </div>
+                  </div>
               </div>
 
             <div class="form-group d-flex">
