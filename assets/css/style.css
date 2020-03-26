@@ -206,8 +206,6 @@ table a {
 }
 
 .preview > div .trash {
-  color: #efefef !important;
-  text-shadow: 1px 1px rgba(1, 1, 1, .2);
   transition: all .5s ease;
   position: absolute;
   right: 0;
@@ -216,18 +214,19 @@ table a {
   width: 100%;
   max-width: 90px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .2);
+  background: rgba(255, 255, 255, .33);
   visibility: visible;
   opacity: 0;
-  font-size: 150%;
+  font-size: 133%;
 }
 
 .preview > div:hover .trash {
-  display: block;
   opacity: 1;
 }
 
-.trash > span {
+.trash > a {
+  line-height: 1;
+  text-shadow: 1px 1px rgba(1, 1, 1, .2);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -460,7 +459,7 @@ main .img-thumbnail.float-left {
   top: 1px;
 }
 
-form a:not(.btn) {
+form a:not(.btn, .icon), {
   color: #218838 !important;
 }
 

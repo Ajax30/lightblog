@@ -46,8 +46,8 @@
                       <?php else: ?>  
                         <img src="<?php echo base_url('assets/img/authors/') . 'default-avatar.png' ?>" class="rounded-circle img-thumbnail avatar-preview" />
                       <?php endif ?>
-                      <a class="trash" href="#">
-                        <span class="button"><i class="fa fa-trash"></i></span>
+                      <span class="trash">
+                        <a href="#" class="icon text-secondary"><i class="fa fa-trash"></i></a>
                       </a>
                     </div>
                   </div>
