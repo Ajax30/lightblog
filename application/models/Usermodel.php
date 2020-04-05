@@ -35,6 +35,11 @@ class Usermodel extends CI_Model {
 		return $this->db->delete('authors', array('id' => $id));
 	}
 
+	public function deleteAvatar($id) {
+		$this->db->update('authors', array('avatar'=>''), ['id'=>$id]);
+	}
+
+
 	public function activateAuthor($id) {
 		$author = null;
 		$updateQuery = $this->db->where(['id' => $id, 'is_admin' => 0])->update('authors', array('active' => 1));

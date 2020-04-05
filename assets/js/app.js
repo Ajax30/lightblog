@@ -102,7 +102,6 @@ $(document).ready(function() {
   //Delete Comments
   $('.delete-comment').on('click', function(evt){
     evt.preventDefault();
-    //var baseUrl = window.location.origin;
     var deleteUrl = $(this).attr('href');
     var id = $(this).data('id');
     var commentsCount = Number($("#comments_count").text());
@@ -128,6 +127,28 @@ $(document).ready(function() {
     $('html, body').animate({
       scrollTop: $("#comments_container").offset().top
     }, 1000);
+  });
+
+   //Delete Avatar
+  $('#delete-avatar').on('click', function(evt){
+    evt.preventDefault();
+
+    var $avatar = $(this).closest('.preview').find('img');
+    var defaultAvatar = baseUrl + 'assets/img/authors/default-avatar.png';
+
+    //Get user's ID
+    var id = $(this).data('uid');
+
+    if(confirm('Delete the avatar?')) {
+      $.ajax({
+        url: baseUrl + 'dashboard/users/deleteavatar/' + id,
+        method: 'GET',
+        dataType: 'html',
+        success: function(deleteMsg){
+          $avatar.attr('src', defaultAvatar);
+        }
+      });
+    }
   });
 
   // Make the latest posts clickable

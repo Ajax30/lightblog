@@ -123,4 +123,10 @@ class Users extends CI_Controller {
 		redirect($this->agent->referrer());
 	}
 
+	public function deleteavatar($id) {
+		$this->load->model('Usermodel');
+		$this->Usermodel->deleteAvatar($id);
+		redirect($this->agent->referrer());
+	}
+
 }
