@@ -41,14 +41,15 @@
                 </div>
                   <div class="w-25 pl-1 preview">
                     <div class="pull-right">
-                      <?php if (isset($author->avatar)): ?>
+                      <?php if (isset($author->avatar) && $author->avatar !== ''): ?>
                         <img src="<?php echo base_url('assets/img/authors/') . $author->avatar; ?>" class="rounded-circle img-thumbnail avatar-preview" />
+                        <span class="trash">
+                          <a href="#" class="icon text-secondary" id="delete-avatar" data-uid="<?php echo $author->id; ?>"><i class="fa fa-trash"></i>
+                          </a>
+                        </span>
                       <?php else: ?>  
                         <img src="<?php echo base_url('assets/img/authors/') . 'default-avatar.png' ?>" class="rounded-circle img-thumbnail avatar-preview" />
                       <?php endif ?>
-                      <span class="trash">
-                        <a href="#" class="icon text-secondary" id="delete-avatar" data-uid="<?php echo $author->id; ?>"><i class="fa fa-trash"></i></a>
-                      </a>
                     </div>
                   </div>
               </div>

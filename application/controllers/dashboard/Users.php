@@ -76,8 +76,12 @@ class Users extends CI_Controller {
 		if (!$this->upload->do_upload('userfile')) {
 			$uerrors = array('uerrors' => $this->upload->display_errors());
 
+			// if NO file is uploaded,
+			// force upload validation AND
+			// use the existing avatar (if any)
 			if (empty($_FILES['userfile']['name'])) {
 				$uerrors = [];
+				$avatar = $this->input->post('avatar');
 			}
 
 			$data['uerrors'] = $uerrors;
