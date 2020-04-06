@@ -134,6 +134,7 @@ $(document).ready(function() {
     evt.preventDefault();
 
     var $avatar = $(this).closest('.preview').find('img');
+    var $hidden_avatar = $('input[name="avatar"]');
     var defaultAvatar = baseUrl + 'assets/img/authors/default-avatar.png';
 
     //Get user's ID
@@ -146,6 +147,7 @@ $(document).ready(function() {
         dataType: 'html',
         success: function(deleteMsg){
           $avatar.attr('src', defaultAvatar);
+          $hidden_avatar.val('')
         }
       });
     }
