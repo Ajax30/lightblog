@@ -77,10 +77,10 @@ class Users extends CI_Controller {
 			$uerrors = array('uerrors' => $this->upload->display_errors());
 
 			// if NO file is uploaded,
-			// force upload validation AND
-			// use the existing avatar (if any)
 			if (empty($_FILES['userfile']['name'])) {
+				// force upload validation and
 				$uerrors = [];
+				// use the existing avatar (if any)
 				$avatar = $this->input->post('avatar');
 			}
 
@@ -89,6 +89,7 @@ class Users extends CI_Controller {
 		} else {
 			$data = array('upload_data' => $this->upload->data());
 			$avatar = $_FILES['userfile']['name'];
+			$this->session->set_userdata('user_avatar', $avatar);
 		}
 
 		if(!$this->form_validation->run() || !empty($uerrors))

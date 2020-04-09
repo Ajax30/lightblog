@@ -47,7 +47,6 @@ $(document).ready(function() {
   //Delete Posts
   $('.delete-post').on('click', function(evt){
     evt.preventDefault();
-    //var baseUrl = window.location.origin;
     var deleteUrl = $(this).attr('href');
     var slug = $(this).data('slug');
     var postsCount = Number($("#posts_count").text());
