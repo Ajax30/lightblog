@@ -131,6 +131,7 @@ class Users extends CI_Controller {
 	public function deleteavatar($id) {
 		$this->load->model('Usermodel');
 		$this->Usermodel->deleteAvatar($id);
+		$this->session->set_userdata('user_avatar', $avatar);
 		redirect($this->agent->referrer());
 	}
 
