@@ -133,6 +133,7 @@ $(document).ready(function() {
     evt.preventDefault();
 
     var $avatar = $(this).closest('.preview').find('img');
+    var $topAvatar = $('#top_avatar').find('img');
     var $hidden_avatar = $('input[name="avatar"]');
     var $trashIcon = $(this).closest('.preview').find('.trash');
     var defaultAvatar = baseUrl + 'assets/img/authors/default-avatar.png';
@@ -147,6 +148,7 @@ $(document).ready(function() {
         dataType: 'html',
         success: function(deleteMsg){
           $avatar.attr('src', defaultAvatar);
+          $topAvatar.attr('src', defaultAvatar);
           $hidden_avatar.val('');
           $trashIcon.remove();
         }

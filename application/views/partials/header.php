@@ -71,7 +71,7 @@
 						<?php if($this->session->userdata('is_logged_in')) : ?>
 							<li class="nav-item dropdown my-1">
 								<a class="nav-link dropdown-toggle py-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="avatar-container mr-1">
+									<span id="top_avatar" class="avatar-container mr-1">
 										<?php if ($this->session->userdata('user_avatar')): ?>
 											<img src="<?php echo base_url('assets/img/authors/') . $this->session->userdata('user_avatar'); ?>" class="avatar" />
 										<?php else: ?>	
