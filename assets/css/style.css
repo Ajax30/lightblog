@@ -203,6 +203,7 @@ table a {
   max-width: 90px;
   float: right;
   margin-top: -25px;
+  background: #f7f7f7;
 }
 
 .preview > div .trash {
