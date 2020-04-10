@@ -98,6 +98,34 @@ $(document).ready(function() {
     }
   });
 
+     //Delete Avatar
+  $('#delete-avatar').on('click', function(evt){
+    evt.preventDefault();
+
+    var $avatar = $(this).closest('.preview').find('img');
+    var $topAvatar = $('#top_avatar').find('img');
+    var $hidden_avatar = $('input[name="avatar"]');
+    var $trashIcon = $(this).closest('.preview').find('.trash');
+    var defaultAvatar = baseUrl + 'assets/img/authors/default-avatar.png';
+
+    //Get user's ID
+    var id = $(this).data('uid');
+
+    if(confirm('Delete the avatar?')) {
+      $.ajax({
+        url: baseUrl + 'dashboard/users/deleteavatar/' + id,
+        method: 'GET',
+        dataType: 'html',
+        success: function(deleteMsg){
+          $avatar.attr('src', defaultAvatar);
+          $topAvatar.attr('src', defaultAvatar);
+          $hidden_avatar.val('');
+          $trashIcon.remove();
+        }
+      });
+    }
+  });
+
   //Delete Comments
   $('.delete-comment').on('click', function(evt){
     evt.preventDefault();
@@ -126,34 +154,6 @@ $(document).ready(function() {
     $('html, body').animate({
       scrollTop: $("#comments_container").offset().top
     }, 1000);
-  });
-
-   //Delete Avatar
-  $('#delete-avatar').on('click', function(evt){
-    evt.preventDefault();
-
-    var $avatar = $(this).closest('.preview').find('img');
-    var $topAvatar = $('#top_avatar').find('img');
-    var $hidden_avatar = $('input[name="avatar"]');
-    var $trashIcon = $(this).closest('.preview').find('.trash');
-    var defaultAvatar = baseUrl + 'assets/img/authors/default-avatar.png';
-
-    //Get user's ID
-    var id = $(this).data('uid');
-
-    if(confirm('Delete the avatar?')) {
-      $.ajax({
-        url: baseUrl + 'dashboard/users/deleteavatar/' + id,
-        method: 'GET',
-        dataType: 'html',
-        success: function(deleteMsg){
-          $avatar.attr('src', defaultAvatar);
-          $topAvatar.attr('src', defaultAvatar);
-          $hidden_avatar.val('');
-          $trashIcon.remove();
-        }
-      });
-    }
   });
 
   // Make the latest posts clickable
