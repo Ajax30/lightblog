@@ -82,17 +82,18 @@ $(document).ready(function() {
   });
 
    //Delete Avatar
-  $('#deletePostImage').on('click', function(evt){
+  $('#postImage').on('click', function(evt){
     evt.preventDefault();
 
-    var $postImage = $(this).closest('.card').find('img');
+    var $this = $(this);
+    var $postImage = $this.closest('.card').find('img');
     var $hiddenPostImage = $('input[name="postimage"]');
     var defaultPostImage = baseUrl + 'assets/img/posts/default.jpg';
 
     //Get post ID
     var id = $(this).data('pid');
 
-    if(confirm("Delete the post's fearured image?")) {
+    if(confirm("Delete the post's featured image?")) {
       $.ajax({
         url: baseUrl + 'dashboard/posts/deleteimage/' + id,
         method: 'GET',
@@ -100,6 +101,7 @@ $(document).ready(function() {
         success: function(deleteMsg){
           $postImage.attr('src', defaultPostImage);
           $hiddenPostImage.val(defaultPostImage);
+          $this.text('Add image');
         }
       });
     }
