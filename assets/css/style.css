@@ -215,7 +215,7 @@ table a {
   width: 100%;
   max-width: 90px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .33);
+  background: rgba(255, 255, 255, .25);
   visibility: visible;
   opacity: 0;
   font-size: 133%;

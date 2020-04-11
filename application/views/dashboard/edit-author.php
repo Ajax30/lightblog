@@ -44,7 +44,7 @@
                       <?php if (isset($author->avatar) && $author->avatar !== ''): ?>
                         <img src="<?php echo base_url('assets/img/authors/') . $author->avatar; ?>" class="rounded-circle img-thumbnail avatar-preview" />
                         <span class="trash">
-                          <a href="#" class="icon text-secondary" id="delete-avatar" data-uid="<?php echo $author->id; ?>"><i class="fa fa-trash"></i>
+                          <a href="#" class="icon text-light" id="delete-avatar" data-uid="<?php echo $author->id; ?>"><i class="fa fa-trash"></i>
                           </a>
                         </span>
                       <?php else: ?>  
