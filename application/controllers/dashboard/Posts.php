@@ -226,4 +226,10 @@ class Posts extends CI_Controller {
 		}
 	}
 
+	public function deleteimage($id) {
+		$this->load->model('Posts_model');
+		$this->Posts_model->delete_post_image($id);
+		redirect($this->agent->referrer());
+	}
+
 }

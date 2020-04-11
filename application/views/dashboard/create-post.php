@@ -2,7 +2,7 @@
   <div class="content-wrapper">
     <main class="dashboard-content wide-content">
       <div class="row">
-        <?php $this->load->view("dashboard/partials/sidebar");?>
+        <?php $this->load->view("dashboard/partials/sidebar-single");?>
         <div class="col-sm-7 col-md-9">
           <div class="card bg-light">
             <h6 class="card-header text-dark">New Post</h6>
@@ -34,7 +34,7 @@
                 </select>
               </div>
 
-              <label for="postimage">Upload an image</label>
+              <label for="postimage" id="imageUploader">Upload an image</label>
               <div class="form-group">
                 <input type="file" name="userfile" id="postimage" size="20">
                  <div class="error-messages">

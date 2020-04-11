@@ -6,6 +6,16 @@ $(document).ready(function() {
     $(this).delay(4000).slideUp(200);
   });
 
+  $('.smooth-scroll').on('click', function(ev){
+    ev.preventDefault();
+    if (this.hash !== "") {
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 250);
+    }
+  });
+
   // Add comments via AJAX
   $("#commentForm").validate({
     rules: {
@@ -71,6 +81,30 @@ $(document).ready(function() {
     }
   });
 
+   //Delete Avatar
+  $('#deletePostImage').on('click', function(evt){
+    evt.preventDefault();
+
+    var $postImage = $(this).closest('.card').find('img');
+    var $hiddenPostImage = $('input[name="postimage"]');
+    var defaultPostImage = baseUrl + 'assets/img/posts/default.jpg';
+
+    //Get post ID
+    var id = $(this).data('pid');
+
+    if(confirm("Delete the post's fearured image?")) {
+      $.ajax({
+        url: baseUrl + 'dashboard/posts/deleteimage/' + id,
+        method: 'GET',
+        dataType: 'html',
+        success: function(deleteMsg){
+          $postImage.attr('src', defaultPostImage);
+          $hiddenPostImage.val(defaultPostImage);
+        }
+      });
+    }
+  });
+
   //Delete Category
   $('.delete-category').on('click', function(evt){
     evt.preventDefault();
@@ -98,7 +132,7 @@ $(document).ready(function() {
     }
   });
 
-     //Delete Avatar
+  //Delete Avatar
   $('#delete-avatar').on('click', function(evt){
     evt.preventDefault();
 

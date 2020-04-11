@@ -2,7 +2,7 @@
   <div class="content-wrapper">
     <main class="dashboard-content wide-content">
       <div class="row">
-        <?php $this->load->view("dashboard/partials/sidebar");?>
+        <?php $this->load->view("dashboard/partials/sidebar-single");?>
         <div class="col-sm-7 col-md-9">
           <div class="card bg-light">
             <h6 class="card-header text-dark">Edit post</h6>

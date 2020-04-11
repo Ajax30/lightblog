@@ -150,4 +150,8 @@ class Posts_model extends CI_Model {
 		return true;
 	}
 
+	public function delete_post_image($id) {
+		$this->db->update('posts', array('post_image'=>'default.jpg'), ['id'=>$id]);
+	}
+
 }
