@@ -49,7 +49,8 @@
               </div>
 
               <input type="hidden" name="postimage" id="postimage" value="<?php echo $post->post_image; ?>">
-              <label for="postimage">Upload an image</label>
+
+              <label for="postimage" id="imageUploader">Upload an image</label>
               <div class="form-group">
                 <input type="file" name="userfile" id="postimage" size="20"> 
                 <?php

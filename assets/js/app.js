@@ -6,16 +6,6 @@ $(document).ready(function() {
     $(this).delay(4000).slideUp(200);
   });
 
-  $('.smooth-scroll').on('click', function(ev){
-    ev.preventDefault();
-    if (this.hash !== "") {
-      var hash = this.hash;
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 250);
-    }
-  });
-
   // Add comments via AJAX
   $("#commentForm").validate({
     rules: {
@@ -85,25 +75,38 @@ $(document).ready(function() {
   $('#postImage').on('click', function(evt){
     evt.preventDefault();
 
-    var $this = $(this);
-    var $postImage = $this.closest('.card').find('img');
-    var $hiddenPostImage = $('input[name="postimage"]');
-    var defaultPostImage = baseUrl + 'assets/img/posts/default.jpg';
+    if (this.hash === "") {
+      var $this = $(this);
+      var $postImage = $this.closest('.card').find('img');
+      var $hiddenPostImage = $('input[name="postimage"]');
+      var defaultPostImage = baseUrl + 'assets/img/posts/default.jpg';
 
-    //Get post ID
-    var id = $(this).data('pid');
+      //Get post ID
+      var id = $(this).data('pid');
 
-    if(confirm("Delete the post's featured image?")) {
-      $.ajax({
-        url: baseUrl + 'dashboard/posts/deleteimage/' + id,
-        method: 'GET',
-        dataType: 'html',
-        success: function(deleteMsg){
-          $postImage.attr('src', defaultPostImage);
-          $hiddenPostImage.val(defaultPostImage);
-          $this.text('Add image');
-        }
-      });
+      if(confirm("Delete the post's featured image?")) {
+        $.ajax({
+          url: baseUrl + 'dashboard/posts/deleteimage/' + id,
+          method: 'GET',
+          dataType: 'html',
+          success: function(deleteMsg){
+            $postImage.attr('src', defaultPostImage);
+            $hiddenPostImage.val(defaultPostImage);
+            $this.text('Add image');
+            $this.attr('href', '#imageUploader');
+          }
+        });
+      }
+    }
+  });
+
+   $('.smooth-scroll').on('click', function(evt){
+    evt.preventDefault();
+    if (this.hash !== "") {
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 1000);
     }
   });
 
