@@ -196,7 +196,7 @@ $(document).ready(function() {
   });
 
   // Make the latest posts clickable
-  $('.news-list li').on('click', function(){
+  $('.sidebar-list li').on('click', function(){
     var postUrl = $(this).find('a').attr('href');
     window.location.href = postUrl;
   });

@@ -103,6 +103,7 @@ class Posts extends CI_Controller {
 		$data = $this->Static_model->get_static_data();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
+		$data['authors'] = $this->Usermodel->getAuthors();
 		$data['posts'] = $this->Posts_model->sidebar_posts($limit=5, $offset=0);
 		$data['post'] = $this->Posts_model->get_post($slug);
 

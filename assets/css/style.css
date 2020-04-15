@@ -591,7 +591,7 @@ form a:not(.btn, .icon), {
   text-align: justify;
 }
 
-.tabbed-sidebar .tab-content #new {
+#newest_posts, #authors_list{
   margin: -5px;
   
 }
@@ -611,37 +611,42 @@ form a:not(.btn, .icon), {
   font-size: 80%;
 }
 
-.news-list {
+.sidebar-list {
   margin: 0;
   border-collapse: collapse;
   width: 100%;
 }
 
-.news-list li {
+.sidebar-list li {
   cursor: pointer;
 }
 
-.news-list li > div {
+.sidebar-list li > div {
   vertical-align: top;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-.news-list li:nth-child(even) > div {
+.sidebar-list li:nth-child(even) > div {
   background: #efefef;
 }
 
-.news-list li .thumbnail {
+.sidebar-list li .thumbnail {
   width: 110px;
   padding-right: 10px;
   padding-left: 4px;
 }
 
-.news-list li .text {
+.sidebar-list li .thumbnail .rounded-circle {
+  height: 80px;
+  width: auto;
+}
+
+.sidebar-list li .text {
   padding-right: 4px;
 }
 
-.news-list h3 {
+.sidebar-list h3 {
   font-size: 14px;
   text-align: left;
   margin: 0;
