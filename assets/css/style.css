@@ -640,6 +640,7 @@ form a:not(.btn, .icon), {
 .sidebar-list li .thumbnail .rounded-circle {
   height: 84px;
   width: auto;
+  background: #ededed;
 }
 
 .sidebar-list li .text {
