@@ -71,7 +71,7 @@ $(document).ready(function() {
     }
   });
 
-   //Delete Avatar
+   //Delete Post image
   $('#postImage').on('click', function(evt){
     evt.preventDefault();
 
@@ -191,7 +191,7 @@ $(document).ready(function() {
   $("#comments_status").click(function(evt) {
     evt.preventDefault();
     $('html, body').animate({
-      scrollTop: $("#comments_container").offset().top
+      scrollTop: $("#siteFooter").offset().top
     }, 1000);
   });
 

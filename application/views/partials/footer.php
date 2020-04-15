@@ -1,4 +1,4 @@
-	<div class="site-footer-wrapper">
+	<div class="site-footer-wrapper" id="siteFooter">
 		<div class="footer-copyright">
 			<p class="text-center">&copy; <?php echo $company_name; ?>. All rights reserved</p>
 		</div>
