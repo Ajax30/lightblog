@@ -37,7 +37,7 @@
             <?php $author_image = isset($author->avatar) && $author->avatar !== '' ? $author->avatar : 'default-avatar.png'; ?>
 
             <li class="d-table-row">
-              <div class="thumbnail d-table-cell">
+              <div class="thumbnail d-table-cell text-center">
                 <a href="<?php echo base_url('/posts/byauthor/') . $author->id; ?>">
                   <img src="<?php echo base_url('assets/img/authors/') . $author_image; ?>" alt="<?php echo $author->first_name . ' ' . $author->last_name; ?>" class="img-thumbnail rounded-circle">
                 </a>
