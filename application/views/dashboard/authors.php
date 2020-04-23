@@ -35,7 +35,7 @@
                           ?>
                         </td>
                         <td class="w-10 text-center"><?php echo $author->is_admin; ?></td>
-                        <td class="text-center activate-column d-inline-block w-20">
+                        <td class="text-center d-inline-block w-20">
                           <?php if ($author->is_admin == 0): ?>
                             <div class="btn-group">                 
                               <?php if ($author->active == 1): ?>
