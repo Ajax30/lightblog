@@ -3,7 +3,7 @@
     <main class="dashboard-content wide-content">
       <div class="row">
         <?php $this->load->view("dashboard/partials/sidebar");?>
-        <div class="col-sm-7 col-md-9">
+        <div class="col-sm-8 col-md-9" id="dashboard_content">
           <div class="card bg-light">
              <div class="card-header d-flex p-2">
               <h6 class="text-dark m-0 align-self-center">Pages</h6>

@@ -1,4 +1,4 @@
-<div class="col-sm-5 col-md-3 pr-0">
+<div class="col-sm-4 col-md-3 px-0" id="dashboard_sidebar">
   <div class="card-list-group card bg-light mb-3">
     <h6 class="card-header text-dark">Featured Image</h6>
     <div class="card-body p-0 bg-white">

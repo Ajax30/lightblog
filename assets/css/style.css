@@ -640,7 +640,7 @@ form a:not(.btn, .icon), {
 .sidebar-list li .thumbnail .rounded-circle {
   height: 84px;
   width: auto;
-  background: #ededed;
+  background: #f7f7f7;
 }
 
 .sidebar-list li .text {
@@ -739,6 +739,9 @@ form a:not(.btn, .icon), {
 @media (max-width: 575px) {
   .container {
     max-width: 100%;
+  }
+
+  #dashboard_content {
     padding-left: 0;
     padding-right: 0;
   }
