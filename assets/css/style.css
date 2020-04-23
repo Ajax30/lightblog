@@ -116,6 +116,11 @@ table a {
   flex-direction: column;
 }
 
+#dashboard {
+  padding-right: 0;
+}
+
+
 /* Navigation */
 .navbar {
   box-shadow: 0 3px 7px 0 rgba(21, 30, 38, 0.3);
@@ -356,6 +361,11 @@ table a {
 
 .wide-content {
   margin: 20px 0;
+}
+
+.dashboard-content {
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .pagination-container {
@@ -741,9 +751,8 @@ form a:not(.btn, .icon), {
     max-width: 100%;
   }
 
-  #dashboard_content {
+  #dashboard {
     padding-left: 0;
-    padding-right: 0;
   }
 
   .posts-grid {

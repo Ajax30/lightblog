@@ -3,7 +3,7 @@
     <main class="dashboard-content wide-content">
       <div class="row">
         <?php $this->load->view("dashboard/partials/sidebar");?>
-        <div class="col-sm-8 col-md-9" id="dashboard_content">
+        <div class="col-sm-8 col-md-9" id="dashboard">
           <div class="card bg-light">
             <h6 class="card-header text-dark">Edit category</h6>
             <div class="card-body bg-white">
