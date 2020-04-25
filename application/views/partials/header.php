@@ -64,7 +64,7 @@
 							</a>
 							<div class="dropdown-menu">
 								<?php foreach ($categories as $category): ?>
-									<a class="dropdown-item" href="<?php echo base_url('/categories/posts/' . $category->id); ?>"><?php echo $category->name; ?></a>
+									<a class="dropdown-item text-secondary" href="<?php echo base_url('/categories/posts/' . $category->id); ?>"><?php echo $category->name; ?></a>
 								<?php endforeach; ?>
 							</div>
 						</li>
@@ -81,15 +81,27 @@
 									<span class="py-2">Welcome, <?php echo $this->session->userdata('user_first_name'); ?></span>
 								</a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="<?php echo base_url('dashboard') ?>">Dashboard</a>
-										<a class="dropdown-item" href="<?php echo base_url('dashboard/users/edit/' . $this->session->userdata('user_id')) ?>">Edit your profile</a>
+										<a class="dropdown-item text-secondary" href="<?php echo base_url('dashboard') ?>">
+											<i class="fa fa-tachometer mr-2"></i> Dashboard
+										</a>
+										<a class="dropdown-item text-secondary" href="<?php echo base_url('dashboard/users/edit/' . $this->session->userdata('user_id')) ?>">
+											<i class="fa fa-user-circle-o mr-2"></i> Edit your profile
+										</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>
-											<a class="dropdown-item" href="<?php echo base_url('dashboard/manage-authors') ?>">Manage authors</a>
+											<a class="dropdown-item text-secondary" href="<?php echo base_url('dashboard/manage-authors') ?>">
+												<i class="fa fa-users mr-2"></i> Manage authors
+											</a>
 										<?php endif; ?>
-										<a class="dropdown-item" href="<?php echo base_url('dashboard/create-post') ?>">Add post</a>
-										<a class="dropdown-item" href="<?php echo base_url('dashboard/create-category') ?>">Add category</a>
+										<a class="dropdown-item text-secondary" href="<?php echo base_url('dashboard/create-post') ?>">
+											<i class="fa fa-thumb-tack mr-2"></i> Add post
+										</a>
+										<a class="dropdown-item text-secondary" href="<?php echo base_url('dashboard/create-category') ?>">
+											<i class="fa fa-th-list mr-2"></i> Add category
+										</a>
 										<?php if($this->session->userdata('user_is_admin')) : ?>
-											<a class="dropdown-item" href="<?php echo base_url('dashboard/create-page') ?>">Add page</a>
+											<a class="dropdown-item text-secondary" href="<?php echo base_url('dashboard/create-page') ?>">
+												<i class="fa fa-file-text mr-2"></i> Add page
+											</a>
 										<?php endif; ?>
 									</div>
 								</li>
