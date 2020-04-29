@@ -39,7 +39,7 @@
             <li class="d-table-row">
               <div class="thumbnail d-table-cell text-center">
                 <a href="<?php echo base_url('/posts/byauthor/') . $author->id; ?>">
-                  <img src="<?php echo base_url('assets/img/authors/') . $author_image; ?>" alt="<?php echo $author->first_name . ' ' . $author->last_name; ?>" class="rounded-circle">
+                  <img src="<?php echo base_url('assets/img/authors/') . $author_image; ?>" alt="<?php echo $author->first_name . ' ' . $author->last_name; ?>" class="img-thumbnail rounded-circle">
                 </a>
               </div>
               <div class="text d-table-cell">
