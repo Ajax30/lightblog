@@ -458,10 +458,33 @@ main .img-thumbnail.float-left {
   margin: .5rem 0;
 }
 
+.post-meta .right-half,
+.post-meta .left-half,
+.post-meta a {
+  display: flex;
+  align-items: center;
+}
+
+.post-meta .left-half {
+  justify-content: flex-start;
+}
+
+.post-meta .right-half {
+  justify-content: flex-end;
+}
+
 .post-meta a {
   text-decoration: none;
   color: #656565;
   font-weight: 500;
+}
+
+.post-meta strong {
+  padding: 0 4px;
+}
+
+.post-meta img {
+  height: 40px;
 }
 
 /* Forms */
@@ -759,7 +782,7 @@ form a:not(.btn, .icon), {
     margin-left: 0;
     margin-right: 0;
   }
-    
+
   .posts-grid > [class*='col-'] {
     padding-left: 5px;
     padding-right: 5px;

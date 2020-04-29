@@ -91,10 +91,12 @@ class Posts_model extends CI_Model {
 			if ($author_query->num_rows() == 1) {
 				$author = $author_query->row();
 				$data->first_name = $author->first_name;
-				$data->last_name = $author->last_name;             
+				$data->last_name = $author->last_name;
+				$data->avatar = $author->avatar;              
 			} else {
 				$data->first_name = 'Unknown';
 				$data->last_name = '';
+				$data->avatar = '';
 			}
 			return $data;
 		}

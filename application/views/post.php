@@ -4,7 +4,15 @@
       <h2 class="post-title display-4"><?php echo $post->title; ?></h2>
       <div class="row post-meta">
         <div class="left-half col-sm-8">
-          <span class="author">By <a href="<?php echo base_url('posts/byauthor/') . $post->author_id; ?>"><?php echo $post->first_name . " " . $post->last_name; ?></a></span> <strong>&#183;</strong> <span class="date"><?php echo nice_date($post->created_at, 'M d, Y'); ?></span>
+          
+          <?php $author_image = isset($post->avatar) && $post->avatar !== '' ? $post->avatar : 'default-avatar.png'; ?>
+
+          <span class="author">
+            <a href="<?php echo base_url('posts/byauthor/') . $post->author_id; ?>">
+              <img src="<?php echo base_url('assets/img/authors/') . $author_image; ?>" alt="<?php echo $post->first_name . ' ' . $post->last_name; ?>" class="rounded-circle">
+              <span class="pl-1"><?php echo $post->first_name . " " . $post->last_name; ?></span>
+            </a>
+            </span> <strong>&#183;</strong> <span class="date"><?php echo nice_date($post->created_at, 'M d, Y'); ?></span>
         </div>
         <div class="right-half col-sm-4">
           <?php $comments_count = count($comments); $comments_status = $comments_count > 0 ? $comments_count . ' comments': "No comments"; ?>
