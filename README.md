@@ -31,7 +31,7 @@ All the future authors will need their accounts *activated by you* in order to p
 
 MIT License
 
-Copyright (c) 2019 Razvan Zamfir
+Copyright (c) 2020 Razvan Zamfir
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
