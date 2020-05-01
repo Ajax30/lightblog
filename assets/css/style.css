@@ -828,6 +828,11 @@ form a:not(.btn, .icon), {
     padding: 0 !important;
   }
 
+  .post-title,
+  .left-half {
+    text-align: left  !important;
+  }
+
   /* No border */
   #post_content,
   .post-meta {

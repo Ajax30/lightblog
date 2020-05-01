@@ -33,13 +33,11 @@
       <div role="tabpanel" class="tab-pane fade" id="authors_list">
         <ul class="list-unstyled sidebar-list d-table">
           <?php foreach ($authors as $author) :?>
-
-            <?php $author_image = isset($author->avatar) && $author->avatar !== '' ? $author->avatar : 'default-avatar.png'; ?>
-
+            <?php $avatar = isset($author->avatar) && $author->avatar !== '' ? $author->avatar : 'default-avatar.png'; ?>
             <li class="d-table-row">
               <div class="thumbnail d-table-cell text-center">
                 <a href="<?php echo base_url('/posts/byauthor/') . $author->id; ?>">
-                  <img src="<?php echo base_url('assets/img/authors/') . $author_image; ?>" alt="<?php echo $author->first_name . ' ' . $author->last_name; ?>" class="img-thumbnail rounded-circle">
+                  <img src="<?php echo base_url('assets/img/authors/') . $avatar; ?>" alt="<?php echo $author->first_name . ' ' . $author->last_name; ?>" class="img-thumbnail rounded-circle">
                 </a>
               </div>
               <div class="text d-table-cell">

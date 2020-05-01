@@ -1,16 +1,13 @@
 <div class="container fluid-fixed">
   <div class="content-wrapper">
     <main class="content" id="post_content">
-      <h2 class="post-title display-4"><?php echo $post->title; ?></h2>
+      <h2 class="post-title display-4 text-center text-sm-left"><?php echo $post->title; ?></h2>
       <div class="row post-meta">
         <div class="left-half col-sm-12 col-xl-8">
-          
-          <?php $author_image = isset($post->avatar) && $post->avatar !== '' ? $post->avatar : 'default-avatar.png'; ?>
-
           <span class="author">
             <a href="<?php echo base_url('posts/byauthor/') . $post->author_id; ?>">
               <img src="<?php echo base_url('assets/img/authors/') . $author_image; ?>" alt="<?php echo $post->first_name . ' ' . $post->last_name; ?>" class="rounded-circle <?php echo isset($post->avatar) && $post->avatar !== '' ? '' : 'bg-light border' ?>">
-              <span class="pl-1"><?php echo $post->first_name . " " . $post->last_name; ?></span>
+              <span class="pl-1">by <?php echo $post->first_name . " " . $post->last_name; ?></span>
             </a>
             </span> <strong>&#183;</strong> <span class="date"><?php echo nice_date($post->created_at, 'M d, Y'); ?></span>
         </div>
