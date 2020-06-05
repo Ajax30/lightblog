@@ -33,7 +33,8 @@
       <div role="tabpanel" class="tab-pane fade" id="authors_list">
         <ul class="list-unstyled sidebar-list d-table">
           <?php foreach ($authors as $author) :?>
-            <?php $avatar = isset($author->avatar) && $author->avatar !== '' ? $author->avatar : 'default-avatar.png'; ?>
+            <?php if ($author->active == 1): ?>
+              <?php $avatar = isset($author->avatar) && $author->avatar !== '' ? $author->avatar : 'default-avatar.png'; ?>
             <li class="d-table-row">
               <div class="thumbnail d-table-cell text-center">
                 <a href="<?php echo base_url('/posts/byauthor/') . $author->id; ?>">
@@ -45,6 +46,7 @@
                 <p><?php echo word_limiter($author->bio, 12); ?></p>
               </div>
             </li>
+            <?php endif ?>
           <?php endforeach ?>        
         </ul>
       </div>
@@ -63,3 +65,7 @@
   </div>
 
 </aside>
+
+
+
+
