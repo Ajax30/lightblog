@@ -47,6 +47,27 @@ class Users extends CI_Controller {
 		
 	}
 
+	function _mail_unique($email, $id){
+
+		if( !$id ){
+        $this->db->where('email', $email);
+        $num = $this->db->count_all_results('authors');
+    } else{
+        $this->db->where('email', $email);
+        $this->db->where_not_in('id', $id);
+        $num = $this->db->count_all_results('authors');
+    }
+
+    if ($num > 0) {
+      $this->form_validation->set_message('_mail_unique','This email is used by another author');
+       return FALSE; 
+    } else {
+        return TRUE; 
+    }
+
+	}
+
+
 	public function update() {
 		// Only logged in users can update user profiles
 		if (!$this->session->userdata('is_logged_in')) {
@@ -62,8 +83,7 @@ class Users extends CI_Controller {
 
 		$this->form_validation->set_rules('first_name', 'First name', 'required');
 		$this->form_validation->set_rules('last_name', 'Last name', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback__mail_unique['.$id.']');
 		$this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
 		// Upload avatar
@@ -92,14 +112,12 @@ class Users extends CI_Controller {
 			$this->session->set_userdata('user_avatar', $avatar);
 		}
 
-		if(!$this->form_validation->run() || !empty($uerrors))
-		{
+		if(!$this->form_validation->run() || !empty($uerrors)) {
 
 			$this->load->view('partials/header', $data);
 			$this->load->view('dashboard/edit-author');
 			$this->load->view('partials/footer');
-		} else
-		{
+		} else {
 			$this->Usermodel->update_user($avatar, $id);
 			$this->session->set_flashdata('user_updated', 'Your account details have been updated');
 			redirect(base_url('/dashboard/manage-authors'));
