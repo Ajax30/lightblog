@@ -1,8 +1,8 @@
 window.cookieconsent.initialise({
     container: document.getElementById("cookieconsent"),
     palette:{
-     popup: {background: "#1aa3ff"},
-     button: {background: "#e0e0e0"},
+     popup: {background: "#5EBA7D"},
+     button: {background: "#fff"},
     },
     revokable: true,
     onStatusChange: function(status) {

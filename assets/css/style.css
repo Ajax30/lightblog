@@ -864,6 +864,7 @@ form a:not(.btn, .icon), {
 
 .cc-window {
   padding: 10px 15px;
+  box-shadow: 0px 0 4px rgba(0, 0, 0, 0.6);
   text-align: center;
   position: fixed;
   z-index: 9;
@@ -884,4 +885,5 @@ form a:not(.btn, .icon), {
   padding: 5px 10px;
   border-radius: 3px;
   text-decoration: none !important;
+  cursor: pointer;
 }
