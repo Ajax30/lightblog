@@ -32,7 +32,7 @@
 
             <div class="form-group <?php if(form_error('terms')) echo 'has-error';?>">
               <input type="checkbox" name="terms" value="yes" id="terms">
-              <?php if(form_error('terms')) echo form_error('terms'); ?> <span class="text-muted text-error">I accept the <a href="<?php echo base_url('pages/page/1') ?>" class="text-error">Privacy Policy</a></span>
+              <?php if(form_error('terms')) echo form_error('terms'); ?> <span class="text text-muted">I accept the <a href="<?php echo base_url('pages/page/1') ?>" class="text text-link">Privacy Policy</a></span>
             </div>
 
             <div class="form-group">
