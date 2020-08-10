@@ -477,6 +477,10 @@ main .img-thumbnail.float-left {
   height: 40px;
 }
 
+#print_post .fa {
+  margin-right: 3px;
+}
+
 /* Forms */
 #terms {
   position: relative;
@@ -875,6 +879,7 @@ form a:not(.btn, .icon), {
 
 .cc-message {
   color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
 .cc-compliance {
