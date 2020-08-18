@@ -13,11 +13,7 @@ I have created a simple installation process: after creating a database and prov
             // Create all the database tables if there are none
             // by redirecting to the Migrations controller
             $tables = $this->db->list_tables();
-            if (count($tables) == 0) {
-                redirect('migrate');
-            } else {
-                redirect('/');
-            }
+            redirect(count($tables) == 0 ? 'migrate' : '/');
         }
     }
 
