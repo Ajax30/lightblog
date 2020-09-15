@@ -58,6 +58,7 @@ class Posts extends CI_Controller {
 
 		$data = $this->get_data();
 		$data['tagline'] = "Add New Post";
+		$data['is_ckeditor'] = true;
 
 		if ($data['categories']) {
 			foreach ($data['categories'] as &$category) {
@@ -133,6 +134,7 @@ class Posts extends CI_Controller {
 
 		if (($this->session->userdata('user_id') == $data['post']->author_id) || $this->session->userdata('user_is_admin')) {
 			$data['tagline'] = 'Edit the post "' . $data['post']->title . '"';
+			$data['is_ckeditor'] = true;
 			$this->load->view('partials/header', $data);
 			$this->load->view('dashboard/edit-post');
 			$this->load->view('partials/footer');

@@ -41,6 +41,7 @@ class Pages extends CI_Controller {
 		$data['number_of_categories'] = $this->Categories_model->get_num_rows();
 		$data['number_of_comments'] = $this->Comments_model->get_num_rows();
 		$data['tagline'] = "Add New Page";
+		$data['is_ckeditor'] = true;
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
 		$this->form_validation->set_rules('content', 'Content', 'required');
@@ -74,6 +75,7 @@ class Pages extends CI_Controller {
 		$data['page'] = $this->Pages_model->get_page($page_id);
 		if (1 == 1) {
 			$data['tagline'] = 'Edit the page "' . $data['page']->title . '"';
+			$data['is_ckeditor'] = true;
 			$this->load->view('partials/header', $data);
 			$this->load->view('dashboard/edit-page');
 			$this->load->view('partials/footer');

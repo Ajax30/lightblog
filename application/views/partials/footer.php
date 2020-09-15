@@ -13,36 +13,38 @@
 <script src="<?php echo base_url('assets/js/printThis.js')?>"></script>
 <?php endif; ?>
 <script src="<?php echo base_url('assets/js/app.js')?>"></script>
-<script>CKEDITOR.replace('body');</script>
+<?php if ($is_ckeditor == true): ?>
+	<script>CKEDITOR.replace('body');</script>
+<?php endif ?>
 <?php if ($is_cookieconsent == true): ?>
-  	<script>
-  		window.cookieconsent.initialise({
-	    container: document.getElementById("cookieconsent"),
-	    palette:{
-	     popup: {background: "#0068BB"},
-	     button: {background: "#fff"},
-	    },
-	    revokable: true,
-	    onStatusChange: function(status) {
-	     console.log(this.hasConsented() ?
-	      'enable cookies' : 'disable cookies');
-	    },
-	    "position": "bottom-left",
-	    "theme": "classic",
-	    "secure": true,
-	    "content": {
-	      "header": 'Cookies used on the website!',
-	      "message": 'This website uses cookies to improve your experience.',
-	      "dismiss": 'Got it!',
-	      "allow": 'Allow cookies',
-	      "deny": 'Decline',
-	      "link": 'Learn more',
-	      "close": '&#x274c;',
-	      "policy": 'Cookie Policy',
-	      "target": '_blank',
-	      }
-	   });
-  	</script>
+	<script>
+		window.cookieconsent.initialise({
+    container: document.getElementById("cookieconsent"),
+    palette:{
+     popup: {background: "#0068BB"},
+     button: {background: "#fff"},
+    },
+    revokable: true,
+    onStatusChange: function(status) {
+     console.log(this.hasConsented() ?
+      'enable cookies' : 'disable cookies');
+    },
+    "position": "bottom-left",
+    "theme": "classic",
+    "secure": true,
+    "content": {
+      "header": 'Cookies used on the website!',
+      "message": 'This website uses cookies to improve your experience.',
+      "dismiss": 'Got it!',
+      "allow": 'Allow cookies',
+      "deny": 'Decline',
+      "link": 'Learn more',
+      "close": '&#x274c;',
+      "policy": 'Cookie Policy',
+      "target": '_blank',
+      }
+   });
+	</script>
   <?php endif ?>
 </body>
 </html>

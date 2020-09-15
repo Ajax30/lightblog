@@ -10,7 +10,9 @@
   <?php if ($is_cookieconsent == true): ?>
   	<script src="<?php echo base_url('assets/lib/cookieconsent/js/cookieconsent.min.js')?>"></script>
   <?php endif ?>
+  <?php if ($is_ckeditor == true): ?>
   <script src="<?php echo base_url('assets/lib/ckeditor/ckeditor.js')?>"></script>
+  <?php endif ?>
   <title><?php echo $site_title . " | " . $tagline; ?></title>
   <?php if (isset($post->title)): ?>
   <meta property="og:title" content="<?php echo $post->title; ?>">
