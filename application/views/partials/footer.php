@@ -34,8 +34,8 @@
     "secure": true,
     "content": {
       "header": 'Cookies used on the website!',
-      "message": 'This website uses cookies to improve your experience.',
-      "dismiss": 'Got it!',
+      "message": 'This website uses cookies to improve your experience. By clicking "I Agree" you will allow the use of these cookies.',
+      "dismiss": 'I Agree!',
       "allow": 'Allow cookies',
       "deny": 'Decline',
       "link": 'Learn more',
