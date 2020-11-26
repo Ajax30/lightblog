@@ -24,6 +24,7 @@ $(document).ready(function() {
         url: url,
         data: data,
         success: function() {
+          console.log(url);
           $('#comment_add_msg').text("Your " + postWhat + " will be published after approval")
           .slideDown(250).delay(2500).slideUp(250);
           // Empty the form's fields
