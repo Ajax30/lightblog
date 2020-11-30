@@ -169,6 +169,10 @@ table a {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.navbar-dark .navbar-nav .dropdown-menu a:active {
+  background-color: transparent;
+}
+
 .navbar-dark .navbar-nav .dropdown-menu a:last-child {
   border-bottom: none;
 }
@@ -493,10 +497,6 @@ main .img-thumbnail.float-left {
 #terms {
   position: relative;
   top: 1px;
-}
-
-form a:not(.btn, .icon), {
-  color: #218838 !important;
 }
 
 .form-group {
