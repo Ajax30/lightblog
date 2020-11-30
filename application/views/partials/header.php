@@ -85,7 +85,7 @@
 									</span>
 									<span class="py-2">Welcome, <?php echo $this->session->userdata('user_first_name'); ?></span>
 								</a>
-									<div class="dropdown-menu">
+									<div class="dropdown-menu" id="dashboardActions">
 										<a class="dropdown-item text-secondary" href="<?php echo base_url('dashboard') ?>">
 											<i class="fa fa-tachometer mr-2"></i> Dashboard
 										</a>

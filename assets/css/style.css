@@ -160,6 +160,10 @@ table a {
   background: #fafafa;
 }
 
+#dashboardActions {
+  left: 5px;
+}
+
 .navbar-dark .navbar-nav .dropdown-menu a {
   padding: 11px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
