@@ -1,4 +1,6 @@
-<?php $this->load->view("partials/carousel");?>
+<?php if ($is_featured == true): ?>
+	<?php $this->load->view("partials/carousel");?>
+<?php endif; ?>
 <div class="container">
 	<div class="row posts-grid">
 		<?php foreach ($posts as $post) :?>
