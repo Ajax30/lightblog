@@ -24,7 +24,7 @@
         <?php echo $post->content; ?>
       </div>
 
-      <?php if($this->session->userdata('is_logged_in') && $this->session->userdata('user_id') == $post->author_id) : ?>
+      <?php if(($this->session->userdata('is_logged_in') && $this->session->userdata('user_id') == $post->author_id) || ($this->session->userdata('is_logged_in') && $this->session->userdata('user_is_admin'))) : ?>
       <div id="actions" class="text-center">
         <hr>
         <div class="btn-group" role="group">
