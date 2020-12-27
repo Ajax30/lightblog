@@ -39,6 +39,12 @@ class Posts extends CI_Controller {
 
     	//use limit and offset returned by _initPaginator method
 		$data['posts'] = $this->Posts_model->get_posts($config['limit'], $config['offset']);
+
+		// featured posts
+		if ($data['is_featured'] = true) {
+			$data['featured'] = $this->Posts_model->featured_posts();
+		}
+		
 		$this->load->view('partials/header', $data);
 		$this->load->view('posts');
 		$this->load->view('partials/footer');

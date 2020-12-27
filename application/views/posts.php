@@ -1,3 +1,4 @@
+<?php $this->load->view("partials/carousel");?>
 <div class="container">
 	<div class="row posts-grid">
 		<?php foreach ($posts as $post) :?>

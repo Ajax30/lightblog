@@ -21,7 +21,6 @@ class Posts extends CI_Controller {
 	}
 
 	public function index() {
-
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
 		}
@@ -50,7 +49,6 @@ class Posts extends CI_Controller {
 	}
 
 	public function create() {
-
 		// Only logged in users can create posts
 		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
@@ -76,14 +74,17 @@ class Posts extends CI_Controller {
 			$this->load->view('dashboard/create-post');
 			$this->load->view('partials/footer');
 		} else {
-			// Create slug (from title)
+			// 1) Create slug (from title)
 			$slug = url_title(convert_accented_characters($this->input->post('title')), 'dash', TRUE);
 			$slugcount = $this->Posts_model->slug_count($slug, null);
 			if ($slugcount > 0) {
 				$slug = $slug."-".$slugcount;
 			}
 
-			// Upload image
+			// 2) Add post to carousel (if is the case)
+			$featured = $this->input->post('featured') ? 1 : 0;
+
+			// 3) Upload image
 			$config['upload_path'] = './assets/img/posts';
 			$config['allowed_types'] = 'jpg|jpeg|png';
 			$config['max_size'] = '2048';
@@ -112,7 +113,7 @@ class Posts extends CI_Controller {
 			}
 
 			if (empty($errors)) {
-				$this->Posts_model->create_post($post_image, $slug);
+				$this->Posts_model->create_post($post_image, $slug, $featured);
 				$this->session->set_flashdata('post_created', 'Your post has been created');
 				redirect('/');
 			} else {
@@ -164,6 +165,9 @@ class Posts extends CI_Controller {
 		} else {
 			$slug = $this->input->post('slug');
 		}
+
+			// 2) Add post to carousel
+			$featured = $this->input->post('featured') ? 1 : 0;
 		
     // Upload image
 		$config['upload_path'] = './assets/img/posts';
@@ -198,7 +202,7 @@ class Posts extends CI_Controller {
 		}
 
 		if ($this->form_validation->run() && empty($errors)) {
-			$this->Posts_model->update_post($id, $post_image, $slug);
+			$this->Posts_model->update_post($id, $post_image, $slug, $featured);
 			$this->session->set_flashdata('post_updated', 'Your post has been updated');
 			redirect('/' . $slug);
 		} else {

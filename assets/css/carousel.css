@@ -1,0 +1,98 @@
+  .carousel-container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .carousel {
+    margin-top: 10px;
+    overflow: hidden;
+    padding: 1px 10px;
+  }
+  
+  .carousel-inner {
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.11);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.11);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.11);
+  }
+  
+  .carousel-item .row {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    max-height: 400px;
+    width: 100%;
+  }
+  .carousel-item .image-container {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  .carousel-item img {
+    display: none;
+  }
+  .carousel-item .text-container {
+    display: flex;
+    padding: 0 30px;
+  }
+  .carousel-item p {
+    color: #333;
+  }
+  .carousel-item h2 {
+    color: #333;
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .carousel-indicators {
+    bottom: 0 !important;
+  }
+  
+  .carousel-control {
+    top: 50% !important;
+    width: 40px !important;
+    height: 40px;
+    transform: translateY(-50%);
+    background: #c00;
+    opacity: 1 !important;
+  }
+  .carousel-control:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 6px;
+    position: absolute;
+    bottom: -8px;
+    z-index: -1;
+  }
+  
+  .carousel-control-prev:after {
+    border-color: #343434 #343434 transparent transparent;
+    left: -2px;
+  }
+  
+  .carousel-control-next:after {
+    border-color: #343434 transparent transparent #343434;
+    right: -2px;
+  }
+  
+  .carousel-control-prev .fa, .carousel-control-next .fa {
+    font-size: 125%;
+  }
+  
+  @media screen and (max-width: 575px) {
+    .carousel-item .text-container {
+      display: block;
+    }
+    .carousel-item .row {
+      height: auto;
+      max-height: none;
+    }
+    .carousel-item img {
+      display: block;
+    }
+    .carousel-item p {
+      padding-top: 1rem;
+      text-align: justify;
+    }
+  }

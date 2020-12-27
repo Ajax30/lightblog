@@ -6,13 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css')?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css')?>">
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
   <?php if ($is_cookieconsent == true): ?>
   	<script src="<?php echo base_url('assets/lib/cookieconsent/js/cookieconsent.min.js')?>"></script>
   <?php endif ?>
   <?php if ($is_ckeditor == true): ?>
   <script src="<?php echo base_url('assets/lib/ckeditor/ckeditor.js')?>"></script>
-  <?php endif ?>
+	<?php endif ?>
+	<?php if ($is_featured == true && isset($featured)): ?>
+		<link rel="stylesheet" href="<?php echo base_url('assets/css/carousel.css')?>">
+	<?php endif; ?>
   <title><?php echo $site_title . " | " . $tagline; ?></title>
   <?php if (isset($post->title)): ?>
   <meta property="og:title" content="<?php echo $post->title; ?>">
@@ -218,3 +221,4 @@
 					<p id="comment_delete_msg" class="alert alert-hidden alert-success"></p>
 
 				</div>
+

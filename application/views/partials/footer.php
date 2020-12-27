@@ -13,6 +13,9 @@
 <script src="<?php echo base_url('assets/js/printThis.js')?>"></script>
 <?php endif; ?>
 <script src="<?php echo base_url('assets/js/app.js')?>"></script>
+<?php if ($is_featured == true && isset($featured)): ?>
+  <script src="<?php echo base_url('assets/js/carousel.js')?>"></script>
+<?php endif ?>
 <?php if ($is_ckeditor == true): ?>
 	<script>CKEDITOR.replace('body');</script>
 <?php endif ?>
