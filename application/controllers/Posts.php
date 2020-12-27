@@ -41,7 +41,7 @@ class Posts extends CI_Controller {
 		$data['posts'] = $this->Posts_model->get_posts($config['limit'], $config['offset']);
 
 		// featured posts
-		if ($data['is_featured'] = true) {
+		if ($data['is_featured']) {
 			$data['featured'] = $this->Posts_model->featured_posts();
 		}
 		
