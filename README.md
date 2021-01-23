@@ -1,8 +1,8 @@
-# What this is
-
-![Homepage preview](https://github.com/Ajax30/lightblog/blob/master/preview.jpg)
+# What this 
 
 This is a simple, easy to use, blogging (or online newspaper) application.
+
+![Homepage preview](https://github.com/Ajax30/lightblog/blob/master/preview.jpg)
 
 # How to use this CMS
 
