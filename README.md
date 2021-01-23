@@ -1,4 +1,4 @@
-# What this 
+# What is this about? 
 
 This is a simple, easy to use, blogging (or online newspaper) application.
 
