@@ -1,11 +1,10 @@
 # What this is
 
-![Homepage preview](https://github.com/Ajax30/lightblog/blob/master/preview.png)
+![Homepage preview](https://github.com/Ajax30/lightblog/blob/master/preview.jpg)
 
 This is a simple, easy to use, blogging (or online newspaper) application.
 
 # How to use this CMS
-
 
 I have created a simple installation process: after creating a database and providing its credentials to the `application/config/database.php` file, you can run the `Install` controller which will create all the necessary tables.
 
