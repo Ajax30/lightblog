@@ -16,9 +16,13 @@
               <?php if(form_error('password')) echo form_error('password'); ?> 
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-2">
               <input type="submit" value="Login" class="btn btn-block btn-md btn-success">
-            </div>            
+            </div>
+
+            <div class="form-group text-center">
+              Forgot password? <a href="<?php echo base_url('newpassword')?>" class="text-link">Reset it</a>
+            </div>             
             <?php echo form_close(); ?>
           </div>
         </div>
