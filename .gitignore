@@ -1,6 +1,8 @@
 .DS_Store
 
 application/cache/*
+assets/img/
+
 !application/cache/index.html
 
 application/logs/*
