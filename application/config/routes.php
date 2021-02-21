@@ -6,6 +6,7 @@ $route['install'] = 'install';
 $route['migrate'] = 'migrate';
 $route['register'] = 'register';
 $route['login'] = 'login';
+$route['newpassword'] = 'newpassword';
 $route['dashboard'] = 'dashboard';
 $route['dashboard/create-post'] = 'dashboard/posts/create';
 $route['dashboard/create-page'] = 'dashboard/pages/create';
