@@ -48,6 +48,9 @@ class Passwordreset extends CI_Controller {
 
                 $this->body = "Here is your <strong>" . $this->reset_link . "</strong>. After clicking it you will be redirected to a page on the website where you will be able to set a new pasword.";
 
+              // Update paswword reset token
+               $this->updateToken($this->user_email, $this->reset_token);
+
                 // Send mail and rediect
                 //$this->sendResetMail(); 
                 echo $this->body;            
@@ -56,6 +59,12 @@ class Passwordreset extends CI_Controller {
             }
            //redirect('newpassword');
         }
+    }
+
+    public function updateToken($user_email, $reset_token) {
+      $user_email = $this->user_email;
+      $reset_token = $this->reset_token;
+      $this->Usermodel->update_token($user_email, $reset_token);
     }
 
     public function sendResetMail() {

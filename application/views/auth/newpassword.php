@@ -4,7 +4,7 @@
         <div class="card bg-light">
           <div class="card-header bg-light">New password</div>
           <div class="card-body">
-            <?php echo form_open(base_url('changepasword')); ?>
+            <?php echo form_open(base_url('newpassword')); ?>
             <div class="form-group <?php if(form_error('password')) echo 'has-error';?>">
               <input type="password" name="password" id="password" class="form-control" placeholder="Password">
               <?php if(form_error('password')) echo form_error('password'); ?> 
