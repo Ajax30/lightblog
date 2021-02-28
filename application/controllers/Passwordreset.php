@@ -1,21 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Newpassword extends CI_Controller {
+class Passwordreset extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
     }
 
-    // Sender email
     private $sender_email = "noreply@yourdomain.com";
-    // Sender name
     private $sender_name = "Razvan Zamfir";
-    
-
     private $user_email = '';
     private $subject = 'Pasword reset link';
-    private $reset_link = '<a href="#">Dummy Reset Link</a>';
+    private $reset_token = '';
+    private $reset_url = '';
+    private $reset_link = '';
     private $body = '';
 
     public function index() {
@@ -35,29 +33,46 @@ class Newpassword extends CI_Controller {
             $this->load->view('partials/footer');
         } else {
             if ($this->Usermodel->email_exists()) {
-                $this->user_email = $this->input->post('email');
-                $this->body = "Your password reset link: $this->reset_link\n\nAfter clicking it you will be redirected to a page on the website where you will be able to set a new pasword.";
+
+            	  //Get user email
+            	  $this->user_email = $this->input->post('email');
+
+            		//create token
+            		$this->reset_token = md5(str_shuffle($this->user_email));
+
+            		//create url
+                $this->reset_url = base_url('newpasword/') . md5($this->user_email) . '/'. $this->reset_token;
+
+                //create reset link
+                $this->reset_link = '<a href="' . $this->reset_url . '">password reset link</a>';
+
+                $this->body = "Here is your <strong>" . $this->reset_link . "</strong>. After clicking it you will be redirected to a page on the website where you will be able to set a new pasword.";
 
                 // Send mail and rediect
-                $this->sendResetMail();             
+                //$this->sendResetMail(); 
+                echo $this->body;            
             } else {
                 $this->session->set_flashdata('email_non_existent', "The email you provided does not exist in our database");
             }
-           redirect('newpassword');
+           //redirect('newpassword');
         }
     }
 
     public function sendResetMail() {
         // Loading the Email library
-        $config['protocol'] = 'sendmail';
-        $config['charset'] = 'utf-8';
-        $config['mailtype'] = 'html';
+        $config['protocol']  = 'smtp';
+				$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+				$config['smtp_user'] = 'razvan.zamfir80@gmail.com';
+				$config['smtp_pass'] = 'myGoop123@';
+				$config['smtp_port'] = 465;
+				$config['charset']   = 'utf-8';
+				$config['mailtype']  = 'html';
+				$config['newline']   = "\r\n"; 
 
-        if($this->load->is_loaded('email')){
-            $this->email->initialize($config);
-        }
-        else{
-            $this->load->library('email',$config);
+        if(!$this->load->is_loaded('email')){
+        	$this->load->library('email', $config);
+        } else {
+          $this->email->initialize($config);
         }
 
         // Build the body and meta data of the email message
@@ -69,8 +84,8 @@ class Newpassword extends CI_Controller {
 
         if($this->email->send()){
             $this->session->set_flashdata('reset_mail_confirm', "A pasword reset link was send to the email address $this->user_email");
-        }else{
-            $this->session->set_flashdata('reset_mail_fail', "Our atempt to send a pasword reset link to $this->user_email has failed");
+        } else{
+            $this->session->set_flashdata('reset_mail_fail', "Our attempt to send a pasword reset link to $this->user_email has failed");
         }
     }
 }

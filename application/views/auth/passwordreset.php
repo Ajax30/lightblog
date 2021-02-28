@@ -4,7 +4,7 @@
         <div class="card bg-light">
           <div class="card-header bg-light">Reset password</div>
           <div class="card-body">
-            <?php echo form_open(base_url('newpassword')); ?>
+            <?php echo form_open(base_url('passwordreset')); ?>
 
             <div class="form-group <?php if(form_error('email')) echo 'has-error';?>">
               <input type="text" name="email" id="email" class="form-control" placeholder="Email">
