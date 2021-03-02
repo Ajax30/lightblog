@@ -41,7 +41,7 @@ class Passwordreset extends CI_Controller {
             		$this->reset_token = md5(str_shuffle($this->user_email));
 
             		//create url
-                $this->reset_url = base_url('newpasword/') . md5($this->user_email) . '/'. $this->reset_token;
+                $this->reset_url = base_url('newpassword/add') . md5($this->user_email) . '/'. $this->reset_token;
 
                 //create reset link
                 $this->reset_link = '<a href="' . $this->reset_url . '">password reset link</a>';

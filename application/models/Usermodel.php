@@ -108,9 +108,9 @@ class Usermodel extends CI_Model {
 			->update('authors', array('token' => $reset_token));
 	}
 
-	public function set_new_password($hashed_email, $token, $enc_password) {
+	public function set_new_password($hashed_email, $reset_token, $enc_password) {
 		$this->db
-			->where([md5('email') => $hashed_email])
+			->where(['email' => $hashed_email])
 			// set new password and reset token to NULL
 			->update('authors', array('password' => $enc_password, 'token' => NULL));
 	}

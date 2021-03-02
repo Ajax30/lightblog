@@ -5,15 +5,14 @@
           <div class="card-header bg-light">Reset password</div>
           <div class="card-body">
             <?php echo form_open(base_url('passwordreset')); ?>
+              <div class="form-group <?php if(form_error('email')) echo 'has-error';?>">
+                <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+                <?php if(form_error('email')) echo form_error('email'); ?> 
+              </div>
 
-            <div class="form-group <?php if(form_error('email')) echo 'has-error';?>">
-              <input type="text" name="email" id="email" class="form-control" placeholder="Email">
-              <?php if(form_error('email')) echo form_error('email'); ?> 
-            </div>
-
-            <div class="form-group mb-2">
-              <input type="submit" value="Reset password" class="btn btn-block btn-md btn-success">
-            </div>            
+              <div class="form-group mb-2">
+                <input type="submit" value="Reset password" class="btn btn-block btn-md btn-success">
+              </div>            
             <?php echo form_close(); ?>
           </div>
         </div>
