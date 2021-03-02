@@ -40,7 +40,7 @@ class Newpassword extends CI_Controller {
       $enc_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
       // Update password column
-      $this->Usermodel->set_new_password($this->hashed_email, $this->set_new_password, $enc_password);
+      $this->Usermodel->set_new_password($this->hashed_email, $this->token, $enc_password);
     }
   }
 
