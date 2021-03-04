@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Newpassword extends CI_Controller {
-
   private $token = '';
 
 	public function index($token) {
@@ -39,12 +38,9 @@ class Newpassword extends CI_Controller {
 
     if ($this->Usermodel->set_new_password($token, $enc_password)) {
       redirect('login'); 
-      $this->session->set_flashdata("new_password_success", "Your new password was set");
+      $this->session->set_flashdata("new_password_success", "Your new password was set. You can login");
     } else {
-      $this->agent->referrer();
       $this->session->set_flashdata("new_password_fail", "We have failed updateing yor password");
     }
-    
   }
-
 }
