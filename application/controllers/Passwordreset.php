@@ -11,7 +11,7 @@ class Passwordreset extends CI_Controller {
     private $sender_name = "Razvan Zamfir";
     private $user_email = '';
     private $subject = 'Pasword reset link';
-    private $reset_token = '';
+    private $token = '';
     private $reset_url = '';
     private $reset_link = '';
     private $body = '';
@@ -38,10 +38,10 @@ class Passwordreset extends CI_Controller {
             	  $this->user_email = $this->input->post('email');
 
             		//create token
-            		$this->reset_token = md5(str_shuffle($this->user_email));
+            		$this->token = md5(str_shuffle($this->user_email));
 
             		//create url
-                $this->reset_url = base_url('newpassword/add') . md5($this->user_email) . '/'. $this->reset_token;
+                $this->reset_url = base_url('newpassword/') . $this->token;
 
                 //create reset link
                 $this->reset_link = '<a href="' . $this->reset_url . '">password reset link</a>';
@@ -49,7 +49,7 @@ class Passwordreset extends CI_Controller {
                 $this->body = "Here is your <strong>" . $this->reset_link . "</strong>. After clicking it you will be redirected to a page on the website where you will be able to set a new pasword.";
 
               // Update paswword reset token
-               $this->updateToken($this->user_email, $this->reset_token);
+               $this->updateToken($this->user_email, $this->token);
 
                 // Send mail and rediect
                 //$this->sendResetMail(); 
@@ -61,10 +61,10 @@ class Passwordreset extends CI_Controller {
         }
     }
 
-    public function updateToken($user_email, $reset_token) {
+    public function updateToken($user_email, $token) {
       $user_email = $this->user_email;
-      $reset_token = $this->reset_token;
-      $this->Usermodel->update_token($user_email, $reset_token);
+      $token = $this->token;
+      $this->Usermodel->update_token($user_email, $token);
     }
 
     public function sendResetMail() {

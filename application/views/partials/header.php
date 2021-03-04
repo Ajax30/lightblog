@@ -223,6 +223,14 @@
 						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto text-center"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('reset_mail_fail') . '</p>'; ?>
 					<?php endif; ?>
 
+					<?php if($this->session->flashdata('new_password_success')): ?>
+							<?php echo '<p class="alert alert-success col-sm-10 col-md-8 col-lg-6 mx-auto text-center">' . $this->session->flashdata('new_password_success') . '</p>'; ?>
+					<?php endif; ?>
+
+					<?php if($this->session->flashdata('new_password_fail')): ?>
+						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto text-center"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('new_password_fail') . '</p>'; ?>
+					<?php endif; ?>
+
 					<?php if($this->session->flashdata('author_delete')): ?>
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('author_delete') . '</p>'; ?>
 					<?php endif; ?>

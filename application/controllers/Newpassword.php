@@ -2,14 +2,19 @@
 
 class Newpassword extends CI_Controller {
 
-  private $hashed_email = '';
   private $token = '';
 
-	public function index($hashed_email, $token) {
+	public function index($token) {
 		$data = $this->Static_model->get_static_data();
     $data['pages'] = $this->Pages_model->get_pages();
     $data['tagline'] = 'New password';
     $data['categories'] = $this->Categories_model->get_categories();
+    $this->token = $token;
+
+     // Form validation rules
+     $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
+     $this->form_validation->set_rules('cpassword', 'Confirm password', 'required|matches[password]');
+     $this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
 
     if(!$this->form_validation->run()) {
         $this->load->view('partials/header', $data);
@@ -26,22 +31,20 @@ class Newpassword extends CI_Controller {
     $data['tagline'] = 'New password';
     $data['categories'] = $this->Categories_model->get_categories();
 
-    // Form validation rules
-    $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-    $this->form_validation->set_rules('cpassword', 'Confirm password', 'required|matches[password]');
-    $this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
+    // Encrypt new password
+    $enc_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
-    if(!$this->form_validation->run()) {
-      $this->load->view('partials/header', $data);
-      $this->load->view('auth/newpassword');
-      $this->load->view('partials/footer');
+    // Update password column
+    $token = $this->token;
+
+    if ($this->Usermodel->set_new_password($token, $enc_password)) {
+      redirect('login'); 
+      $this->session->set_flashdata("new_password_success", "Your new password was set");
     } else {
-      // Encrypt new password
-      $enc_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-
-      // Update password column
-      $this->Usermodel->set_new_password($this->hashed_email, $this->token, $enc_password);
+      $this->agent->referrer();
+      $this->session->set_flashdata("new_password_fail", "We have failed updateing yor password");
     }
+    
   }
 
 }
