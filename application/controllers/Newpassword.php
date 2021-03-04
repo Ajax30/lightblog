@@ -40,7 +40,7 @@ class Newpassword extends CI_Controller {
       redirect('login'); 
       $this->session->set_flashdata("new_password_success", "Your new password was set. You can login");
     } else {
-      $this->session->set_flashdata("new_password_fail", "We have failed updateing yor password");
+      $this->session->set_flashdata("new_password_fail", "We have failed updateing your password");
     }
   }
 }
