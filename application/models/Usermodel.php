@@ -102,15 +102,15 @@ class Usermodel extends CI_Model {
 	}
 
 	public function update_token($user_email, $token) {
-		$this->db
-			->where(['email' => $user_email])
+		return $this->db
+			->where('email', $user_email)
 			// insert token (make it diffrent from NULL)
 			->update('authors', array('token' => $token));
 	}
 
 	public function set_new_password($token, $enc_password) {
-		$this->db
-			->where(['token' => $token])
+		return $this->db
+			->where('token', $token)
 			// set new password and reset token to NULL
 			->update('authors', array('password' => $enc_password, 'token' => NULL));
 	}

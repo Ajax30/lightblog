@@ -1,14 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Newpassword extends CI_Controller {
-  private $token = '';
 
-	public function index($token) {
+	public function index($token = NULL) {
+    //echo $token; die();
 		$data = $this->Static_model->get_static_data();
     $data['pages'] = $this->Pages_model->get_pages();
     $data['tagline'] = 'New password';
     $data['categories'] = $this->Categories_model->get_categories();
-    $this->token = $token;
+    $data['token'] = $token;
 
      // Form validation rules
      $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
@@ -20,11 +20,11 @@ class Newpassword extends CI_Controller {
         $this->load->view('auth/newpassword');
         $this->load->view('partials/footer');
     } else {
-    	$this->add();
+    	$this->add($token);
     }
 	}
 
-  public function add() {
+  public function add($token) {
     $data = $this->Static_model->get_static_data();
     $data['pages'] = $this->Pages_model->get_pages();
     $data['tagline'] = 'New password';
@@ -33,14 +33,12 @@ class Newpassword extends CI_Controller {
     // Encrypt new password
     $enc_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
-    // Update password column
-    $token = $this->token;
-
-    if ($this->Usermodel->set_new_password($token, $enc_password)) {
-      redirect('login'); 
+    if ($this->Usermodel->set_new_password($token, $enc_password)) { 
       $this->session->set_flashdata("new_password_success", "Your new password was set. You can login");
-    } else {
-      $this->session->set_flashdata("new_password_fail", "We have failed updateing your password");
+      redirect('login');
+    } else { 
+      $this->session->set_flashdata("new_password_fail", "We have failed updating your password");
+      redirect('/newpassword/' . $token);
     }
   }
 }
