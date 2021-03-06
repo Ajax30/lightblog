@@ -6,7 +6,7 @@
           <div class="card-body">
             <?php echo form_open(base_url('passwordreset')); ?>
               <div class="form-group <?php if(form_error('email')) echo 'has-error';?>">
-                <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+                <input type="text" name="email" id="email" class="form-control" placeholder="Email" value="<?php echo set_value('email')?>">
                 <?php if(form_error('email')) echo form_error('email'); ?> 
               </div>
 
