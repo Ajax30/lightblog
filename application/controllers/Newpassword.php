@@ -1,9 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Newpassword extends CI_Controller {
-
 	public function index($token = NULL) {
-    //echo $token; die();
 		$data = $this->Static_model->get_static_data();
     $data['pages'] = $this->Pages_model->get_pages();
     $data['tagline'] = 'New password';
@@ -20,25 +17,16 @@ class Newpassword extends CI_Controller {
         $this->load->view('auth/newpassword');
         $this->load->view('partials/footer');
     } else {
-    	$this->add($token);
+    	// Encrypt new password
+      $enc_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+
+      if ($this->Usermodel->set_new_password($token, $enc_password)) { 
+        $this->session->set_flashdata("new_password_success", "Your new password was set. You can login");
+        redirect('login');
+      } else { 
+        $this->session->set_flashdata("new_password_fail", "We have failed updating your password");
+        redirect('/newpassword/' . $token);
+      }
     }
 	}
-
-  public function add($token) {
-    $data = $this->Static_model->get_static_data();
-    $data['pages'] = $this->Pages_model->get_pages();
-    $data['tagline'] = 'New password';
-    $data['categories'] = $this->Categories_model->get_categories();
-
-    // Encrypt new password
-    $enc_password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-
-    if ($this->Usermodel->set_new_password($token, $enc_password)) { 
-      $this->session->set_flashdata("new_password_success", "Your new password was set. You can login");
-      redirect('login');
-    } else { 
-      $this->session->set_flashdata("new_password_fail", "We have failed updating your password");
-      redirect('/newpassword/' . $token);
-    }
-  }
 }
