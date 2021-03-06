@@ -136,11 +136,11 @@
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('already_registered')): ?>
-						<?php echo '<p class="alert alert-success">'. $this->session->flashdata('already_registered') . '</p>'; ?>
+						<?php echo '<p class="alert alert-success col-sm-10 col-md-8 col-lg-6 mx-auto">'. $this->session->flashdata('already_registered') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('user_registered')): ?>
-						<?php echo '<p class="alert alert-success">'. $this->session->flashdata('user_registered') . '</p>'; ?>
+						<?php echo '<p class="alert alert-success col-sm-10 col-md-8 col-lg-6 mx-auto">'. $this->session->flashdata('user_registered') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('user_updated')): ?>
@@ -196,11 +196,11 @@
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('login_failure_incorrect')): ?>
-						<?php echo '<p class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('login_failure_incorrect') . '</p>'; ?>
+						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('login_failure_incorrect') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('login_failure_activation')): ?>
-						<?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failure_activation') . '</p>'; ?>
+						<?php echo '<p class="alert alert-danger col-sm-10 col-md-8 col-lg-6 mx-auto">' . $this->session->flashdata('login_failure_activation') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('user_signin')): ?>
@@ -212,23 +212,23 @@
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('reset_mail_confirm')): ?>
-							<?php echo '<p class="alert alert-success col-sm-10 col-md-8 col-lg-6 mx-auto text-center">' . $this->session->flashdata('reset_mail_confirm') . '</p>'; ?>
+							<?php echo '<p class="alert alert-success col-sm-10 col-md-8 col-lg-6 mx-auto">' . $this->session->flashdata('reset_mail_confirm') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('email_non_existent')): ?>
-						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto text-center"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('email_non_existent') . '</p>'; ?>
+						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('email_non_existent') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('reset_mail_fail')): ?>
-						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto text-center"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('reset_mail_fail') . '</p>'; ?>
+						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('reset_mail_fail') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('new_password_success')): ?>
-							<?php echo '<p class="alert alert-success col-sm-10 col-md-8 col-lg-6 mx-auto text-center">' . $this->session->flashdata('new_password_success') . '</p>'; ?>
+							<?php echo '<p class="alert alert-success col-sm-10 col-md-8 col-lg-6 mx-auto">' . $this->session->flashdata('new_password_success') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('new_password_fail')): ?>
-						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto text-center"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('new_password_fail') . '</p>'; ?>
+						<?php echo '<p class="alert alert-danger alert-dismissible col-sm-10 col-md-8 col-lg-6 mx-auto"><button type="button" class="close" data-dismiss="alert">&times;</button>' . $this->session->flashdata('new_password_fail') . '</p>'; ?>
 					<?php endif; ?>
 
 					<?php if($this->session->flashdata('author_delete')): ?>
