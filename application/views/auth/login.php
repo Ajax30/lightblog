@@ -21,7 +21,7 @@
             </div>
 
             <div class="form-group text-center">
-              Forgot password? <a href="<?php echo base_url('newpassword')?>" class="text-link">Reset it</a>
+              Forgot password? <a href="<?php echo base_url('passwordreset')?>" class="text-link">Reset it</a>
             </div>             
             <?php echo form_close(); ?>
           </div>

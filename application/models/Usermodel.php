@@ -32,11 +32,11 @@ class Usermodel extends CI_Model {
 	}
 
 	public function deleteAuthor($id) {
-		return $this->db->delete('authors', array('id' => $id));
+		return $this->db->delete('authors', ['id' => $id]);
 	}
 
 	public function deleteAvatar($id) {
-		$this->db->update('authors', array('avatar'=>''), ['id'=>$id]);
+		$this->db->update('authors', ['avatar'=>''], ['id'=>$id]);
 	}
 
 
@@ -67,6 +67,7 @@ class Usermodel extends CI_Model {
 			'last_name' => $this->input->post('last_name'),
 			'email' => $this->input->post('email'),
 			'password' => $enc_password,
+			'token' => NULL,
 			'register_date' => date('Y-m-d H:i:s'),
 			'active' => $active,
 			'is_admin' => $is_admin
@@ -89,8 +90,8 @@ class Usermodel extends CI_Model {
 
 	public function user_login($email, $password) {
 		$pass_hash_query = $this->db
-            ->select('password')
-            ->get_where('authors', ['email' => $email]);
+        ->select('password')
+        ->get_where('authors', ['email' => $email]);
 
     $pass_hash = $pass_hash_query->row()->password;
         
@@ -99,6 +100,19 @@ class Usermodel extends CI_Model {
 			return $query->row();
 		}
 	}
-	
+
+	public function update_token($user_email, $token) {
+		return $this->db
+			->where('email', $user_email)
+			// insert token (make it diffrent from NULL)
+			->update('authors', array('token' => $token));
+	}
+
+	public function set_new_password($token, $enc_password) {
+		return $this->db
+			->where('token', $token)
+			// set new password and reset token to NULL
+			->update('authors', array('password' => $enc_password, 'token' => NULL));
+	}
 }
 
