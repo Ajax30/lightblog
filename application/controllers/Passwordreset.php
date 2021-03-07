@@ -73,11 +73,12 @@ class Passwordreset extends CI_Controller
     public function sendResetMail()
     {
         // Email settings
-        $config['protocol'] = 'sendmail';
-        $config['smtp_host'] = 'mail.mydomain.com';
-        $config['smtp_user'] = 'myemail@mydomain.com';
+				$config = array();
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'smtp.yourdomain.com';
+				$config['smtp_user'] = 'youraddress@yourdomain.com';
         $config['smtp_pass'] = '******';
-        $config['smtp_port'] = 465;
+        $config['smtp_port'] = 25;
         $config['charset']  = 'utf-8';
         $config['mailtype'] = 'html';
         $config['newline']   = "\r\n"; 
@@ -98,7 +99,7 @@ class Passwordreset extends CI_Controller
         if ($this->email->send()) {
             $this->session->set_flashdata('reset_mail_confirm', "A pasword reset link was send to the email address $this->user_email");
         } else {
-            $this->session->set_flashdata('reset_mail_fail', "Our atempt to send a pasword reset link to $this->user_email has failed");
+					$this->session->set_flashdata('reset_mail_fail', $this->email->print_debugger());
         }
     }
 }
