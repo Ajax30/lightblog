@@ -75,9 +75,9 @@ class Passwordreset extends CI_Controller
         // Email settings
 				$config = array();
 				$config['protocol'] = 'smtp';
-				$config['smtp_host'] = 'smtp.yourdomain.com';
-				$config['smtp_user'] = 'youraddress@yourdomain.com';
-        $config['smtp_pass'] = '******';
+				$config['smtp_host'] = 'smtp.code-love.tk';
+				$config['smtp_user'] = 'razvan@code-love.tk';
+        $config['smtp_pass'] = 'FdlY6Q_G#j8q';
         $config['smtp_port'] = 25;
         $config['charset']  = 'utf-8';
         $config['mailtype'] = 'html';
