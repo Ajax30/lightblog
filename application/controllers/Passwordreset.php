@@ -98,7 +98,7 @@ class Passwordreset extends CI_Controller
         if ($this->email->send()) {
             $this->session->set_flashdata('reset_mail_confirm', "A pasword reset link was send to the email address $this->user_email");
         } else {
-            $this->session->set_flashdata('reset_mail_fail', $this->email->print_debugger());
+            $this->session->set_flashdata('reset_mail_fail', "Our atempt to send a pasword reset link to $this->user_email has failed");
         }
     }
 }
