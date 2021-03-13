@@ -17,7 +17,7 @@ All the future authors will need their accounts *activated by you* in order to p
 
 I have created a short demo video.
 
-[![Demo video](https://img.youtube.com/vi/VIDEO-ID/video-thumbnail.png)](http://www.youtube.com/watch?v=T71prYUuqgc)
+[![Demo video](https://github.com/Ajax30/lightblog/blob/master/video-thumbnail.png)](http://www.youtube.com/watch?v=T71prYUuqgc)
 
 
 # License
