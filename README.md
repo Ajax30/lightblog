@@ -13,9 +13,9 @@ After that, you can register as an **author**. Being the first registered author
 All the future authors will need their accounts *activated by you* in order to publish articles (posts).
 
 
-# Demo
+# Demo video
 
-I have created a short demo video.
+I have created a short demo **video**.
 
 [![Demo video](https://github.com/Ajax30/lightblog/blob/master/video-thumbnail.png)](http://www.youtube.com/watch?v=T71prYUuqgc)
 
