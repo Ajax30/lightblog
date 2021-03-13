@@ -13,6 +13,13 @@ After that, you can register as an **author**. Being the first registered author
 All the future authors will need their accounts *activated by you* in order to publish articles (posts).
 
 
+# Demo
+
+I have created a short demo video.
+
+[![Demo video](https://img.youtube.com/vi/VIDEO-ID/video-thumbnail.png)](http://www.youtube.com/watch?v=T71prYUuqgc)
+
+
 # License
 
 MIT License
