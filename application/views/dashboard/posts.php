@@ -10,6 +10,7 @@
               <a class="btn btn-sm btn-success ml-auto" href="<?php echo base_url('dashboard/create-post') ?>"><i class="fa fa-plus-square mr-1" aria-hidden="true"></i> Add post</a>
             </div>
             <div class="card-body bg-white p-0">
+            <?php if($total_posts > 0):?>
               <div class="table-responsive">
                 <table class="table table-striped table-sm mb-0">
                   <thead>
@@ -43,9 +44,14 @@
                   </tbody>
                 </table>
               </div>
-              <div class="card-footer bg-white py-1">
-                <?php $this->load->view("partials/pagination");?>
-              </div>
+              <div class="card-footer bg-white px-0 py-<?php echo $total_posts > $limit ? '1' : '0'?>">                      
+                <?php if($total_posts > $limit):?>
+                  <?php $this->load->view("partials/pagination");?>
+                <?php endif ?>
+              </div>  
+              <?php else: ?>
+                <p class="text-center my-2">There are no posts yet</p>
+              <?php endif ?>
             </div>
           </div>
         </div>
